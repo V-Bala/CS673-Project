@@ -8,20 +8,13 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
-                <img class="logo-img" src="content/images/logo-jhipster.png" alt="logo"/>
-                <span>Projectone</span> <span class="navbar-version">v{{VERSION}}</span>
+                <span>EZTrack</span> <span class="navbar-version">v{{VERSION}}</span>
             </a>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="home" ng-click="vm.collapseNavbar()">
-                        <span class="glyphicon glyphicon-home"></span>
-                        <span class="hidden-sm">Home</span>
-                    </a>
-                </li>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown dropdown>
+                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="entity-menu">
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
@@ -35,7 +28,37 @@
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
-                <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown dropdown>
+
+                <li ng-switch-when="false">
+                    <form class="form" role="form" ng-submit="vm.login($event)">
+                        <div style="display: inline-block">
+                            <input class="form-control" type="text" id="username" placeholder="Your username" ng-model="vm.username"
+                                   style="background-color: #FFFFFF">
+                        </div>
+
+                        <div style="display: inline-block">
+                            <input class="form-control" type="password" id="password" placeholder="Password"
+                                   ng-model="vm.password" style="background-color: #FFFFFF">
+                        </div>
+                    </form>
+                </li>
+
+                <li ng-switch-when="false">
+                    <a ng-click="vm.login($event)">
+                        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                        <span>Log In</span>
+                    </a>
+                </li>
+
+
+                <li ui-sref-active="active" ng-switch-when="false">
+                    <a ui-sref="register" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                        <span>Sign Up</span>
+                    </a>
+                </li>
+
+                <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown dropdown has-authority="ROLE_USER">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
                         <span>
                             <span class="glyphicon glyphicon-user"></span>
@@ -68,18 +91,6 @@
                             <a href="" ng-click="vm.logout()" id="logout">
                                 <span class="glyphicon glyphicon-log-out"></span>&nbsp;
                                 <span>Sign out</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="false">
-                            <a href="" ng-click="vm.login()" id="login">
-                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;
-                                <span>Sign in</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="false">
-                            <a ui-sref="register" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-                                <span>Register</span>
                             </a>
                         </li>
                     </ul>
