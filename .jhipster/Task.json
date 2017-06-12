@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "userstory",
+            "otherEntityName": "userstory",
+            "otherEntityField": "title"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tmember",
+            "otherEntityName": "tmember",
+            "otherEntityField": "membername"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "targetdate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170608203215",
+    "entityTableName": "task",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

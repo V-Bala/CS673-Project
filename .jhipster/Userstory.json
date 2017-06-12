@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "userstory"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "userstory",
+            "relationshipName": "tmember",
+            "otherEntityName": "tmember",
+            "otherEntityField": "membername",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "NEW,COMPLETE,REJECTED,ASSIGNED,INPROGRESS"
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "Priority",
+            "fieldValues": "LOW,MEDIUM,HIGH,CRITICAL"
+        }
+    ],
+    "changelogDate": "20170608203210",
+    "entityTableName": "userstory",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}
