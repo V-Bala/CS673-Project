@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "team"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "team",
+            "relationshipName": "tmember",
+            "otherEntityName": "tmember",
+            "otherEntityField": "membername",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "teamname",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170608203214",
+    "entityTableName": "team",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

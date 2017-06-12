@@ -49,6 +49,7 @@ enum Status {
 entity Task {
 	title String
     description String
+    targetdate ZonedDateTime
 }
 
 relationship OneToMany {
@@ -56,24 +57,24 @@ relationship OneToMany {
 }
 
 relationship OneToMany {
-	Task{userstory(title)} to Userstory{task(title)}
+	 Userstory{task(title)} to Task{userstory(title)}
 }
 
 relationship OneToMany {
-	Task{tmember(membername)} to Tmember{task(title)}
+	Tmember{task(title)} to Task{tmember(membername)}
+}
+
+relationship OneToOne {
+   Tmember{user(login)} to User
 }
 
 relationship ManyToMany {
-	Tmember{userstory(title)} to Userstory{tmember(membername)}
+ 	Userstory{tmember(membername)} to Tmember{userstory(title)}
 }
 
-relationship OneToMany {
+relationship ManyToMany {
 	Team{tmember(membername)} to Tmember{team(teamname)}
 }
 relationship OneToMany {
 	Team{project(name)} to Project{team(teamname)}
-}
-
-relationship OneToOne {
-    Tmember{user(login)} to User
 }
