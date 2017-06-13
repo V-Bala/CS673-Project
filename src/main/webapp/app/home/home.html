@@ -1,9 +1,68 @@
+<div ng-show="!vm.isAuthenticated()">
+    <div class="col-xs-12" style="background-color: #47a437; height: 1000px">
+        <h2>
+            This section will show when the user is logged out
+        </h2>
+    </div>
+</div>
+
+<!-- THis is the 'section' that will show once the user logs in -->
+<div ng-show="vm.isAuthenticated()">
+    <div class="col-xs-12" style="background-color: #2d7ca4; height: 1000px">
+        <div class="container-fluid well-dashboard" style="min-height: 700px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="exTab2">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a  href="page1/#1" data-toggle="tab">Tab 1</a>
+                            </li>
+                            <li>
+                                <a href="page1/#2" data-toggle="tab">Tab 2</a>
+                            </li>
+                            <li>
+                                <a href="paage1/#3" data-toggle="tab">Tab 3</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" style="text-align: center">
+                            <br>
+                            <div class="tab-pane active well" id="1">
+
+                                <h3>Getting started </h3>
+                                <br>
+                                <b>
+                                Create a project under entities, and then you can view them below
+                                </b>
+                                <br>
+
+                                This is an example of bringing data to the front end, SEE home.controller.js for how it works
+                                <br>
+
+                                <div ng-repeat="project in vm.projects track by project.id">
+                                    {{project}}
+                                </div>
+
+                                <br>
+
+                                <b> I also added the add new project button on the sidenav. From proects.html, I copied the new projects button and pasted it into sidenav.html. Then, I need
+                                to make sure it stays on the home page when popping up a new project dialog. I changed the project.new state in project.state.js to 'home'</b>
 
 
-<div ng-cloak>
-    <div class="col-lg-12" style="background-color: #5297ea; height: 1000px; margin-top: 0">
 
 
-
+                            </div>
+                            <div class="tab-pane well" id="2">
+                                TWO TWO
+                            </div>
+                            <div class="tab-pane well" id="3">
+                                TAB THREE
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
