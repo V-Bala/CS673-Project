@@ -1,17 +1,37 @@
+<div class="sidebar" ng-if=!vm.isAuthenticated()>
+    <h4>
+        Login Text
+    </h4>
+    <form class="form" role="form" ng-submit="vm.login($event)">
+        <div style="display: inline-block">
+            <input class="form-control" type="text" id="username" placeholder="Your username" ng-model="vm.username"
+                   style="background-color: #FFFFFF">
+        </div>
+        <div style="display: inline-block">
+            <input class="form-control" type="password" id="password" placeholder="Password"
+                   ng-model="vm.password" style="background-color: #FFFFFF">
+        </div>
+    </form>
+
+    <a ng-click="vm.login($event)">
+        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+        <span>Log In</span>
+    </a>
+
+    <a ui-sref="register" ng-click="vm.collapseNavbar()">
+        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+        <span>Sign Up</span>
+    </a>
+
+</div>
+
 
 
 <div class="sidebar" ng-if=vm.isAuthenticated()>
-    <a class="btn" ui-sref="page1">
-        Page 1
-    </a>
-    <a class="btn" ui-sref="page2">
-        Page 2
-    </a>
-    <a class="btn" ui-sref="page3">
-        Page 3
-    </a>
-</div>
-
-<div class="sidebar" ng-if=!vm.isAuthenticated()>
-
+    <button class="btn btn-primary" ui-sref="project.new" >
+        <span class="glyphicon glyphicon-plus"></span>
+        <span class="hidden-xs-down" >
+                        Create new Project
+                    </span>
+    </button>
 </div>

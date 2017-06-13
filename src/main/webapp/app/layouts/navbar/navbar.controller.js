@@ -27,8 +27,8 @@
 
         function logout() {
             collapseNavbar();
-            Auth.logout();
             $state.go('home');
+            Auth.logout();
         }
 
         function toggleNavbar() {
@@ -47,7 +47,7 @@
                 rememberMe: vm.rememberMe
             }).then(function () {
                 vm.authenticationError = false;
-                $state.go('page1');
+                $state.go('home');
                 $rootScope.$broadcast('authenticationSuccess');
 
                 // previousState was set in the authExpiredInterceptor before being redirected to login modal.
