@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('SidebarController', SidebarController);
 
-    SidebarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    SidebarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'Project'];
 
-    function SidebarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function SidebarController ($state, Auth, Principal, ProfileService, LoginService, Project) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -23,6 +23,9 @@
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
+
+        vm.projects = Project.query();
+        /* Project.query is defined in projects.service.js and handled on the server side with ProjectResource.java  */
 
 
         function logout() {

@@ -31,7 +31,19 @@
     <button class="btn btn-primary" ui-sref="project.new" >
         <span class="glyphicon glyphicon-plus"></span>
         <span class="hidden-xs-down" >
-                        Create new Project
-                    </span>
+            Create New Project
+        </span>
+    </button>
+    <button class="btn btn-primary" ui-sref="project" >
+        <span class="glyphicon glyphicon-plus"></span>
+        <span class="hidden-xs-down" >
+            View Your Projects
+        </span>
+    </button>
+    <button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project.project-detail">
+    <span class="glyphicon glyphicon-minus"></span>
+        <span class="hidden-xs-down" >
+            {{project.name}}
+        </span>
     </button>
 </div>
