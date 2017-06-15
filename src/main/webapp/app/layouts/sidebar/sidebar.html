@@ -28,22 +28,48 @@
 
 
 <div class="sidebar" ng-if=vm.isAuthenticated()>
-    <button class="btn btn-primary" ui-sref="project.new" >
-        <span class="glyphicon glyphicon-plus"></span>
-        <span class="hidden-xs-down" >
-            Create New Project
-        </span>
-    </button>
-    <button class="btn btn-primary" ui-sref="project" >
-        <span class="glyphicon glyphicon-plus"></span>
-        <span class="hidden-xs-down" >
-            View Your Projects
-        </span>
-    </button>
-    <button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project-detail({id:project.id})">
-    <span class="glyphicon glyphicon-minus"></span>
-        <span class="hidden-xs-down" >
-            {{project.name}}
-        </span>
-    </button>
+    <!--Project div-->
+    <div>
+        <button class="btn btn-primary" ui-sref="project.new" >
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="hidden-xs-down" >
+                Create New Project
+            </span>
+        </button>
+        <button class="btn btn-primary" ui-sref="project" >
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="hidden-xs-down" >
+                View Your Projects
+            </span>
+        </button>
+        <button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project-detail({id:project.id})">
+            <span class="glyphicon glyphicon-minus"></span>
+            <span class="hidden-xs-down" >
+                {{project.name}}
+            </span>
+        </button>
+    </div>
+
+    <!--Team div-->
+    <div>
+        <button class="btn btn-primary" ui-sref="team.new">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="hidden-xs-down">
+                Create New Team
+            </span>
+        </button>
+        <button class="btn btn-primary" ui-sref="team" >
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="hidden-xs-down" >
+                View Your Teams
+            </span>
+        </button>    
+        <button class="btn btn-primary btn-sm pull-right" ng-repeat="team in vm.teams track by team.id" ui-sref="team-detail({id:team.id})">
+            <span class="glyphicon glyphicon-minus"></span>
+            <span class="hidden-xs-down" >
+                {{team.teamname}}
+            </span>
+        </button>
+        </button>
+    </div>
 </div>
