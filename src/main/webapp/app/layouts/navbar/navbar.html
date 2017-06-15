@@ -1,4 +1,6 @@
+<link rel="stylesheet" href="content/css/home-screen.css">
 <nav class="navbar navbar-default" role="navigation">
+    <div class="bg-navbar">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
@@ -84,14 +86,12 @@
                         </div>
                     </form>
                 </li>
-
                 <li ng-switch-when="false">
                     <a ng-click="vm.login($event)">
                         <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
                         <span>Log In</span>
                     </a>
                 </li>
-
 
                 <li ui-sref-active="active" ng-switch-when="false">
                     <a ui-sref="register" ng-click="vm.collapseNavbar()">

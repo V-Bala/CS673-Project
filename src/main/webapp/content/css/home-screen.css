@@ -1,0 +1,38 @@
+.bg-1 {
+    background: url(/content/images/laptop_opt.jpg) no-repeat;
+    background-size: 100%;
+}
+.bg-2 {
+    background-color: #1976d2;
+    color: #ffffff;
+}
+.bg-3 {
+    background-color: #e4b9c0;
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.bg-navbar {
+    background:#1a237e;
+}
+.margin-1 {
+    padding-bottom: 400px;
+}
+h1 {
+font-weight: bold;
+}
+.bg-1-h3 {
+    font-weight:bold;
+}
+.margin-h1 {
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+.margin-h2{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.margin-h4 {
+    padding-bottom: 25px;
+}

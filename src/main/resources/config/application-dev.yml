@@ -33,7 +33,11 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/projectone
         username: projectone
+<<<<<<< cce80f48f61a38517dcf53fb790898a8f4397f03
         password: user
+=======
+        password: projectone
+>>>>>>> Updated homepage with content and styling
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
