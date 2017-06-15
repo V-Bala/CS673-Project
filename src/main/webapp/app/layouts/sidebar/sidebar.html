@@ -40,7 +40,7 @@
             View Your Projects
         </span>
     </button>
-    <button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project.project-detail">
+    <button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project-detail({id:project.id})">
     <span class="glyphicon glyphicon-minus"></span>
         <span class="hidden-xs-down" >
             {{project.name}}
