@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "tmember"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "tmember"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "userstory",
+            "otherEntityName": "userstory",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "tmember"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "team",
+            "otherEntityName": "team",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "tmember"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "membername",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170608203209",
+    "entityTableName": "tmember",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}
