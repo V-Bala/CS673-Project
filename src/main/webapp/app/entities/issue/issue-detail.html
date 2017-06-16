@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Issue</span> {{vm.issue.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.issue.name}}</span>
+        </dd>
+        <dt><span>Comments</span></dt>
+        <dd>
+            <span>{{vm.issue.comments}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.issue.status}}</span>
+        </dd>
+        <dt><span>Priority</span></dt>
+        <dd>
+            <span>{{vm.issue.priority}}</span>
+        </dd>
+        <dt><span>Project</span></dt>
+        <dd>
+            <a ui-sref="project-detail({id:vm.issue.project.id})">{{vm.issue.project.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="issue-detail.edit({id:vm.issue.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,41 +1,68 @@
-<div ng-cloak>
-    <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1>Welcome, Java Hipster!</h1>
-            <p class="lead">This is your homepage</p>
+<div ng-show="!vm.isAuthenticated()">
+    <div class="col-xs-12" style="background-color: #47a437; height: 1000px">
+        <h2>
+            This section will show when the user is logged out
+        </h2>
+    </div>
+</div>
 
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true">
-                    You are logged in as user "{{vm.account.login}}".
-                </div>
+<!-- THis is the 'section' that will show once the user logs in -->
+<div ng-show="vm.isAuthenticated()">
+    <div class="col-xs-12" style="background-color: #2d7ca4; height: 1000px">
+        <div class="container-fluid well-dashboard" style="min-height: 700px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="exTab2">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a  href="page1/#1" data-toggle="tab">Tab 1</a>
+                            </li>
+                            <li>
+                                <a href="page1/#2" data-toggle="tab">Tab 2</a>
+                            </li>
+                            <li>
+                                <a href="paage1/#3" data-toggle="tab">Tab 3</a>
+                            </li>
+                        </ul>
 
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
+                        <div class="tab-content" style="text-align: center">
+                            <br>
+                            <div class="tab-pane active well" id="1">
 
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                                <h3>Getting started </h3>
+                                <br>
+                                <b>
+                                Create a project under entities, and then you can view them below
+                                </b>
+                                <br>
+
+                                This is an example of bringing data to the front end, SEE home.controller.js for how it works
+                                <br>
+
+                                <div ng-repeat="project in vm.projects track by project.id">
+                                    {{project}}
+                                </div>
+
+                                <br>
+
+                                <b> I also added the add new project button on the sidenav. From proects.html, I copied the new projects button and pasted it into sidenav.html. Then, I need
+                                to make sure it stays on the home page when popping up a new project dialog. I changed the project.new state in project.state.js to 'home'</b>
+
+
+
+
+                            </div>
+                            <div class="tab-pane well" id="2">
+                                TWO TWO
+                            </div>
+                            <div class="tab-pane well" id="3">
+                                TAB THREE
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                 </div>
             </div>
-
-            <p>
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" >follow @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
         </div>
     </div>
 </div>

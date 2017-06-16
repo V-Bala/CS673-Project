@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "NEW,COMPLETE,REJECTED,ASSIGNED,INPROGRESS"
+        }
+    ],
+    "changelogDate": "20170608203213",
+    "entityTableName": "requirement",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

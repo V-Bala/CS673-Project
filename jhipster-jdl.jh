@@ -1,0 +1,80 @@
+
+
+
+entity Tmember {
+	membername String
+}
+
+entity Userstory {
+	title String
+}
+
+entity Project {
+	name String
+    description String
+}
+
+entity Issue {
+	name String
+    comments String
+    status Status
+    priority Priority
+}
+
+entity Requirement {
+	name String
+    status Status
+}
+
+entity Team {
+	teamname String
+}
+
+entity Userstory {
+	title String
+    description String
+    comments String
+    status Status
+    priority Priority
+}
+
+enum Priority {
+	LOW, MEDIUM, HIGH, CRITICAL
+}
+
+enum Status {
+	NEW, COMPLETE, REJECTED, ASSIGNED, INPROGRESS
+}
+
+entity Task {
+	title String
+    description String
+    targetdate ZonedDateTime
+}
+
+relationship OneToMany {
+	Project{issue(name)} to Issue{project(name)}
+}
+
+relationship OneToMany {
+	 Userstory{task(title)} to Task{userstory(title)}
+}
+
+relationship OneToMany {
+	Tmember{task(title)} to Task{tmember(membername)}
+}
+
+relationship OneToOne {
+   Tmember{user(login)} to User
+}
+
+relationship ManyToMany {
+ 	Userstory{tmember(membername)} to Tmember{userstory(title)}
+}
+
+relationship ManyToMany {
+	Team{tmember(membername)} to Tmember{team(teamname)}
+}
+relationship OneToMany {
+	Team{project(name)} to Project{team(teamname)}
+}
