@@ -24,10 +24,11 @@
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
 
+        vm.teams = Team.query();
+        /* Team.query is defined in team.service.js and handled on the server side with TeamResource.java  */
+        
         vm.projects = Project.query();
         /* Project.query is defined in projects.service.js and handled on the server side with ProjectResource.java  */
-
-        vm.teams = Team.query();
 
         function logout() {
             collapseNavbar();

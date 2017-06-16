@@ -24,6 +24,7 @@
             <label for="field_tmember">Tmember</label>
             <select class="form-control" id="field_tmember" multiple name="tmember" ng-model="vm.team.tmembers" ng-options="tmember as tmember.membername for tmember in vm.tmembers track by tmember.id"></select>
         </div>
+        <!--Button calls function .new from tmember.state.js-->
         <button class="btn btn-primary" ui-sref="tmember.new" >
             <span class="glyphicon glyphicon-plus"></span>
             <span class="hidden-xs-down" >
