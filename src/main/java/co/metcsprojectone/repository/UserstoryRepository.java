@@ -20,4 +20,6 @@ public interface UserstoryRepository extends JpaRepository<Userstory,Long> {
     @Query("select userstory from Userstory userstory left join fetch userstory.tmembers where userstory.id =:id")
     Userstory findOneWithEagerRelationships(@Param("id") Long id);
 
+    List<Userstory> findAllByid(@Param("id") Long id);
+
 }

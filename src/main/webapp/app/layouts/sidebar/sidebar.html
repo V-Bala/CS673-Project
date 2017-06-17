@@ -1,33 +1,18 @@
+
+<!-- Logged out View -->
+
 <div class="sidebar" ng-if=!vm.isAuthenticated()>
-    <h4>
-        Login Text
-    </h4>
-    <form class="form" role="form" ng-submit="vm.login($event)">
-        <div style="display: inline-block">
-            <input class="form-control" type="text" id="username" placeholder="Your username" ng-model="vm.username"
-                   style="background-color: #FFFFFF">
-        </div>
-        <div style="display: inline-block">
-            <input class="form-control" type="password" id="password" placeholder="Password"
-                   ng-model="vm.password" style="background-color: #FFFFFF">
-        </div>
-    </form>
 
-    <a ng-click="vm.login($event)">
-        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-        <span>Log In</span>
-    </a>
-
-    <a ui-sref="register" ng-click="vm.collapseNavbar()">
-        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-        <span>Sign Up</span>
-    </a>
+Non auth
 
 </div>
 
 
+<!-- Logged in View -->
+
 
 <div class="sidebar" ng-if=vm.isAuthenticated()>
+<<<<<<< 7fac4ea4ddce23dd44bc82109c0fb8bf2bcde990
     <!--Project div-->
     <div>
         <!--Button calls function .new from project.state.js-->
