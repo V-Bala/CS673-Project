@@ -10,7 +10,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
+                <div class="navbar-fontsize">
                 <span>EZTrack</span> <span class="navbar-version">v{{VERSION}}</span>
+                </div>
             </a>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
