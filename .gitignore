@@ -3,7 +3,6 @@
 ######################
 /target/www/**
 /src/main/resources/config/application-dev.yml
-pom.xml
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
 
