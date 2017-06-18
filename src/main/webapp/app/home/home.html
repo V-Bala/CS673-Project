@@ -72,48 +72,95 @@
                     <div id="exTab2">
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a  href="page1/#1" data-toggle="tab">Tab 1</a>
+                                <a  href="page1/#1" data-toggle="tab">Projects</a>
                             </li>
                             <li>
-                                <a href="page1/#2" data-toggle="tab">Tab 2</a>
+                                <a href="page1/#2" data-toggle="tab">Requirements</a>
                             </li>
                             <li>
-                                <a href="page1/#3" data-toggle="tab">Tab 3</a>
+                                <a href="page1/#3" data-toggle="tab">Backlog</a>
+                            </li>
+                            <li>
+                                <a href="page1/#4" data-toggle="tab">Teams</a>
+                            </li>
+                            <li>
+                                <a href="page1/#5" data-toggle="tab">Issues</a>
                             </li>
                         </ul>
 
-                        <div class="tab-content" style="text-align: center">
+                        <div class="tab-content" style="text-align: center;">
                             <br>
                             <div class="tab-pane active well" id="1">
 
-                                <h3>Getting started </h3>
-                                <br>
-                                <b>
-                                Create a project under entities, and then you can view them below
-                                </b>
-                                <br>
+                                <!--<h3>Getting started </h3>-->
+                                <!--<br>-->
+                                <!--<b>-->
+                                <!--Create a project under entities, and then you can view them below-->
+                                <!--</b>-->
+                                <!--<br>-->
 
-                                This is an example of bringing data to the front end, SEE home.controller.js for how it works
-                                <br>
+                                <!--This is an example of bringing data to the front end, SEE home.controller.js for how it works-->
+                                <!--<br>-->
 
-                                <div ng-repeat="project in vm.projects track by project.id">
-                                    {{project}}
+                                <!--<div ng-repeat="project in vm.projects track by project.id">-->
+                                    <!--{{project}}-->
+                                <!--</div>-->
+
+                                <!--<br>-->
+
+                                <!--<b> I also added the add new project button on the sidenav. From projects.html, I copied the new projects button and pasted it into sidenav.html. Then, I need-->
+                                <!--to make sure it stays on the home page when popping up a new project dialog. I changed the project.new state in project.state.js to 'home'</b>-->
+
+                                <!--Project div-->
+                                <div class="project-features" style="display: flex; align-content: center; justify-content: center; flex-direction: column">
+                                    <div>
+                                        <!--Button changes state to project-->
+                                        <button class="btn btn-primary" ui-sref="project" >
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                            <span class="hidden-xs-down" >
+                                            Manage Your Projects
+                                        </span>
+                                        </button>
+                                    </div>
                                 </div>
-
-                                <br>
-
-                                <b> I also added the add new project button on the sidenav. From projects.html, I copied the new projects button and pasted it into sidenav.html. Then, I need
-                                to make sure it stays on the home page when popping up a new project dialog. I changed the project.new state in project.state.js to 'home'</b>
-
-
-
 
                             </div>
                             <div class="tab-pane well" id="2">
-                                TWO TWO
+                                <div>
+                                    <!--Button calls function .new from requirement.state.js-->
+                                    <button class="btn btn-primary" ui-sref="requirement" >
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <span class="hidden-xs-down" >
+                                            Manage Your Requirements
+                                        </span>
+                                    </button>
+
+                                </div>
                             </div>
                             <div class="tab-pane well" id="3">
-                                TAB THREE
+                                TODO: Add backlog feature
+                            </div>
+                            <div class="tab-pane well" id="4">
+                                <!--Team div-->
+                                <div>
+                                    <!--Button changes state to team-->
+                                    <button class="btn btn-primary" ui-sref="team" >
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <span class="hidden-xs-down" >
+                                            Manage Your Teams
+                                        </span>
+                                    </button>
+                                    <!--Button changes state to tmember-->
+                                    <button class="btn btn-primary" ui-sref="tmember" >
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <span class="hidden-xs-down" >
+                                            Manage Your Team Members
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tab-pane well" id="5">
+                                TODO: Add issue tracking feature
                             </div>
                         </div>
                     </div>

@@ -28,54 +28,54 @@
 
 
 <div class="sidebar" ng-if=vm.isAuthenticated()>
-    <!--Project div-->
-    <div>
-        <!--Button calls function .new from project.state.js-->
-        <button class="btn btn-primary" ui-sref="project.new" >
-            <span class="glyphicon glyphicon-plus"></span>
-            <span class="hidden-xs-down" >
-                Create New Project
-            </span>
-        </button>
-        <!--Button changes state to project-->
-        <button class="btn btn-primary" ui-sref="project" >
-            <span class="glyphicon glyphicon-plus"></span>
-            <span class="hidden-xs-down" >
-                View Your Projects
-            </span>
-        </button>
-        <!--Button changes state to project-detail({id})-->
-        <button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project-detail({id:project.id})">
-            <span class="glyphicon glyphicon-minus"></span>
-            <span class="hidden-xs-down" >
-                {{project.name}}
-            </span>
-        </button>
-    </div>
+    <!--&lt;!&ndash;Project div&ndash;&gt;-->
+    <!--<div>-->
+        <!--&lt;!&ndash;Button calls function .new from project.state.js&ndash;&gt;-->
+        <!--<button class="btn btn-primary" ui-sref="project.new" >-->
+            <!--<span class="glyphicon glyphicon-plus"></span>-->
+            <!--<span class="hidden-xs-down" >-->
+                <!--Create New Project-->
+            <!--</span>-->
+        <!--</button>-->
+        <!--&lt;!&ndash;Button changes state to project&ndash;&gt;-->
+        <!--<button class="btn btn-primary" ui-sref="project" >-->
+            <!--<span class="glyphicon glyphicon-plus"></span>-->
+            <!--<span class="hidden-xs-down" >-->
+                <!--View Your Projects-->
+            <!--</span>-->
+        <!--</button>-->
+        <!--&lt;!&ndash;Button changes state to project-detail({id})&ndash;&gt;-->
+        <!--<button class="btn btn-primary btn-sm pull-right" ng-repeat="project in vm.projects track by project.id" ui-sref="project-detail({id:project.id})">-->
+            <!--<span class="glyphicon glyphicon-minus"></span>-->
+            <!--<span class="hidden-xs-down" >-->
+                <!--{{project.name}}-->
+            <!--</span>-->
+        <!--</button>-->
+    <!--</div>-->
 
-    <!--Team div-->
-    <div>
-        <!--Button calls function .new from team.state.js-->
-        <button class="btn btn-primary" ui-sref="team.new">
-            <span class="glyphicon glyphicon-plus"></span>
-            <span class="hidden-xs-down">
-                Create New Team
-            </span>
-        </button>
-        <!--Button changes state to team-->
-        <button class="btn btn-primary" ui-sref="team" >
-            <span class="glyphicon glyphicon-plus"></span>
-            <span class="hidden-xs-down" >
-                View Your Teams
-            </span>
-        </button>    
-        <!--Button changes state to team-detail({id})-->
-        <button class="btn btn-primary btn-sm pull-right" ng-repeat="team in vm.teams track by team.id" ui-sref="team-detail({id:team.id})">
-            <span class="glyphicon glyphicon-minus"></span>
-            <span class="hidden-xs-down" >
-                {{team.teamname}}
-            </span>
-        </button>
-        </button>
-    </div>
+    <!--&lt;!&ndash;Team div&ndash;&gt;-->
+    <!--<div>-->
+        <!--&lt;!&ndash;Button calls function .new from team.state.js&ndash;&gt;-->
+        <!--<button class="btn btn-primary" ui-sref="team.new">-->
+            <!--<span class="glyphicon glyphicon-plus"></span>-->
+            <!--<span class="hidden-xs-down">-->
+                <!--Create New Team-->
+            <!--</span>-->
+        <!--</button>-->
+        <!--&lt;!&ndash;Button changes state to team&ndash;&gt;-->
+        <!--<button class="btn btn-primary" ui-sref="team" >-->
+            <!--<span class="glyphicon glyphicon-plus"></span>-->
+            <!--<span class="hidden-xs-down" >-->
+                <!--View Your Teams-->
+            <!--</span>-->
+        <!--</button>-->
+        <!--&lt;!&ndash;Button changes state to team-detail({id})&ndash;&gt;-->
+        <!--<button class="btn btn-primary btn-sm pull-right" ng-repeat="team in vm.teams track by team.id" ui-sref="team-detail({id:team.id})">-->
+            <!--<span class="glyphicon glyphicon-minus"></span>-->
+            <!--<span class="hidden-xs-down" >-->
+                <!--{{team.teamname}}-->
+            <!--</span>-->
+        <!--</button>-->
+        <!--</button>-->
+    <!--</div>-->
 </div>
