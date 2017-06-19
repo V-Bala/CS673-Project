@@ -17,6 +17,8 @@
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/main.css">
+    <!-- home stylesheet -->
+
     <!-- endbuild -->
 </head>
 <body ng-app="projectoneApp" ng-strict-di>
@@ -29,13 +31,13 @@
 
     <div>
 
-        <!--  sidebar -->
+        <!-- sidebar -->
         <div class="col-xs-3">
             <div ui-view="sidebar" ng-cloak></div>
         </div>
 
         <!--  content -->
-        <div class="col-xs-9" style="padding: 0">
+        <div class="col-md-12" style="padding: 0">
             <div ui-view="content"></div>
          </div>
 

@@ -9,19 +9,25 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('sessions', {
-            parent: 'account',
+            parent: 'home',
             url: '/sessions',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Sessions'
             },
-            views: {
-                'content@': {
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
                     templateUrl: 'app/account/sessions/sessions.html',
                     controller: 'SessionsController',
-                    controllerAs: 'vm'
-                }
-            }
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                }).result.then(function() {
+                    $state.go('home', null, { reload: 'home' });
+                }, function() {
+                    $state.go('home');
+                });
+            }]
         });
     }
 })();

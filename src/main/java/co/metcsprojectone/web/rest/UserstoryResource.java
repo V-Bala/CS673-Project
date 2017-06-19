@@ -1,5 +1,6 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.domain.User;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Userstory;
 
@@ -142,5 +143,4 @@ public class UserstoryResource {
             .stream(userstorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
-
 }
