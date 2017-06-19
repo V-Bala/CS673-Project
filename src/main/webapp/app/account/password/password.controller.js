@@ -5,15 +5,16 @@
         .module('projectoneApp')
         .controller('PasswordController', PasswordController);
 
-    PasswordController.$inject = ['Auth', 'Principal'];
+    PasswordController.$inject = ['Auth', 'Principal', '$uibModalInstance'];
 
-    function PasswordController (Auth, Principal) {
+    function PasswordController (Auth, Principal, $uibModalInstance) {
         var vm = this;
 
         vm.changePassword = changePassword;
         vm.doNotMatch = null;
         vm.error = null;
         vm.success = null;
+        vm.clear = clear;
 
         Principal.identity().then(function(account) {
             vm.account = account;
@@ -35,5 +36,11 @@
                 });
             }
         }
+
+        function clear () {
+            $uibModalInstance.dismiss('cancel');
+        }
+
+
     }
 })();

@@ -9,19 +9,25 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('password', {
-            parent: 'account',
-            url: '/password',
+            parent: 'home',
+            url: '/passchange',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Password'
             },
-            views: {
-                'content@': {
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
                     templateUrl: 'app/account/password/password.html',
                     controller: 'PasswordController',
-                    controllerAs: 'vm'
-                }
-            }
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'md',
+                }).result.then(function() {
+                    $state.go('home', null, { reload: 'home' });
+                }, function() {
+                    $state.go('home');
+                });
+            }]
         });
     }
 })();

@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('SessionsController', SessionsController);
 
-    SessionsController.$inject = ['Sessions', 'Principal'];
+    SessionsController.$inject = ['Sessions', 'Principal', '$uibModalInstance'];
 
-    function SessionsController (Sessions, Principal) {
+    function SessionsController (Sessions, Principal, $uibModalInstance) {
         var vm = this;
 
         vm.account = null;
@@ -15,6 +15,7 @@
         vm.invalidate = invalidate;
         vm.sessions = Sessions.getAll();
         vm.success = null;
+        vm.clear = clear;
 
 
         Principal.identity().then(function(account) {
@@ -32,6 +33,10 @@
                     vm.success = null;
                     vm.error = 'ERROR';
                 });
+        }
+
+        function clear () {
+            $uibModalInstance.dismiss('cancel');
         }
     }
 })();
