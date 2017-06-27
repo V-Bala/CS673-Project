@@ -7,14 +7,12 @@
 
     ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Project', 'Issue', 'Team'];
 
-    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Project, Issue, Team) {
+    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Project) {
         var vm = this;
 
         vm.project = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.issues = Issue.query();
-        vm.teams = Team.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

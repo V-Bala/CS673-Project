@@ -3,7 +3,7 @@
     <h2><span>Team</span> {{vm.team.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
+    <dl class="row jh-entity-details">
         <dt><span>Teamname</span></dt>
         <dd>
             <span>{{vm.team.teamname}}</span>
@@ -13,6 +13,10 @@
             <span ng-repeat="tmember in vm.team.tmembers">
                 <a ui-sref="tmember-detail({id: tmember.id})">{{tmember.membername}}</a>{{$last ? '' : ', '}}
             </span>
+        </dd>
+        <dt><span>Owner</span></dt>
+        <dd>
+            {{vm.team.owner.login}}
         </dd>
     </dl>
 

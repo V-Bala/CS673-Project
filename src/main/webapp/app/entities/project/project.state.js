@@ -55,7 +55,7 @@
             }
         })
         .state('project-detail.edit', {
-            parent: 'project-detail',
+            parent: 'home',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -80,8 +80,8 @@
             }]
         })
         .state('project.new', {
-            parent: 'project',
-            url: '/new',
+            parent: 'home',
+            url: '/new-project',
             data: {
                 authorities: ['ROLE_USER']
             },

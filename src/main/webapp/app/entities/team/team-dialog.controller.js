@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('TeamDialogController', TeamDialogController);
 
-    TeamDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Team', 'Project', 'Tmember'];
+    TeamDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Team', 'Project', 'Tmember', 'User'];
 
-    function TeamDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Team, Project, Tmember) {
+    function TeamDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Team, Project, Tmember, User) {
         var vm = this;
 
         vm.team = entity;
@@ -15,6 +15,7 @@
         vm.save = save;
         vm.projects = Project.query();
         vm.tmembers = Tmember.query();
+        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

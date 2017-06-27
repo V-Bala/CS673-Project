@@ -42,6 +42,9 @@ public class Team implements Serializable {
                inverseJoinColumns = @JoinColumn(name="tmembers_id", referencedColumnName="id"))
     private Set<Tmember> tmembers = new HashSet<>();
 
+    @ManyToOne
+    private User owner;
+
     public Long getId() {
         return id;
     }
@@ -113,6 +116,19 @@ public class Team implements Serializable {
         this.tmembers = tmembers;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public Team owner(User user) {
+        this.owner = user;
+        return this;
+    }
+
+    public void setOwner(User user) {
+        this.owner = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -122,22 +138,22 @@ public class Team implements Serializable {
             return false;
         }
         Team team = (Team) o;
-        if (team.getId() == null || getId() == null) {
+        if (team.id == null || id == null) {
             return false;
         }
-        return Objects.equals(getId(), team.getId());
+        return Objects.equals(id, team.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Team{" +
-            "id=" + getId() +
-            ", teamname='" + getTeamname() + "'" +
-            "}";
+            "id=" + id +
+            ", teamname='" + teamname + "'" +
+            '}';
     }
 }

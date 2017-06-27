@@ -19,5 +19,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="tmember"/>
         
+        <addForeignKeyConstraint baseColumnNames="owner_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team_owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
     </changeSet>
 </databaseChangeLog>

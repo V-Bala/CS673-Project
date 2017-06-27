@@ -14,6 +14,14 @@
             "otherEntityName": "tmember",
             "otherEntityField": "membername",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "owner",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "team"
         }
     ],
     "fields": [
@@ -23,8 +31,8 @@
         }
     ],
     "changelogDate": "20170608203214",
-    "entityTableName": "team",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "team",
+    "pagination": "no"
 }

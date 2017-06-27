@@ -66,7 +66,7 @@ public class TeamResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        TeamResource teamResource = new TeamResource(teamRepository, teamSearchRepository);
+            TeamResource teamResource = new TeamResource(teamRepository, teamSearchRepository);
         this.restTeamMockMvc = MockMvcBuilders.standaloneSetup(teamResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -81,7 +81,7 @@ public class TeamResourceIntTest {
      */
     public static Team createEntity(EntityManager em) {
         Team team = new Team()
-            .teamname(DEFAULT_TEAMNAME);
+                .teamname(DEFAULT_TEAMNAME);
         return team;
     }
 
@@ -97,6 +97,7 @@ public class TeamResourceIntTest {
         int databaseSizeBeforeCreate = teamRepository.findAll().size();
 
         // Create the Team
+
         restTeamMockMvc.perform(post("/api/teams")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(team)))
@@ -119,12 +120,13 @@ public class TeamResourceIntTest {
         int databaseSizeBeforeCreate = teamRepository.findAll().size();
 
         // Create the Team with an existing ID
-        team.setId(1L);
+        Team existingTeam = new Team();
+        existingTeam.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restTeamMockMvc.perform(post("/api/teams")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(team)))
+            .content(TestUtil.convertObjectToJsonBytes(existingTeam)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -179,7 +181,7 @@ public class TeamResourceIntTest {
         // Update the team
         Team updatedTeam = teamRepository.findOne(team.getId());
         updatedTeam
-            .teamname(UPDATED_TEAMNAME);
+                .teamname(UPDATED_TEAMNAME);
 
         restTeamMockMvc.perform(put("/api/teams")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -253,17 +255,7 @@ public class TeamResourceIntTest {
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Team.class);
-        Team team1 = new Team();
-        team1.setId(1L);
-        Team team2 = new Team();
-        team2.setId(team1.getId());
-        assertThat(team1).isEqualTo(team2);
-        team2.setId(2L);
-        assertThat(team1).isNotEqualTo(team2);
-        team1.setId(null);
-        assertThat(team1).isNotEqualTo(team2);
     }
 }

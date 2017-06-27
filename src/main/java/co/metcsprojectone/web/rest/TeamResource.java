@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class TeamResource {
     private final Logger log = LoggerFactory.getLogger(TeamResource.class);
 
     private static final String ENTITY_NAME = "team";
-
+        
     private final TeamRepository teamRepository;
 
     private final TeamSearchRepository teamSearchRepository;
@@ -95,7 +94,8 @@ public class TeamResource {
     @Timed
     public List<Team> getAllTeams() {
         log.debug("REST request to get all Teams");
-        return teamRepository.findAllWithEagerRelationships();
+        List<Team> teams = teamRepository.findAllWithEagerRelationships();
+        return teams;
     }
 
     /**
@@ -131,7 +131,7 @@ public class TeamResource {
      * SEARCH  /_search/teams?query=:query : search for the team corresponding
      * to the query.
      *
-     * @param query the query of the team search
+     * @param query the query of the team search 
      * @return the result of the search
      */
     @GetMapping("/_search/teams")
@@ -142,5 +142,6 @@ public class TeamResource {
             .stream(teamSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
 
 }
