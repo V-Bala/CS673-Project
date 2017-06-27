@@ -6,6 +6,11 @@
             <span>
                   <h4>My Projects</h4>
             </span>
+            <span>
+                <button class="btn btn-primary" ui-sref="project.new">
+                <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </span>
             <div ng-repeat="project in vm.myProjects track by project.id">
                 {{project.name}} <button type="submit"
                                          ui-sref="project-detail({id:project.id})"
@@ -14,16 +19,11 @@
                 <span class="hidden-sm-down"></span>
             </button>
             </div>
-            <span>
-                <button class="btn btn-primary" ui-sref="project.new">
-                <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </span>
         </div>
 
 
     </div>
-    <div class="col-md-10" style="background-color: #9c27b0; height: 1000px">
+    <div class="col-md-7" style="background-color: #9c27b0; height: 1000px">
         <div>
             <h2><span>Project</span> {{vm.project.id}}</h2>
             <hr>
@@ -68,6 +68,59 @@
             </button>
         </div>
 
+    </div>
+    <div class="col-md-3">
+        <div>
+            <table class="table table-fixed well">
+                <thead>
+                <tr>
+                    <th class="col-xs-12" ng-if="vm.isAuthenticated == false">
+                        <div class="alert alert-warning" style="text-align: center">
+                            Please <a class="alert-link" href="" ng-click="vm.login()">sign in</a> or <a class="alert-link" href="" ng-click="vm.register()">register</a> to comment
+                        </div>
+                    </th>
+                    <th class="col-xs-12">
+                        <form name="editForm" role="form" novalidate ng-submit="vm.save()" has-authority="ROLE_USER" ng-show="vm.isMember">
+                            <div class="modal-header">
+
+
+                                <h4 class="modal-title" id="myCommentLabel">Leave a comment</h4>
+                            </div>
+                            <div>
+                                <div class="input-group" style="display: inline-block">
+                                    <i class="fa fa-comments-o fa-2x hidden-md" aria-hidden="true"></i>&nbsp
+                                    <label class="control-label" for="field_comment"></label>
+                                    <input type="text"  name="comment" id="field_comment"
+                                           ng-model="vm.comment.commenttext"
+                                    />
+                                </div>
+                                <div style="display: inline-block;">
+                                    <button type="submit" class="btn btn-sm ay-button">
+                                        <span class="glyphicon glyphicon-save hidden-md"></span><span>Submit</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+                <tr ng-repeat="comment in vm.comments track by comment.id">
+                    <td class="col-xs-12 well">
+                        <br>
+                        <small><b>{{comment.usercomment.login}}</b> on {{comment.date | date:shortDate}} </small>
+                        <br>
+                        <div style="padding-left: 20px; padding-right: 20px">
+                            {{comment.commenttext | limitTo: 500}}
+                        </div>
+                    </td>
+                    <br>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </div>

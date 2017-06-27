@@ -10,6 +10,8 @@
     function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Project, Issue, User, Comment) {
         var vm = this;
 
+        vm.myProjects = Project.myprojects();
+
         vm.project = entity;
         vm.clear = clear;
         vm.byteSize = DataUtils.byteSize;

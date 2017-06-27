@@ -69,6 +69,11 @@
             <span>
                   <h4>My Projects</h4>
             </span>
+            <span>
+                <button class="btn btn-primary" ui-sref="project.new">
+                <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </span>
             <div ng-repeat="project in vm.myProjects track by project.id">
                 {{project.name}} <button type="submit"
                                          ui-sref="project-detail({id:project.id})"
@@ -77,11 +82,6 @@
                 <span class="hidden-sm-down"></span>
             </button>
             </div>
-            <span>
-                <button class="btn btn-primary" ui-sref="project.new">
-                <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </span>
         </div>
 
 

@@ -26,7 +26,7 @@
                     />
         </div>
         <div class="form-group" ngf-drop ngf-change="vm.setPfiles($file, vm.project)">
-            <label class="control-label" for="field_pfiles">Pfiles</label>
+            <label class="control-label" for="field_pfiles">Project files</label>
             <div>
                 <div ng-if="vm.project.pfiles" class="help-block clearfix">
                     <a class="pull-left" ng-click="vm.openFile(vm.project.pfilesContentType, vm.project.pfiles)">open</a><br>
@@ -49,13 +49,13 @@
         </div>
 
         <div class="form-group">
-            <label for="field_powner">Powner</label>
+            <label for="field_powner">Project owner</label>
             <select class="form-control" id="field_powner" name="powner" ng-model="vm.project.powner" ng-options="user as user.login for user in vm.users track by user.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_pmember">Pmember</label>
+            <label for="field_pmember">Project member</label>
             <select class="form-control" id="field_pmember" multiple name="pmember" ng-model="vm.project.pmembers" ng-options="user as user.login for user in vm.users track by user.id"></select>
         </div>
     </div>

@@ -1,5 +1,6 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Comment;
 
@@ -12,8 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +31,9 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 @RestController
 @RequestMapping("/api")
 public class CommentResource {
+
+    @Inject
+    co.metcsprojectone.repository.UserRepository userRepository;
 
     private final Logger log = LoggerFactory.getLogger(CommentResource.class);
 
@@ -55,6 +62,8 @@ public class CommentResource {
         if (comment.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new comment cannot already have an ID")).body(null);
         }
+        comment.setUsercomment(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        comment.setDate(ZonedDateTime.now(ZoneOffset.UTC));
         Comment result = commentRepository.save(comment);
         commentSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/comments/" + result.getId()))

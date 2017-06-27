@@ -152,6 +152,14 @@ public class ProjectResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @RequestMapping("/projcomments")
+    @Timed
+    public List<Comment> getBlogComment(@RequestParam Long id) {
+        log.debug("REST request to get Comments for blog : {}", id);
+        List<Comment> out = commentRepository.findAllByProjectcommentIdOrderByDateDesc(id);
+        return out;
+    }
+
 
 
     /**
