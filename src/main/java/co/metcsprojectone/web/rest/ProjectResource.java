@@ -1,5 +1,8 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.domain.User;
+import co.metcsprojectone.repository.UserRepository;
+import co.metcsprojectone.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Project;
 
@@ -7,11 +10,13 @@ import co.metcsprojectone.repository.ProjectRepository;
 import co.metcsprojectone.repository.search.ProjectSearchRepository;
 import co.metcsprojectone.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -27,6 +32,9 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 @RestController
 @RequestMapping("/api")
 public class ProjectResource {
+
+    @Inject
+    co.metcsprojectone.repository.UserRepository userRepository;
 
     private final Logger log = LoggerFactory.getLogger(ProjectResource.class);
 
@@ -55,6 +63,9 @@ public class ProjectResource {
         if (project.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new project cannot already have an ID")).body(null);
         }
+        User uu = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        project.setPowner(uu);
+
         Project result = projectRepository.save(project);
         projectSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/projects/" + result.getId()))
@@ -94,7 +105,16 @@ public class ProjectResource {
     @Timed
     public List<Project> getAllProjects() {
         log.debug("REST request to get all Projects");
-        List<Project> projects = projectRepository.findAll();
+        List<Project> projects = projectRepository.findAllWithEagerRelationships();
+        return projects;
+    }
+
+    @GetMapping("/projects")
+    @RequestMapping("/myprojects")
+    @Timed
+    public List<Project> getAllMyProjects() {
+        log.debug("REST request to get all Projects");
+        List<Project> projects = projectRepository.findByPmembers_Login(SecurityUtils.getCurrentUserLogin());
         return projects;
     }
 
@@ -108,7 +128,7 @@ public class ProjectResource {
     @Timed
     public ResponseEntity<Project> getProject(@PathVariable Long id) {
         log.debug("REST request to get Project : {}", id);
-        Project project = projectRepository.findOne(id);
+        Project project = projectRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(project));
     }
 

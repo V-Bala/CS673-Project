@@ -6,6 +6,22 @@
             "relationshipName": "issue",
             "otherEntityName": "issue",
             "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipName": "powner",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipName": "pmember",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "project"
         }
     ],
     "fields": [
@@ -19,8 +35,8 @@
         }
     ],
     "changelogDate": "20170608203211",
-    "entityTableName": "project",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "project",
+    "pagination": "no"
 }

@@ -5,16 +5,14 @@
         .module('projectoneApp')
         .controller('RequirementDialogController', RequirementDialogController);
 
-    RequirementDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Team', 'Project', 'Requirement'];
+    RequirementDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Requirement'];
 
-    function RequirementDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Team, Project,  Requirement) {
+    function RequirementDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Requirement) {
         var vm = this;
 
         vm.requirement = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.teams = Team.query();
-        vm.projects = Project.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

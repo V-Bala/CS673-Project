@@ -5,15 +5,25 @@
         .module('projectoneApp')
         .controller('ProjectDialogController', ProjectDialogController);
 
-    ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Project', 'Issue'];
+    ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Project', 'Issue', 'User','Principal'];
 
-    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Project, Issue) {
+    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Project, Issue, User, Principal) {
         var vm = this;
 
         vm.project = entity;
         vm.clear = clear;
         vm.save = save;
         vm.issues = Issue.query();
+        vm.users = User.query();
+
+        getAccount();
+
+        function getAccount() {
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.isAuthenticated = Principal.isAuthenticated;
+            });
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -28,6 +38,7 @@
             if (vm.project.id !== null) {
                 Project.update(vm.project, onSaveSuccess, onSaveError);
             } else {
+
                 Project.save(vm.project, onSaveSuccess, onSaveError);
             }
         }

@@ -12,6 +12,16 @@
         <dd>
             <span>{{vm.project.description}}</span>
         </dd>
+        <dt><span>Powner</span></dt>
+        <dd>
+            {{vm.project.powner.login}}
+        </dd>
+        <dt><span>Pmember</span></dt>
+        <dd>
+            <span ng-repeat="pmember in vm.project.pmembers">
+                {{pmember.login}}{{$last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"

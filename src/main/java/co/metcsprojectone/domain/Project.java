@@ -38,6 +38,16 @@ public class Project implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Issue> issues = new HashSet<>();
 
+    @ManyToOne
+    private User powner;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "project_pmember",
+               joinColumns = @JoinColumn(name="projects_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="pmembers_id", referencedColumnName="id"))
+    private Set<User> pmembers = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -95,6 +105,42 @@ public class Project implements Serializable {
 
     public void setIssues(Set<Issue> issues) {
         this.issues = issues;
+    }
+
+    public User getPowner() {
+        return powner;
+    }
+
+    public Project powner(User user) {
+        this.powner = user;
+        return this;
+    }
+
+    public void setPowner(User user) {
+        this.powner = user;
+    }
+
+    public Set<User> getPmembers() {
+        return pmembers;
+    }
+
+    public Project pmembers(Set<User> users) {
+        this.pmembers = users;
+        return this;
+    }
+
+    public Project addPmember(User user) {
+        this.pmembers.add(user);
+        return this;
+    }
+
+    public Project removePmember(User user) {
+        this.pmembers.remove(user);
+        return this;
+    }
+
+    public void setPmembers(Set<User> users) {
+        this.pmembers = users;
     }
 
     @Override

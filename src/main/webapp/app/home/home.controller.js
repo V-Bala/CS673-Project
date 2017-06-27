@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.account = null;
+        vm.myProjects = Project.myprojects();
 
         /* HERE IS A QUERY TO BRING PROJECTS TO HOME, NOTICE THE INJECT OF PROJECT ABOVE*/
         vm.projects = Project.query();
