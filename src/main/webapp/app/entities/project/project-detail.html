@@ -37,18 +37,18 @@
                 <dd>
                     <span>{{vm.project.description}}</span>
                 </dd>
-                <dt><span>Pfiles</span></dt>
+                <dt><span>Project files</span></dt>
                 <dd>
                     <div ng-if="vm.project.pfiles">
                         <a ng-click="vm.openFile(vm.project.pfilesContentType, vm.project.pfiles)">open</a>
                         {{vm.project.pfilesContentType}}, {{vm.byteSize(vm.project.pfiles)}}
                     </div>
                 </dd>
-                <dt><span>Powner</span></dt>
+                <dt><span>Project Owner</span></dt>
                 <dd>
                     {{vm.project.powner.login}}
                 </dd>
-                <dt><span>Pmember</span></dt>
+                <dt><span>Project Member</span></dt>
                 <dd>
             <span ng-repeat="pmember in vm.project.pmembers">
                 {{pmember.login}}{{$last ? '' : ', '}}

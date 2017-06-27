@@ -57,6 +57,7 @@
 
 
 
+
         var unsubscribe = $rootScope.$on('projectoneApp:projectUpdate', function(event, result) {
             vm.project = result;
         });
