@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('ProjectDialogController', ProjectDialogController);
 
-    ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Project', 'Issue', 'User'];
+    ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Project', 'Issue', 'User', 'Comment'];
 
-    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Project, Issue, User) {
+    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Project, Issue, User, Comment) {
         var vm = this;
 
         vm.project = entity;
@@ -17,6 +17,7 @@
         vm.save = save;
         vm.issues = Issue.query();
         vm.users = User.query();
+        vm.comments = Comment.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

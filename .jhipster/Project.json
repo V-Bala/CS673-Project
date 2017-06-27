@@ -22,6 +22,12 @@
             "otherEntityField": "login",
             "ownerSide": true,
             "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipName": "projectcomment",
+            "otherEntityName": "comment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "projectcomment"
         }
     ],
     "fields": [

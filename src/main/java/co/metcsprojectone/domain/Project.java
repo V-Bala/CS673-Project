@@ -55,6 +55,11 @@ public class Project implements Serializable {
                inverseJoinColumns = @JoinColumn(name="pmembers_id", referencedColumnName="id"))
     private Set<User> pmembers = new HashSet<>();
 
+    @OneToMany(mappedBy = "projectcomment")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Comment> projectcomments = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -176,6 +181,31 @@ public class Project implements Serializable {
 
     public void setPmembers(Set<User> users) {
         this.pmembers = users;
+    }
+
+    public Set<Comment> getProjectcomments() {
+        return projectcomments;
+    }
+
+    public Project projectcomments(Set<Comment> comments) {
+        this.projectcomments = comments;
+        return this;
+    }
+
+    public Project addProjectcomment(Comment comment) {
+        this.projectcomments.add(comment);
+        comment.setProjectcomment(this);
+        return this;
+    }
+
+    public Project removeProjectcomment(Comment comment) {
+        this.projectcomments.remove(comment);
+        comment.setProjectcomment(null);
+        return this;
+    }
+
+    public void setProjectcomments(Set<Comment> comments) {
+        this.projectcomments = comments;
     }
 
     @Override

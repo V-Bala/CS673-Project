@@ -1,3 +1,5 @@
+
+
 <div>
     <div class="col-md-2" style="background-color: #00b3ee; height: 1000px">
         <div id="projectsidebar">
@@ -23,11 +25,11 @@
     </div>
     <div class="col-md-10" style="background-color: #9c27b0; height: 1000px">
         <div>
-            <h2><span>Project ID</span> {{vm.project.id}}</h2>
+            <h2><span>Project</span> {{vm.project.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row jh-entity-details">
-                <dt><span>Project Name</span></dt>
+                <dt><span>Name</span></dt>
                 <dd>
                     <span>{{vm.project.name}}</span>
                 </dd>
@@ -35,18 +37,18 @@
                 <dd>
                     <span>{{vm.project.description}}</span>
                 </dd>
-                <dt><span>Project Files</span></dt>
+                <dt><span>Pfiles</span></dt>
                 <dd>
                     <div ng-if="vm.project.pfiles">
                         <a ng-click="vm.openFile(vm.project.pfilesContentType, vm.project.pfiles)">open</a>
                         {{vm.project.pfilesContentType}}, {{vm.byteSize(vm.project.pfiles)}}
                     </div>
                 </dd>
-                <dt><span>Project Owner</span></dt>
+                <dt><span>Powner</span></dt>
                 <dd>
                     {{vm.project.powner.login}}
                 </dd>
-                <dt><span>Project Members</span></dt>
+                <dt><span>Pmember</span></dt>
                 <dd>
             <span ng-repeat="pmember in vm.project.pmembers">
                 {{pmember.login}}{{$last ? '' : ', '}}
@@ -69,7 +71,5 @@
     </div>
 
 </div>
-
-
 
 

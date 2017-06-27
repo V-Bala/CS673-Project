@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Project Management Detail Controller', function() {
+    describe('Comment Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockProject, MockIssue, MockUser, MockComment;
+        var MockEntity, MockPreviousState, MockComment, MockUser, MockProject;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,10 +12,9 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockProject = jasmine.createSpy('MockProject');
-            MockIssue = jasmine.createSpy('MockIssue');
-            MockUser = jasmine.createSpy('MockUser');
             MockComment = jasmine.createSpy('MockComment');
+            MockUser = jasmine.createSpy('MockUser');
+            MockProject = jasmine.createSpy('MockProject');
             
 
             var locals = {
@@ -23,20 +22,19 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Project': MockProject,
-                'Issue': MockIssue,
+                'Comment': MockComment,
                 'User': MockUser,
-                'Comment': MockComment
+                'Project': MockProject
             };
             createController = function() {
-                $injector.get('$controller')("ProjectDetailController", locals);
+                $injector.get('$controller')("CommentDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'projectoneApp:projectUpdate';
+                var eventType = 'projectoneApp:commentUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

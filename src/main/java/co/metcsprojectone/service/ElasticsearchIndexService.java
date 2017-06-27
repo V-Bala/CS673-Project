@@ -24,6 +24,12 @@ public class ElasticsearchIndexService {
     private final Logger log = LoggerFactory.getLogger(ElasticsearchIndexService.class);
 
     @Inject
+    private CommentRepository commentRepository;
+
+    @Inject
+    private CommentSearchRepository commentSearchRepository;
+
+    @Inject
     private IssueRepository issueRepository;
 
     @Inject
@@ -65,6 +71,7 @@ public class ElasticsearchIndexService {
     @Async
     @Timed
     public void reindexAll() {
+        reindexForClass(Comment.class, commentRepository, commentSearchRepository);
         reindexForClass(Issue.class, issueRepository, issueSearchRepository);
         reindexForClass(Project.class, projectRepository, projectSearchRepository);
         reindexForClass(Requirement.class, requirementRepository, requirementSearchRepository);

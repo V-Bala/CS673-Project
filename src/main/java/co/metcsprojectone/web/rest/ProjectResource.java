@@ -1,6 +1,8 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.domain.Comment;
 import co.metcsprojectone.domain.User;
+import co.metcsprojectone.repository.CommentRepository;
 import co.metcsprojectone.repository.UserRepository;
 import co.metcsprojectone.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
@@ -35,6 +37,9 @@ public class ProjectResource {
 
     @Inject
     co.metcsprojectone.repository.UserRepository userRepository;
+
+    @Inject
+    CommentRepository commentRepository;
 
     private final Logger log = LoggerFactory.getLogger(ProjectResource.class);
 
@@ -146,6 +151,8 @@ public class ProjectResource {
         projectSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
 
     /**
      * SEARCH  /_search/projects?query=:query : search for the project corresponding
