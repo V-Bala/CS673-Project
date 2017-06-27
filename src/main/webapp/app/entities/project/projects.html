@@ -38,6 +38,7 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>Description</span></th>
+                    <th><span>Pfiles</span></th>
                     <th><span>Powner</span></th>
                     <th><span>Pmember</span></th>
                     <th></th>
@@ -48,6 +49,10 @@
                     <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
                     <td>{{project.name}}</td>
                     <td>{{project.description}}</td>
+                    <td>
+                        <a ng-if="project.pfiles" ng-click="vm.openFile(project.pfilesContentType, project.pfiles)">open</a>
+                        <span ng-if="project.pfiles">{{project.pfilesContentType}}, {{vm.byteSize(project.pfiles)}}</span>
+                    </td>
                     <td>
                         {{project.powner.login}}
                     </td>

@@ -25,7 +25,39 @@
                     ng-model="vm.project.description"
                     />
         </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPfiles($file, vm.project)">
+            <label class="control-label" for="field_pfiles">Pfiles</label>
+            <div>
+                <div ng-if="vm.project.pfiles" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.project.pfilesContentType, vm.project.pfiles)">open</a><br>
+                    <span class="pull-left">{{vm.project.pfilesContentType}}, {{vm.byteSize(vm.project.pfiles)}}</span>
+                    <button type="button" ng-click="vm.project.pfiles=null;vm.project.pfilesContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPfiles($file, vm.project)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="pfiles" id="field_pfiles"
+                    ng-model="vm.project.pfiles"
+                    />
+            <input type="hidden" class="form-control" name="pfilesContentType" id="field_pfilesContentType"
+                    ng-model="vm.project.pfilesContentType" />
+        </div>
 
+        <div class="form-group">
+            <label for="field_powner">Powner</label>
+            <select class="form-control" id="field_powner" name="powner" ng-model="vm.project.powner" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_pmember">Pmember</label>
+            <select class="form-control" id="field_pmember" multiple name="pmember" ng-model="vm.project.pmembers" ng-options="user as user.login for user in vm.users track by user.id"></select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

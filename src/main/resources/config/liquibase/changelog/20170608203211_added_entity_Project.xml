@@ -29,6 +29,13 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="pfiles" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="pfiles_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="powner_id" type="bigint">
                 <constraints nullable="true" />
             </column>

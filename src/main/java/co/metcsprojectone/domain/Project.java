@@ -33,6 +33,13 @@ public class Project implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Lob
+    @Column(name = "pfiles")
+    private byte[] pfiles;
+
+    @Column(name = "pfiles_content_type")
+    private String pfilesContentType;
+
     @OneToMany(mappedBy = "project")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -80,6 +87,32 @@ public class Project implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public byte[] getPfiles() {
+        return pfiles;
+    }
+
+    public Project pfiles(byte[] pfiles) {
+        this.pfiles = pfiles;
+        return this;
+    }
+
+    public void setPfiles(byte[] pfiles) {
+        this.pfiles = pfiles;
+    }
+
+    public String getPfilesContentType() {
+        return pfilesContentType;
+    }
+
+    public Project pfilesContentType(String pfilesContentType) {
+        this.pfilesContentType = pfilesContentType;
+        return this;
+    }
+
+    public void setPfilesContentType(String pfilesContentType) {
+        this.pfilesContentType = pfilesContentType;
     }
 
     public Set<Issue> getIssues() {
@@ -131,11 +164,13 @@ public class Project implements Serializable {
 
     public Project addPmember(User user) {
         this.pmembers.add(user);
+
         return this;
     }
 
     public Project removePmember(User user) {
         this.pmembers.remove(user);
+
         return this;
     }
 
@@ -169,6 +204,8 @@ public class Project implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", description='" + description + "'" +
+            ", pfiles='" + pfiles + "'" +
+            ", pfilesContentType='" + pfilesContentType + "'" +
             '}';
     }
 }

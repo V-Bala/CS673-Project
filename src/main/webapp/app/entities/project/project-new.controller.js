@@ -3,11 +3,11 @@
 
     angular
         .module('projectoneApp')
-        .controller('ProjectDetailController', ProjectDetailController);
+        .controller('ProjectNewController', ProjectNewController);
 
-    ProjectDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Project', 'Issue', 'User'];
+    ProjectNewController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Project', 'Issue', 'User'];
 
-    function ProjectDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Project, Issue, User) {
+    function ProjectNewController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Project, Issue, User) {
         var vm = this;
 
         vm.myProjects = Project.myprojects();
