@@ -6,12 +6,6 @@
             "relationshipName": "issue",
             "otherEntityName": "issue",
             "otherEntityRelationshipName": "project"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "team",
-            "otherEntityName": "team",
-            "otherEntityField": "teamname"
         }
     ],
     "fields": [

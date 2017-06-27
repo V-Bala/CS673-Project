@@ -25,8 +25,6 @@
             });
         }
 
-        vm.byId = Userstory.findById;
-
         function search() {
             if (!vm.searchQuery) {
                 return vm.loadAll();

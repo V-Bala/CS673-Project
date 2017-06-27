@@ -6,14 +6,6 @@
             "relationshipName": "task",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "userstory"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "userstory",
-            "relationshipName": "tmember",
-            "otherEntityName": "tmember",
-            "otherEntityField": "membername",
-            "ownerSide": true
         }
     ],
     "fields": [

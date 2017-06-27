@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('UserstoryDetailController', UserstoryDetailController);
 
-    UserstoryDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Userstory', 'Task', 'Tmember'];
+    UserstoryDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Userstory', 'Task'];
 
-    function UserstoryDetailController($scope, $rootScope, $stateParams, previousState, entity, Userstory, Task, Tmember) {
+    function UserstoryDetailController($scope, $rootScope, $stateParams, previousState, entity, Userstory, Task) {
         var vm = this;
 
         vm.userstory = entity;

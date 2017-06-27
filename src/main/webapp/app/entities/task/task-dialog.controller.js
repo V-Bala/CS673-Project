@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('TaskDialogController', TaskDialogController);
 
-    TaskDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Task', 'Userstory', 'Tmember'];
+    TaskDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Task', 'Userstory'];
 
-    function TaskDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Task, Userstory, Tmember) {
+    function TaskDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Task, Userstory) {
         var vm = this;
 
         vm.task = entity;
@@ -16,7 +16,6 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.userstories = Userstory.query();
-        vm.tmembers = Tmember.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -38,9 +38,6 @@ public class Project implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Issue> issues = new HashSet<>();
 
-    @ManyToOne
-    private Team team;
-
     public Long getId() {
         return id;
     }
@@ -100,19 +97,6 @@ public class Project implements Serializable {
         this.issues = issues;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public Project team(Team team) {
-        this.team = team;
-        return this;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -122,23 +106,23 @@ public class Project implements Serializable {
             return false;
         }
         Project project = (Project) o;
-        if (project.getId() == null || getId() == null) {
+        if (project.id == null || id == null) {
             return false;
         }
-        return Objects.equals(getId(), project.getId());
+        return Objects.equals(id, project.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Project{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", description='" + getDescription() + "'" +
-            "}";
+            "id=" + id +
+            ", name='" + name + "'" +
+            ", description='" + description + "'" +
+            '}';
     }
 }

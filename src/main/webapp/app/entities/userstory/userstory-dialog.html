@@ -51,10 +51,6 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="field_tmember">Tmember</label>
-            <select class="form-control" id="field_tmember" multiple name="tmember" ng-model="vm.userstory.tmembers" ng-options="tmember as tmember.membername for tmember in vm.tmembers track by tmember.id"></select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

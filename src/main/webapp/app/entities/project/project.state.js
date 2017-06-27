@@ -55,7 +55,7 @@
             }
         })
         .state('project-detail.edit', {
-            parent: 'home',
+            parent: 'project-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -80,8 +80,8 @@
             }]
         })
         .state('project.new', {
-            parent: 'home',
-            url: '/new-project',
+            parent: 'project',
+            url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -102,9 +102,9 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('home', null, { reload: 'home' });
+                    $state.go('project', null, { reload: 'project' });
                 }, function() {
-                    $state.go('home');
+                    $state.go('project');
                 });
             }]
         })

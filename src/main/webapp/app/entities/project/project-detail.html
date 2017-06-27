@@ -3,7 +3,7 @@
     <h2><span>Project</span> {{vm.project.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
+    <dl class="row jh-entity-details">
         <dt><span>Name</span></dt>
         <dd>
             <span>{{vm.project.name}}</span>
@@ -11,10 +11,6 @@
         <dt><span>Description</span></dt>
         <dd>
             <span>{{vm.project.description}}</span>
-        </dd>
-        <dt><span>Team</span></dt>
-        <dd>
-            <a ui-sref="team-detail({id:vm.project.team.id})">{{vm.project.team.teamname}}</a>
         </dd>
     </dl>
 

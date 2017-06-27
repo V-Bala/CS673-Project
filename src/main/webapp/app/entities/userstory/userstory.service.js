@@ -20,8 +20,7 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' },
-            'findById': { method:'GET', isArray:true}
+            'update': { method:'PUT' }
         });
     }
 })();

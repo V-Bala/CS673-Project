@@ -69,7 +69,7 @@ public class ProjectResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        ProjectResource projectResource = new ProjectResource(projectRepository, projectSearchRepository);
+            ProjectResource projectResource = new ProjectResource(projectRepository, projectSearchRepository);
         this.restProjectMockMvc = MockMvcBuilders.standaloneSetup(projectResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -84,8 +84,8 @@ public class ProjectResourceIntTest {
      */
     public static Project createEntity(EntityManager em) {
         Project project = new Project()
-            .name(DEFAULT_NAME)
-            .description(DEFAULT_DESCRIPTION);
+                .name(DEFAULT_NAME)
+                .description(DEFAULT_DESCRIPTION);
         return project;
     }
 
@@ -101,6 +101,7 @@ public class ProjectResourceIntTest {
         int databaseSizeBeforeCreate = projectRepository.findAll().size();
 
         // Create the Project
+
         restProjectMockMvc.perform(post("/api/projects")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(project)))
@@ -124,12 +125,13 @@ public class ProjectResourceIntTest {
         int databaseSizeBeforeCreate = projectRepository.findAll().size();
 
         // Create the Project with an existing ID
-        project.setId(1L);
+        Project existingProject = new Project();
+        existingProject.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restProjectMockMvc.perform(post("/api/projects")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(project)))
+            .content(TestUtil.convertObjectToJsonBytes(existingProject)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -186,8 +188,8 @@ public class ProjectResourceIntTest {
         // Update the project
         Project updatedProject = projectRepository.findOne(project.getId());
         updatedProject
-            .name(UPDATED_NAME)
-            .description(UPDATED_DESCRIPTION);
+                .name(UPDATED_NAME)
+                .description(UPDATED_DESCRIPTION);
 
         restProjectMockMvc.perform(put("/api/projects")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -263,17 +265,7 @@ public class ProjectResourceIntTest {
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Project.class);
-        Project project1 = new Project();
-        project1.setId(1L);
-        Project project2 = new Project();
-        project2.setId(project1.getId());
-        assertThat(project1).isEqualTo(project2);
-        project2.setId(2L);
-        assertThat(project1).isNotEqualTo(project2);
-        project1.setId(null);
-        assertThat(project1).isNotEqualTo(project2);
     }
 }

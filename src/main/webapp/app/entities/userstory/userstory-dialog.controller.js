@@ -5,16 +5,15 @@
         .module('projectoneApp')
         .controller('UserstoryDialogController', UserstoryDialogController);
 
-    UserstoryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Userstory', 'Task', 'Tmember'];
+    UserstoryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Userstory', 'Task'];
 
-    function UserstoryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Userstory, Task, Tmember) {
+    function UserstoryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Userstory, Task) {
         var vm = this;
 
         vm.userstory = entity;
         vm.clear = clear;
         vm.save = save;
         vm.tasks = Task.query();
-        vm.tmembers = Tmember.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

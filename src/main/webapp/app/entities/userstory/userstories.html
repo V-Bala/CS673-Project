@@ -41,7 +41,6 @@
                     <th><span>Comments</span></th>
                     <th><span>Status</span></th>
                     <th><span>Priority</span></th>
-                    <th><span>Tmember</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -53,11 +52,6 @@
                     <td>{{userstory.comments}}</td>
                     <td>{{userstory.status}}</td>
                     <td>{{userstory.priority}}</td>
-                    <td>
-                        <span ng-repeat="tmember in userstory.tmembers">
-                            <a class="form-control-static" ui-sref="tmember-detail({id: tmember.id})">{{tmember.membername}}</a>{{$last ? '' : ', '}}
-                        </span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
