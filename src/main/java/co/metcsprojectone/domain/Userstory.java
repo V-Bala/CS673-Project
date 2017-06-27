@@ -53,6 +53,9 @@ public class Userstory implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Task> tasks = new HashSet<>();
 
+    @ManyToOne
+    private Project project;
+
     public Long getId() {
         return id;
     }
@@ -149,6 +152,19 @@ public class Userstory implements Serializable {
 
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public Userstory project(Project project) {
+        this.project = project;
+        return this;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     @Override

@@ -60,6 +60,11 @@ public class Project implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Comment> projectcomments = new HashSet<>();
 
+    @OneToMany(mappedBy = "project")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Userstory> userstories = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -169,13 +174,11 @@ public class Project implements Serializable {
 
     public Project addPmember(User user) {
         this.pmembers.add(user);
-
         return this;
     }
 
     public Project removePmember(User user) {
         this.pmembers.remove(user);
-
         return this;
     }
 
@@ -206,6 +209,31 @@ public class Project implements Serializable {
 
     public void setProjectcomments(Set<Comment> comments) {
         this.projectcomments = comments;
+    }
+
+    public Set<Userstory> getUserstories() {
+        return userstories;
+    }
+
+    public Project userstories(Set<Userstory> userstories) {
+        this.userstories = userstories;
+        return this;
+    }
+
+    public Project addUserstory(Userstory userstory) {
+        this.userstories.add(userstory);
+        userstory.setProject(this);
+        return this;
+    }
+
+    public Project removeUserstory(Userstory userstory) {
+        this.userstories.remove(userstory);
+        userstory.setProject(null);
+        return this;
+    }
+
+    public void setUserstories(Set<Userstory> userstories) {
+        this.userstories = userstories;
     }
 
     @Override

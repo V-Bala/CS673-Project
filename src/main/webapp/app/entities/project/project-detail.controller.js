@@ -5,22 +5,28 @@
         .module('projectoneApp')
         .controller('ProjectDetailController', ProjectDetailController);
 
-    ProjectDetailController.$inject = ['$state', '$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Project', 'Issue', 'User', 'Comment', 'Principal'];
+    ProjectDetailController.$inject = ['$state', '$scope', '$rootScope', 'previousState', 'DataUtils', 'entity', 'Project', 'Issue', 'Comment', 'Principal', 'Userstory',];
 
-    function ProjectDetailController($state, $scope, $rootScope, $stateParams, previousState, DataUtils, entity, Project, Issue, User, Comment, Principal) {
+    function ProjectDetailController($state, $scope, $rootScope, previousState, DataUtils, entity, Project, Issue, Comment, Principal, Userstory) {
         var vm = this;
 
         vm.project = entity;
         vm.previousState = previousState.name;
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
+
+
         vm.comments = Project.projcom({id: vm.project.id});
+        vm.userstories = Userstory.projus({id: vm.project.id});
+        vm.issues = Issue.projissue({id: vm.project.id});
+
+
         vm.comment = null;
         vm.myProjects = Project.myprojects();
         vm.save = save;
         vm.isSaving = false;
         vm.isMember = false;
-
+        vm.myProjects = Project.myprojects();
 
         getAccount();
 
@@ -54,6 +60,17 @@
         function onSaveError () {
             vm.isSaving = false;
         }
+
+
+        /*
+
+        SECTION FOR USERTSTORY CONTROL
+        *
+        *
+        * */
+
+
+
 
 
 

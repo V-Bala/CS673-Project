@@ -28,6 +28,12 @@
             "otherEntityName": "comment",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "projectcomment"
+        },
+        {
+            "relationshipName": "userstory",
+            "otherEntityName": "userstory",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "project"
         }
     ],
     "fields": [

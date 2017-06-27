@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface IssueRepository extends JpaRepository<Issue,Long> {
 
+    @Query
+    List<Issue> findAllByProjectId(long id);
+
 }

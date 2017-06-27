@@ -143,5 +143,13 @@ public class IssueResource {
             .collect(Collectors.toList());
     }
 
+    @RequestMapping("/projissues")
+    @Timed
+    public List<Issue> getProjectIssues(@RequestParam Long id) {
+        log.debug("REST request to get Issues for project : {}", id);
+        List<Issue> out = issueRepository.findAllByProjectId(id);
+        return out;
+    }
+
 
 }

@@ -6,6 +6,12 @@
             "relationshipName": "task",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "userstory"
+        },
+        {
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -33,8 +39,8 @@
         }
     ],
     "changelogDate": "20170608203210",
-    "entityTableName": "userstory",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "userstory",
+    "pagination": "no"
 }

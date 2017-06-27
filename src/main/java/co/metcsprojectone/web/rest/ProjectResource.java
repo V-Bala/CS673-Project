@@ -154,7 +154,7 @@ public class ProjectResource {
 
     @RequestMapping("/projcomments")
     @Timed
-    public List<Comment> getBlogComment(@RequestParam Long id) {
+    public List<Comment> getProjectComment(@RequestParam Long id) {
         log.debug("REST request to get Comments for blog : {}", id);
         List<Comment> out = commentRepository.findAllByProjectcommentIdOrderByDateDesc(id);
         return out;

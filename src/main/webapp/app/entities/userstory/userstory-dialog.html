@@ -51,6 +51,13 @@
             </select>
         </div>
 
+        <!-- THE PROJECT WILL AUTOMATICALLY SET WHEN CREATED BY USER IN PROJECT-DETAIL -->
+        <div class="form-group" has-authority="ROLE_ADMIN">
+            <label for="field_project">Project</label>
+            <select class="form-control" id="field_project" name="project" ng-model="vm.userstory.project" ng-options="project as project.name for project in vm.projects track by project.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

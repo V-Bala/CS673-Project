@@ -12,4 +12,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface UserstoryRepository extends JpaRepository<Userstory,Long> {
 
+    @Query
+    List<Userstory> findByProjectId(long id);
 }

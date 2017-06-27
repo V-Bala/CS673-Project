@@ -1,5 +1,6 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.domain.Comment;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Userstory;
 
@@ -143,5 +144,13 @@ public class UserstoryResource {
             .collect(Collectors.toList());
     }
 
+
+    @RequestMapping("/projus")
+    @Timed
+    public List<Userstory> getProjectUserstories(@RequestParam Long id) {
+        log.debug("REST request to get Userstories for project: {}", id);
+        List<Userstory> out = userstoryRepository.findByProjectId(id);
+        return out;
+    }
 
 }

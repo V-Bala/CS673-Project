@@ -41,6 +41,7 @@
                     <th><span>Comments</span></th>
                     <th><span>Status</span></th>
                     <th><span>Priority</span></th>
+                    <th><span>Project</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -52,6 +53,9 @@
                     <td>{{userstory.comments}}</td>
                     <td>{{userstory.status}}</td>
                     <td>{{userstory.priority}}</td>
+                    <td>
+                        <a ui-sref="project-detail({id:userstory.project.id})">{{userstory.project.id}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
