@@ -21,7 +21,8 @@
                 }
             },
             'update': { method:'PUT' },
-            'myprojects': { method: 'GET', isArray: true, url: 'api/myprojects'}
+            'myprojects': { method: 'GET', isArray: true, url: 'api/myprojects'},
+            'addmem': { method:'PUT', url: 'api/addmem' }
         });
     }
 })();

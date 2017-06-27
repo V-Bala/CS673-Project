@@ -10,6 +10,7 @@
     function ProjectDetailController($scope, $rootScope, $stateParams, previousState, entity, Project, Issue, User) {
         var vm = this;
 
+        vm.myProjects = Project.myprojects();
         vm.project = entity;
         vm.previousState = previousState.name;
 

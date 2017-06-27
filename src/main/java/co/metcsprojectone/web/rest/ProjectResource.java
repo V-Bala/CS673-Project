@@ -65,7 +65,7 @@ public class ProjectResource {
         }
         User uu = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         project.setPowner(uu);
-
+        project.addPmember(uu);
         Project result = projectRepository.save(project);
         projectSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/projects/" + result.getId()))

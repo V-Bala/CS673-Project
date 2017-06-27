@@ -79,6 +79,31 @@
                 });
             }]
         })
+        .state('project-detail.addmember', {
+            parent: 'project-detail',
+            url: '/detail/addmember',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/project/addpmember.html',
+                    controller: 'AddPmemberController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Project', function(Project) {
+                            return Project.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('project.new', {
             parent: 'home',
             url: '/new',
@@ -102,9 +127,9 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('project', null, { reload: 'project' });
+                    $state.go('home', null, { reload: 'home' });
                 }, function() {
-                    $state.go('project');
+                    $state.go('home');
                 });
             }]
         })
@@ -127,7 +152,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('project', null, { reload: 'project' });
+                    $state.go('home', null, { reload: 'home' });
                 }, function() {
                     $state.go('^');
                 });

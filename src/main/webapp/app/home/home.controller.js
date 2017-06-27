@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project', 'User'];
 
-    function HomeController ($scope, Principal, LoginService, $state, Project) {
+    function HomeController ($scope, Principal, LoginService, $state, Project, User) {
         var vm = this;
 
         vm.account = null;
