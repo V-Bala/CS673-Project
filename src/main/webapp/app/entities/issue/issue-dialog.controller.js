@@ -5,15 +5,16 @@
         .module('projectoneApp')
         .controller('IssueDialogController', IssueDialogController);
 
-    IssueDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Issue', 'Project'];
+    IssueDialogController.$inject = ['$state','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Issue', 'Project', 'Userstory'];
 
-    function IssueDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Issue, Project) {
+    function IssueDialogController ($state, $timeout, $scope, $stateParams, $uibModalInstance, entity, Issue, Project, Userstory) {
         var vm = this;
 
         vm.issue = entity;
         vm.clear = clear;
         vm.save = save;
         vm.projects = Project.query();
+        vm.userstories = Userstory.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -36,6 +37,7 @@
             $scope.$emit('projectoneApp:issueUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
+            $state.reload()
         }
 
         function onSaveError () {

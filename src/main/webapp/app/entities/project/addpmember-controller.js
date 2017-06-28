@@ -34,9 +34,6 @@
 
 
 
-
-
-
         getAccount();
 
         function getAccount() {
@@ -70,6 +67,7 @@
             $scope.$emit('projectoneApp:projectUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
+            location.reload();
         }
 
         function onSaveError () {

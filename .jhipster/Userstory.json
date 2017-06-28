@@ -12,6 +12,12 @@
             "otherEntityName": "project",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "issue",
+            "otherEntityName": "issue",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "userstory"
         }
     ],
     "fields": [

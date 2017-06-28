@@ -45,6 +45,9 @@ public class Issue implements Serializable {
     @ManyToOne
     private Project project;
 
+    @ManyToOne
+    private Userstory userstory;
+
     public Long getId() {
         return id;
     }
@@ -116,6 +119,19 @@ public class Issue implements Serializable {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Userstory getUserstory() {
+        return userstory;
+    }
+
+    public Issue userstory(Userstory userstory) {
+        this.userstory = userstory;
+        return this;
+    }
+
+    public void setUserstory(Userstory userstory) {
+        this.userstory = userstory;
     }
 
     @Override

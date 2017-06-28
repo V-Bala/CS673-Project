@@ -4,11 +4,9 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myIssueLabel">Create a new issue for project {{vm.issue.project.name}}</h4>
+        <h4 class="modal-title" id="myIssueLabel">Create or edit a Issue</h4>
     </div>
     <div class="modal-body">
-        TEST: {{pid}}
-
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" ng-show="vm.issue.id">
             <label for="id">ID</label>
@@ -16,7 +14,7 @@
                     ng-model="vm.issue.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_name">Issue Name</label>
+            <label class="control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="vm.issue.name"
                     />
@@ -47,15 +45,18 @@
             </select>
         </div>
 
-
-        <!-- THE PROJECT WILL AUTOMATICALLY SET WHEN CREATED BY USER IN PROJECT-DETAIL -->
-        <div class="form-group" has-authority="ROLE_ADMIN">
+        <div class="form-group">
             <label for="field_project">Project</label>
             <select class="form-control" id="field_project" name="project" ng-model="vm.issue.project" ng-options="project as project.name for project in vm.projects track by project.id">
                 <option value=""></option>
             </select>
         </div>
-
+        <div class="form-group">
+            <label for="field_userstory">Userstory</label>
+            <select class="form-control" id="field_userstory" name="userstory" ng-model="vm.issue.userstory" ng-options="userstory as userstory.title for userstory in vm.userstories track by userstory.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

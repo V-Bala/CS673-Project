@@ -56,6 +56,11 @@ public class Userstory implements Serializable {
     @ManyToOne
     private Project project;
 
+    @OneToMany(mappedBy = "userstory")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Issue> issues = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -165,6 +170,31 @@ public class Userstory implements Serializable {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Set<Issue> getIssues() {
+        return issues;
+    }
+
+    public Userstory issues(Set<Issue> issues) {
+        this.issues = issues;
+        return this;
+    }
+
+    public Userstory addIssue(Issue issue) {
+        this.issues.add(issue);
+        issue.setUserstory(this);
+        return this;
+    }
+
+    public Userstory removeIssue(Issue issue) {
+        this.issues.remove(issue);
+        issue.setUserstory(null);
+        return this;
+    }
+
+    public void setIssues(Set<Issue> issues) {
+        this.issues = issues;
     }
 
     @Override

@@ -24,6 +24,10 @@
         <dd>
             <a ui-sref="project-detail({id:vm.issue.project.id})">{{vm.issue.project.name}}</a>
         </dd>
+        <dt><span>Userstory</span></dt>
+        <dd>
+            <a ui-sref="userstory-detail({id:vm.issue.userstory.id})">{{vm.issue.userstory.title}}</a>
+        </dd>
     </dl>
 
     <button type="submit"
