@@ -80,7 +80,7 @@
             }]
         })
         .state('project.new', {
-            parent: 'home',
+            parent: 'project',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
