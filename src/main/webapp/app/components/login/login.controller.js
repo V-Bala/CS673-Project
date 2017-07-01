@@ -41,7 +41,7 @@
             }).then(function () {
                 vm.authenticationError = false;
                 $uibModalInstance.close();
-                $state.reload();
+                location.reload();
                 $rootScope.$broadcast('authenticationSuccess');
 
                 // previousState was set in the authExpiredInterceptor before being redirected to login modal.

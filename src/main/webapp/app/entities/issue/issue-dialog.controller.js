@@ -14,7 +14,21 @@
         vm.clear = clear;
         vm.save = save;
         vm.projects = Project.query();
-        vm.userstories = Userstory.query();
+
+
+        getstories();
+
+        function getstories() {
+            var lap = 0;
+            if (vm.issue.project.id > 0){
+                vm.userstories = Userstory.projus({id: vm.issue.project.id});
+            } else {
+                lap = lap + 1;
+                if (lap <= 5){
+                    window.setTimeout(getstories, 500);
+                }
+            }
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
