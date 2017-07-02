@@ -21,7 +21,7 @@
                 }
             },
             'update': { method:'PUT' },
-            'findById': { method:'GET', isArray:true}
+            'projus': { method: 'GET', isArray: true, url: 'api/projus'}
         });
     }
 })();

@@ -77,7 +77,7 @@ public class IssueResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        IssueResource issueResource = new IssueResource(issueRepository, issueSearchRepository);
+            IssueResource issueResource = new IssueResource(issueRepository, issueSearchRepository);
         this.restIssueMockMvc = MockMvcBuilders.standaloneSetup(issueResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -92,10 +92,10 @@ public class IssueResourceIntTest {
      */
     public static Issue createEntity(EntityManager em) {
         Issue issue = new Issue()
-            .name(DEFAULT_NAME)
-            .comments(DEFAULT_COMMENTS)
-            .status(DEFAULT_STATUS)
-            .priority(DEFAULT_PRIORITY);
+                .name(DEFAULT_NAME)
+                .comments(DEFAULT_COMMENTS)
+                .status(DEFAULT_STATUS)
+                .priority(DEFAULT_PRIORITY);
         return issue;
     }
 
@@ -111,6 +111,7 @@ public class IssueResourceIntTest {
         int databaseSizeBeforeCreate = issueRepository.findAll().size();
 
         // Create the Issue
+
         restIssueMockMvc.perform(post("/api/issues")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(issue)))
@@ -136,12 +137,13 @@ public class IssueResourceIntTest {
         int databaseSizeBeforeCreate = issueRepository.findAll().size();
 
         // Create the Issue with an existing ID
-        issue.setId(1L);
+        Issue existingIssue = new Issue();
+        existingIssue.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restIssueMockMvc.perform(post("/api/issues")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(issue)))
+            .content(TestUtil.convertObjectToJsonBytes(existingIssue)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -202,10 +204,10 @@ public class IssueResourceIntTest {
         // Update the issue
         Issue updatedIssue = issueRepository.findOne(issue.getId());
         updatedIssue
-            .name(UPDATED_NAME)
-            .comments(UPDATED_COMMENTS)
-            .status(UPDATED_STATUS)
-            .priority(UPDATED_PRIORITY);
+                .name(UPDATED_NAME)
+                .comments(UPDATED_COMMENTS)
+                .status(UPDATED_STATUS)
+                .priority(UPDATED_PRIORITY);
 
         restIssueMockMvc.perform(put("/api/issues")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -285,17 +287,7 @@ public class IssueResourceIntTest {
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Issue.class);
-        Issue issue1 = new Issue();
-        issue1.setId(1L);
-        Issue issue2 = new Issue();
-        issue2.setId(issue1.getId());
-        assertThat(issue1).isEqualTo(issue2);
-        issue2.setId(2L);
-        assertThat(issue1).isNotEqualTo(issue2);
-        issue1.setId(null);
-        assertThat(issue1).isNotEqualTo(issue2);
     }
 }

@@ -45,6 +45,9 @@ public class Issue implements Serializable {
     @ManyToOne
     private Project project;
 
+    @ManyToOne
+    private Userstory userstory;
+
     public Long getId() {
         return id;
     }
@@ -118,6 +121,19 @@ public class Issue implements Serializable {
         this.project = project;
     }
 
+    public Userstory getUserstory() {
+        return userstory;
+    }
+
+    public Issue userstory(Userstory userstory) {
+        this.userstory = userstory;
+        return this;
+    }
+
+    public void setUserstory(Userstory userstory) {
+        this.userstory = userstory;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -127,25 +143,25 @@ public class Issue implements Serializable {
             return false;
         }
         Issue issue = (Issue) o;
-        if (issue.getId() == null || getId() == null) {
+        if (issue.id == null || id == null) {
             return false;
         }
-        return Objects.equals(getId(), issue.getId());
+        return Objects.equals(id, issue.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Issue{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", comments='" + getComments() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", priority='" + getPriority() + "'" +
-            "}";
+            "id=" + id +
+            ", name='" + name + "'" +
+            ", comments='" + comments + "'" +
+            ", status='" + status + "'" +
+            ", priority='" + priority + "'" +
+            '}';
     }
 }

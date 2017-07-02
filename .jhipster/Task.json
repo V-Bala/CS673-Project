@@ -6,12 +6,6 @@
             "relationshipName": "userstory",
             "otherEntityName": "userstory",
             "otherEntityField": "title"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "tmember",
-            "otherEntityName": "tmember",
-            "otherEntityField": "membername"
         }
     ],
     "fields": [

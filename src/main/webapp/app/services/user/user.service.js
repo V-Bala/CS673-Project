@@ -19,7 +19,8 @@
             },
             'save': { method:'POST' },
             'update': { method:'PUT' },
-            'delete':{ method:'DELETE'}
+            'delete':{ method:'DELETE'},
+            'byemail': {method: 'GET', url: 'api/byemail'}
         });
 
         return service;

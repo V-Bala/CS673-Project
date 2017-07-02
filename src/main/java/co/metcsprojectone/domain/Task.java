@@ -37,9 +37,6 @@ public class Task implements Serializable {
     @ManyToOne
     private Userstory userstory;
 
-    @ManyToOne
-    private Tmember tmember;
-
     public Long getId() {
         return id;
     }
@@ -100,19 +97,6 @@ public class Task implements Serializable {
         this.userstory = userstory;
     }
 
-    public Tmember getTmember() {
-        return tmember;
-    }
-
-    public Task tmember(Tmember tmember) {
-        this.tmember = tmember;
-        return this;
-    }
-
-    public void setTmember(Tmember tmember) {
-        this.tmember = tmember;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -122,24 +106,24 @@ public class Task implements Serializable {
             return false;
         }
         Task task = (Task) o;
-        if (task.getId() == null || getId() == null) {
+        if (task.id == null || id == null) {
             return false;
         }
-        return Objects.equals(getId(), task.getId());
+        return Objects.equals(id, task.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Task{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", targetdate='" + getTargetdate() + "'" +
-            "}";
+            "id=" + id +
+            ", title='" + title + "'" +
+            ", description='" + description + "'" +
+            ", targetdate='" + targetdate + "'" +
+            '}';
     }
 }

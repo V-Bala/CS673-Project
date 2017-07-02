@@ -6,7 +6,7 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService'];
+    RegisterController.$inject = [ '$timeout', '$state', 'Auth', 'LoginService'];
 
     function RegisterController ($timeout, $state, Auth, LoginService, $uibModalInstance) {
         var vm = this;

@@ -176,6 +176,15 @@ public class UserResource {
                 .map(UserDTO::new));
     }
 
+    @RequestMapping("/byemail")
+    @GetMapping("/users")
+    @Timed
+    public User getUserByEmail(@RequestParam String email) throws URISyntaxException {
+        User kk = userRepository.findOneByEmail(email).get();
+        return kk;
+    }
+
+
     /**
      * DELETE /users/:login : delete the "login" User.
      *
