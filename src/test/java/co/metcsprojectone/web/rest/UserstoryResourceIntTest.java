@@ -80,7 +80,7 @@ public class UserstoryResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        UserstoryResource userstoryResource = new UserstoryResource(userstoryRepository, userstorySearchRepository);
+            UserstoryResource userstoryResource = new UserstoryResource(userstoryRepository, userstorySearchRepository);
         this.restUserstoryMockMvc = MockMvcBuilders.standaloneSetup(userstoryResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -95,11 +95,11 @@ public class UserstoryResourceIntTest {
      */
     public static Userstory createEntity(EntityManager em) {
         Userstory userstory = new Userstory()
-            .title(DEFAULT_TITLE)
-            .description(DEFAULT_DESCRIPTION)
-            .comments(DEFAULT_COMMENTS)
-            .status(DEFAULT_STATUS)
-            .priority(DEFAULT_PRIORITY);
+                .title(DEFAULT_TITLE)
+                .description(DEFAULT_DESCRIPTION)
+                .comments(DEFAULT_COMMENTS)
+                .status(DEFAULT_STATUS)
+                .priority(DEFAULT_PRIORITY);
         return userstory;
     }
 
@@ -115,6 +115,7 @@ public class UserstoryResourceIntTest {
         int databaseSizeBeforeCreate = userstoryRepository.findAll().size();
 
         // Create the Userstory
+
         restUserstoryMockMvc.perform(post("/api/userstories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(userstory)))
@@ -141,12 +142,13 @@ public class UserstoryResourceIntTest {
         int databaseSizeBeforeCreate = userstoryRepository.findAll().size();
 
         // Create the Userstory with an existing ID
-        userstory.setId(1L);
+        Userstory existingUserstory = new Userstory();
+        existingUserstory.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restUserstoryMockMvc.perform(post("/api/userstories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(userstory)))
+            .content(TestUtil.convertObjectToJsonBytes(existingUserstory)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -209,11 +211,11 @@ public class UserstoryResourceIntTest {
         // Update the userstory
         Userstory updatedUserstory = userstoryRepository.findOne(userstory.getId());
         updatedUserstory
-            .title(UPDATED_TITLE)
-            .description(UPDATED_DESCRIPTION)
-            .comments(UPDATED_COMMENTS)
-            .status(UPDATED_STATUS)
-            .priority(UPDATED_PRIORITY);
+                .title(UPDATED_TITLE)
+                .description(UPDATED_DESCRIPTION)
+                .comments(UPDATED_COMMENTS)
+                .status(UPDATED_STATUS)
+                .priority(UPDATED_PRIORITY);
 
         restUserstoryMockMvc.perform(put("/api/userstories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -295,17 +297,7 @@ public class UserstoryResourceIntTest {
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Userstory.class);
-        Userstory userstory1 = new Userstory();
-        userstory1.setId(1L);
-        Userstory userstory2 = new Userstory();
-        userstory2.setId(userstory1.getId());
-        assertThat(userstory1).isEqualTo(userstory2);
-        userstory2.setId(2L);
-        assertThat(userstory1).isNotEqualTo(userstory2);
-        userstory1.setId(null);
-        assertThat(userstory1).isNotEqualTo(userstory2);
     }
 }

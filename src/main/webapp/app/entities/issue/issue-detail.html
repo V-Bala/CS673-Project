@@ -3,7 +3,7 @@
     <h2><span>Issue</span> {{vm.issue.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
+    <dl class="row jh-entity-details">
         <dt><span>Name</span></dt>
         <dd>
             <span>{{vm.issue.name}}</span>
@@ -23,6 +23,10 @@
         <dt><span>Project</span></dt>
         <dd>
             <a ui-sref="project-detail({id:vm.issue.project.id})">{{vm.issue.project.name}}</a>
+        </dd>
+        <dt><span>Userstory</span></dt>
+        <dd>
+            <a ui-sref="userstory-detail({id:vm.issue.userstory.id})">{{vm.issue.userstory.title}}</a>
         </dd>
     </dl>
 

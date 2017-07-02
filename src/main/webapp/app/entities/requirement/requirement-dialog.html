@@ -29,18 +29,7 @@
                 <option value="INPROGRESS">INPROGRESS</option>
             </select>
         </div>
-        <div class="form-group">
-            <label class="control-label" for="project_name">For Project</label>
-            <select class="form-control" id="project_name"  name="projects" ng-model="vm.project.name" ng-options="project as project.name for project in vm.projects track by project.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="field_team">Team</label>
-            <select class="form-control" id="field_team" name="team" ng-model="vm.project.team" ng-options="team as team.teamname for team in vm.teams track by team.id">
-                <option value=""></option>
-            </select>
-        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

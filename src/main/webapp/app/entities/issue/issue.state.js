@@ -79,9 +79,40 @@
                 });
             }]
         })
+            .state('issue.newadmin', {
+                parent: 'issue',
+                url: '/newadmin',
+                data: {
+                    authorities: ['ROLE_ADMIN']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/issue/issue-dialog.html',
+                        controller: 'IssueDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity:['Project', function (Project) {
+                                return {
+                                    name: null,
+                                    comments: null,
+                                    status: null,
+                                    priority: null,
+                                    id: null
+                                };
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('^', null, { reload: '^' });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
         .state('issue.new', {
-            parent: 'issue',
-            url: '/new',
+            parent: 'project-detail',
+            url: '/{pid}/new',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -93,20 +124,21 @@
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: function () {
+                        entity:['Project', function (Project) {
                             return {
                                 name: null,
                                 comments: null,
                                 status: null,
                                 priority: null,
-                                id: null
+                                id: null,
+                                project: Project.get({id: $stateParams.pid})
                             };
-                        }
+                        }]
                     }
                 }).result.then(function() {
-                    $state.go('issue', null, { reload: 'issue' });
+                    $state.go('^', null, { reload: '^' });
                 }, function() {
-                    $state.go('issue');
+                    $state.go('^');
                 });
             }]
         })

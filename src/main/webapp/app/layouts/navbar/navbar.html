@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="content/css/home-screen.css">
 <nav class="navbar navbar-default" role="navigation">
-    <div class="bg-navbar">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
@@ -30,12 +29,6 @@
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
                         <li ui-sref-active="active">
-                                <a ui-sref="tmember" ng-click="vm.collapseNavbar()">
-                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                    <span>Tmember</span>
-                                </a>
-                            </li>
-                        <li ui-sref-active="active">
                                 <a ui-sref="userstory" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span>Userstory</span>
@@ -60,15 +53,15 @@
                                 </a>
                             </li>
                         <li ui-sref-active="active">
-                                <a ui-sref="team" ng-click="vm.collapseNavbar()">
+                                <a ui-sref="task" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                    <span>Team</span>
+                                    <span >Task</span>
                                 </a>
                             </li>
                         <li ui-sref-active="active">
-                                <a ui-sref="task" ng-click="vm.collapseNavbar()">
+                                <a ui-sref="comment" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                    <span>Task</span>
+                                    <span >Comment</span>
                                 </a>
                             </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

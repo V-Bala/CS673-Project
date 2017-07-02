@@ -81,7 +81,7 @@
         })
         .state('userstory.new', {
             parent: 'userstory',
-            url: '/new',
+            url: '/{pid}/newUS',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -93,24 +93,57 @@
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: function () {
+                        entity:['Project', function (Project) {
                             return {
                                 title: null,
                                 description: null,
                                 comments: null,
                                 status: null,
                                 priority: null,
-                                id: null
+                                id: null,
+                                project: Project.get({id: $stateParams.pid})
                             };
-                        }
+                        }]
                     }
                 }).result.then(function() {
-                    $state.go('userstory', null, { reload: 'userstory' });
+                    $state.go('^', null, { reload: '^' });
                 }, function() {
-                    $state.go('userstory');
+                    $state.go('^');
                 });
             }]
         })
+            .state('userstory.newadmin', {
+                parent: 'userstory',
+                url: '/new',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/userstory/userstory-dialog.html',
+                        controller: 'UserstoryDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: function () {
+                                return {
+                                    title: null,
+                                    description: null,
+                                    comments: null,
+                                    status: null,
+                                    priority: null,
+                                    id: null
+                                };
+                            }
+                        }
+                    }).result.then(function() {
+                        $state.go('userstory', null, { reload: 'userstory' });
+                    }, function() {
+                        $state.go('userstory');
+                    });
+                }]
+            })
         .state('userstory.edit', {
             parent: 'userstory',
             url: '/{id}/edit',

@@ -8,11 +8,22 @@
     -->
     <changeSet id="20170608203211-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="team_id"
+        <addForeignKeyConstraint baseColumnNames="powner_id"
                                  baseTableName="project"
-                                 constraintName="fk_project_team_id"
+                                 constraintName="fk_project_powner_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="team"/>
+                                 referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="projects_id"
+                                 baseTableName="project_pmember"
+                                 constraintName="fk_project_pmember_projects_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+        <addForeignKeyConstraint baseColumnNames="pmembers_id"
+                                 baseTableName="project_pmember"
+                                 constraintName="fk_project_pmember_pmembers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
     </changeSet>
 </databaseChangeLog>

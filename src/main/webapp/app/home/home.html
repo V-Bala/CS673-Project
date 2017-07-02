@@ -1,9 +1,8 @@
-<link rel="stylesheet" href="content/css/home-screen.css">
-<div class="wrapper">
+
 <div ng-show="!vm.isAuthenticated()">
     <div class="container-fluid bg-1 text-center margin-1" >
-        <div class="col-xs-4 ">
-        <!--<img src="/content/images/EZTrack-250-transparent.png" alt="Image">-->
+        <div class="col-xs-4">
+        <!--<img src="/content/images/EZTrack-logo1.jpg" alt="Image">-->
         </div>
         <h1 class="margin-h1">
             EZTrack
@@ -65,114 +64,31 @@
 
 <!-- This is the 'section' that will show once the user logs in -->
 <div ng-show="vm.isAuthenticated()">
-    <div class="col-xs-12" style="background-color: #2d7ca4; height: 1000px">
-        <div class="container-fluid well-dashboard" style="min-height: 700px">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="exTab2">
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a  href="page1/#1" data-toggle="tab">Projects</a>
-                            </li>
-                            <li>
-                                <a href="page1/#2" data-toggle="tab">Requirements</a>
-                            </li>
-                            <li>
-                                <a href="page1/#3" data-toggle="tab">Backlog</a>
-                            </li>
-                            <li>
-                                <a href="page1/#4" data-toggle="tab">Teams</a>
-                            </li>
-                            <li>
-                                <a href="page1/#5" data-toggle="tab">Issues</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content" style="text-align: center;">
-                            <br>
-                            <div class="tab-pane active well" id="1">
-
-                                <!--<h3>Getting started </h3>-->
-                                <!--<br>-->
-                                <!--<b>-->
-                                <!--Create a project under entities, and then you can view them below-->
-                                <!--</b>-->
-                                <!--<br>-->
-
-                                <!--This is an example of bringing data to the front end, SEE home.controller.js for how it works-->
-                                <!--<br>-->
-
-                                <!--<div ng-repeat="project in vm.projects track by project.id">-->
-                                    <!--{{project}}-->
-                                <!--</div>-->
-
-                                <!--<br>-->
-
-                                <!--<b> I also added the add new project button on the sidenav. From projects.html, I copied the new projects button and pasted it into sidenav.html. Then, I need-->
-                                <!--to make sure it stays on the home page when popping up a new project dialog. I changed the project.new state in project.state.js to 'home'</b>-->
-
-                                <!--Project div-->
-                                <div class="project-features" style="display: flex; align-content: center; justify-content: center; flex-direction: column">
-                                    <div>
-                                        <!--Button changes state to project-->
-                                        <button class="btn btn-primary" ui-sref="project" ui-sref-active="active">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                            <span class="hidden-xs-down" >
-                                            Manage Your Projects
-                                        </span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="tab-pane well" id="2">
-                                <div>
-                                    <!--Button calls function .new from requirement.state.js-->
-                                    <button class="btn btn-primary" ui-sref="requirement" ui-sref-active="active">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                        <span class="hidden-xs-down" >
-                                            Manage Your Requirements
-                                        </span>
-                                    </button>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane well" id="3">
-                                TODO: Add backlog feature
-                            </div>
-                            <div class="tab-pane well" id="4">
-                                <!--Team div-->
-                                <div>
-                                    <!--Button changes state to team-->
-                                    <button class="btn btn-primary" ui-sref="team" >
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                        <span class="hidden-xs-down" >
-                                            Manage Your Teams
-                                        </span>
-                                    </button>
-                                    <!--Button changes state to tmember-->
-                                    <button class="btn btn-primary" ui-sref="tmember" >
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                        <span class="hidden-xs-down" >
-                                            Manage Your Team Members
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="tab-pane well" id="5">
-                                <button class="btn btn-primary" ui-sref="issue">
-                                    <span class="glyphicon glyphicon-plus"> </span>
-                                    <span class="hidden-xs-down">
-                                        Manage Issues
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                </div>
+    <div class="col-md-2" style="background-color: #00b3ee; height: 1000px">
+        <div id="projectsidebar">
+            <span>
+                  <h4>My Projects</h4>
+            </span>
+            <span>
+                <button class="btn btn-primary" ui-sref="project.new">
+                <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </span>
+            <div ng-repeat="project in vm.myProjects track by project.id">
+                {{project.name}} <button type="submit"
+                                         ui-sref="project-detail({id:project.id})"
+                                         class="btn btn-sm">
+                <span class="glyphicon glyphicon-eye-open"></span>
+                <span class="hidden-sm-down"></span>
+            </button>
             </div>
         </div>
+
+
     </div>
+    <div class="col-md-10" style="background-color: #9c27b0; height: 1000px">
+
+    </div>
+
 </div>
-</div>
+

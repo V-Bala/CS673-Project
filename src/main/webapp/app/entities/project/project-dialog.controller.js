@@ -5,16 +5,20 @@
         .module('projectoneApp')
         .controller('ProjectDialogController', ProjectDialogController);
 
-    ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Project', 'Issue', 'Team'];
+    ProjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Project', 'Issue', 'User', 'Comment', 'Userstory'];
 
-    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Project, Issue, Team) {
+    function ProjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Project, Issue, User, Comment, Userstory) {
         var vm = this;
 
         vm.project = entity;
         vm.clear = clear;
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.issues = Issue.query();
-        vm.teams = Team.query();
+        vm.users = User.query();
+        vm.comments = Comment.query();
+        vm.userstories = Userstory.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -43,6 +47,17 @@
             vm.isSaving = false;
         }
 
+
+        vm.setPfiles = function ($file, project) {
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        project.pfiles = base64Data;
+                        project.pfilesContentType = $file.type;
+                    });
+                });
+            }
+        };
 
     }
 })();
