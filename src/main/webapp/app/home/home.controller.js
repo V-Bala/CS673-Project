@@ -11,12 +11,9 @@
         var vm = this;
 
         vm.account = null;
-        vm.myProjects = Project.myprojects();
-
         /* HERE IS A QUERY TO BRING PROJECTS TO HOME, NOTICE THE INJECT OF PROJECT ABOVE*/
         vm.projects = Project.query();
         /* Project.query is defined in projects.service.js and handled on the server side with ProjectResource.java  */
-
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
