@@ -108,9 +108,39 @@
                             </a>
                         </p>
                     </div>
-                    <div id="userstoryid{{userstory.id}}" class="panel-collapse collapse in">
+                    <div id="userstoryid{{userstory.id}}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div ui-view="userstory-detail({id:userstory.id})">View</div>
+                            <!-- <div ui-view="userstory-detail({id:userstory.id})">View</div> -->
+                            <dl class="row jh-entity-details">
+                                <dt><span>Title</span></dt>
+                                <dd>
+                                    <span>{{userstory.title}}</span>
+                                </dd>
+                                <dt><span>Description</span></dt>
+                                <dd>
+                                    <span>{{userstory.description}}</span>
+                                </dd>
+                                <dt><span>Comments</span></dt>
+                                <dd>
+                                    <span>{{userstory.comments}}</span>
+                                </dd>
+                                <dt><span>Status</span></dt>
+                                <dd>
+                                    <span>{{userstory.status}}</span>
+                                </dd>
+                                <dt><span>Priority</span></dt>
+                                <dd>
+                                    <span>{{userstory.priority}}</span>
+                                </dd>
+                                <dt><span>Project</span></dt>
+                                <dd>
+                                    <a ui-sref="project-detail({id:vm.userstory.project.id})">{{vm.userstory.project.id}}</a>
+                                </dd>
+                            </dl>
+                            <button type="button" ui-sref="userstory-detail.edit({id:userstory.id})" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"> Edit</span>
+                            </button>
                             <div ui-sref="userstory-detail({id:userstory.id})">Link</div>
                         </div>
                     </div>
@@ -119,75 +149,73 @@
         </div>
 
         <div>
+            <h2>Issues</h2>
             <div>
-                <h2>Issues</h2>
-                <div>
-                    <div class="row">
-                        <div class="col-xs-4 no-padding-left">
-                            <button class="btn btn-primary" ng-click="vm.addissue()" >
-                                <span class="glyphicon glyphicon-plus"></span>
-                                <span class="hidden-xs-down" >
-                                    Create new Issue
-                                </span>
+                <div class="row">
+                    <div class="col-xs-4 no-padding-left">
+                        <button class="btn btn-primary" ng-click="vm.addissue()" >
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="hidden-xs-down" >
+                                Create new Issue
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <!-- Accordion panel start -->
+            <div class="panel-group" id="accordionissue">
+                <!-- pannel repeats -->
+                <div class="panel panel-default" ng-repeat="issue in vm.issues track by issue.id">
+                    <div class="panel-heading">
+                        <!-- making a button of the header and attaching to the accordion -->
+                        <p class="panel-title btn btn-primary" data-toggle="collapse" data-parent="#accordionissue" data-target="#issueid{{issue.id}}">
+                            <a data-toggle="collapse" data-parent="#accordionissue" data-target="#issueid{{issue.id}}">
+                            {{issue.id}}: {{issue.title}}
+                            </a>
+                        </p>
+                    </div>
+                    <div id="issueid{{issue.id}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <!-- <div ui-view="issue-detail({id:issue.id})">View</div> -->
+                            <dl class="row jh-entity-details">
+                                <dt><span>Name</span></dt>
+                                <dd>
+                                    <span>{{issue.name}}</span>
+                                </dd>
+                                <dt><span>Comments</span></dt>
+                                <dd>
+                                    <span>{{issue.comments}}</span>
+                                </dd>
+                                <dt><span>Status</span></dt>
+                                <dd>
+                                    <span>{{issue.status}}</span>
+                                </dd>
+                                <dt><span>Priority</span></dt>
+                                <dd>
+                                    <span>{{issue.priority}}</span>
+                                </dd>
+                                <dt><span>Project</span></dt>
+                                <dd>
+                                    <a ui-sref="project-detail({id:issue.project.id})">{{issue.project.name}}</a>
+                                </dd>
+                                <dt><span>Userstory</span></dt>
+                                <dd>
+                                    <a ui-sref="userstory-detail({id:issue.userstory.id})">{{issue.userstory.title}}</a>
+                                </dd>
+                            </dl>
+                            <button type="button" ui-sref="issue-detail.edit({id:issue.id})" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"> Edit</span>
                             </button>
+                            <div ui-sref="issue-detail({id:issue.id})">Link</div>
                         </div>
                     </div>
                 </div>
-                <br/>
-                <div class="table-responsive">
-                    <table class="jh-table table table-striped">
-                        <thead>
-                        <tr>
-                            <th><span>ID</span></th>
-                            <th><span>Name</span></th>
-                            <th><span>Comments</span></th>
-                            <th><span>Status</span></th>
-                            <th><span>Priority</span></th>
-                            <th><span>UserStory</span></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="issue in vm.issues track by issue.id">
-                            <td><a ui-sref="issue-detail({id:issue.id})">{{issue.id}}</a></td>
-                            <td>{{issue.name}}</td>
-                            <td>{{issue.comments}}</td>
-                            <td>{{issue.status}}</td>
-                            <td>{{issue.priority}}</td>
-                            <td>
-                                <a ui-sref="project-detail({id:issue.project.id})">{{issue.userstory.title}}</a>
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group flex-btn-group-container">
-                                    <button type="submit"
-                                            ui-sref="issue-detail({id:issue.id})"
-                                            class="btn btn-info btn-sm">
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="issue.edit({id:issue.id})"
-                                            class="btn btn-primary btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="issue.delete({id:issue.id})"
-                                            class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
-
-
     </div>
+    
     <div class="col-md-3">
         <div>
             <table class="table table-fixed well">
