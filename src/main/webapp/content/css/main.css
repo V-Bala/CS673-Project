@@ -1,8 +1,10 @@
 body {
-    background: #fafafa;
+    /*background: #fafafa;*/
+    background: #589BBE;
     /*font-family:'Indie Flower', cursive;*/
     font-family: 'Avenir Next';
-    color: #333;
+    /*color: #333;*/
+    color: gray;
 }
 /* ==========================================================================
 Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
