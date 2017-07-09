@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class RequirementResource {
     private final Logger log = LoggerFactory.getLogger(RequirementResource.class);
 
     private static final String ENTITY_NAME = "requirement";
-
+        
     private final RequirementRepository requirementRepository;
 
     private final RequirementSearchRepository requirementSearchRepository;
@@ -95,7 +94,8 @@ public class RequirementResource {
     @Timed
     public List<Requirement> getAllRequirements() {
         log.debug("REST request to get all Requirements");
-        return requirementRepository.findAll();
+        List<Requirement> requirements = requirementRepository.findAll();
+        return requirements;
     }
 
     /**
@@ -131,7 +131,7 @@ public class RequirementResource {
      * SEARCH  /_search/requirements?query=:query : search for the requirement corresponding
      * to the query.
      *
-     * @param query the query of the requirement search
+     * @param query the query of the requirement search 
      * @return the result of the search
      */
     @GetMapping("/_search/requirements")
@@ -142,5 +142,6 @@ public class RequirementResource {
             .stream(requirementSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
 
 }

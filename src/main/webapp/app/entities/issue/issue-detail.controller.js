@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('IssueDetailController', IssueDetailController);
 
-    IssueDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Issue', 'Project'];
+    IssueDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Issue', 'Project', 'Userstory'];
 
-    function IssueDetailController($scope, $rootScope, $stateParams, previousState, entity, Issue, Project) {
+    function IssueDetailController($scope, $rootScope, $stateParams, previousState, entity, Issue, Project, Userstory) {
         var vm = this;
 
         vm.issue = entity;

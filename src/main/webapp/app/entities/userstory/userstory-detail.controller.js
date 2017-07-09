@@ -5,13 +5,14 @@
         .module('projectoneApp')
         .controller('UserstoryDetailController', UserstoryDetailController);
 
-    UserstoryDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Userstory', 'Task', 'Tmember'];
+    UserstoryDetailController.$inject = ['$state','$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Userstory', 'Task', 'Project'];
 
-    function UserstoryDetailController($scope, $rootScope, $stateParams, previousState, entity, Userstory, Task, Tmember) {
+    function UserstoryDetailController($state, $scope, $rootScope, $stateParams, previousState, entity, Userstory, Task, Project) {
         var vm = this;
 
         vm.userstory = entity;
         vm.previousState = previousState.name;
+        vm.myProjects = Project.myprojects();
 
         var unsubscribe = $rootScope.$on('projectoneApp:userstoryUpdate', function(event, result) {
             vm.userstory = result;

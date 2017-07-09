@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -43,6 +44,11 @@ public class ProjectResourceIntTest {
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_PFILES = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_PFILES = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_PFILES_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_PFILES_CONTENT_TYPE = "image/png";
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -69,7 +75,7 @@ public class ProjectResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        ProjectResource projectResource = new ProjectResource(projectRepository, projectSearchRepository);
+            ProjectResource projectResource = new ProjectResource(projectRepository, projectSearchRepository);
         this.restProjectMockMvc = MockMvcBuilders.standaloneSetup(projectResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -84,8 +90,10 @@ public class ProjectResourceIntTest {
      */
     public static Project createEntity(EntityManager em) {
         Project project = new Project()
-            .name(DEFAULT_NAME)
-            .description(DEFAULT_DESCRIPTION);
+                .name(DEFAULT_NAME)
+                .description(DEFAULT_DESCRIPTION)
+                .pfiles(DEFAULT_PFILES)
+                .pfilesContentType(DEFAULT_PFILES_CONTENT_TYPE);
         return project;
     }
 
@@ -101,6 +109,7 @@ public class ProjectResourceIntTest {
         int databaseSizeBeforeCreate = projectRepository.findAll().size();
 
         // Create the Project
+
         restProjectMockMvc.perform(post("/api/projects")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(project)))
@@ -112,6 +121,8 @@ public class ProjectResourceIntTest {
         Project testProject = projectList.get(projectList.size() - 1);
         assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testProject.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testProject.getPfiles()).isEqualTo(DEFAULT_PFILES);
+        assertThat(testProject.getPfilesContentType()).isEqualTo(DEFAULT_PFILES_CONTENT_TYPE);
 
         // Validate the Project in Elasticsearch
         Project projectEs = projectSearchRepository.findOne(testProject.getId());
@@ -124,12 +135,13 @@ public class ProjectResourceIntTest {
         int databaseSizeBeforeCreate = projectRepository.findAll().size();
 
         // Create the Project with an existing ID
-        project.setId(1L);
+        Project existingProject = new Project();
+        existingProject.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restProjectMockMvc.perform(post("/api/projects")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(project)))
+            .content(TestUtil.convertObjectToJsonBytes(existingProject)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -149,7 +161,9 @@ public class ProjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(project.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].pfilesContentType").value(hasItem(DEFAULT_PFILES_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].pfiles").value(hasItem(Base64Utils.encodeToString(DEFAULT_PFILES))));
     }
 
     @Test
@@ -164,7 +178,9 @@ public class ProjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(project.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.pfilesContentType").value(DEFAULT_PFILES_CONTENT_TYPE))
+            .andExpect(jsonPath("$.pfiles").value(Base64Utils.encodeToString(DEFAULT_PFILES)));
     }
 
     @Test
@@ -186,8 +202,10 @@ public class ProjectResourceIntTest {
         // Update the project
         Project updatedProject = projectRepository.findOne(project.getId());
         updatedProject
-            .name(UPDATED_NAME)
-            .description(UPDATED_DESCRIPTION);
+                .name(UPDATED_NAME)
+                .description(UPDATED_DESCRIPTION)
+                .pfiles(UPDATED_PFILES)
+                .pfilesContentType(UPDATED_PFILES_CONTENT_TYPE);
 
         restProjectMockMvc.perform(put("/api/projects")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -200,6 +218,8 @@ public class ProjectResourceIntTest {
         Project testProject = projectList.get(projectList.size() - 1);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testProject.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testProject.getPfiles()).isEqualTo(UPDATED_PFILES);
+        assertThat(testProject.getPfilesContentType()).isEqualTo(UPDATED_PFILES_CONTENT_TYPE);
 
         // Validate the Project in Elasticsearch
         Project projectEs = projectSearchRepository.findOne(testProject.getId());
@@ -259,21 +279,13 @@ public class ProjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(project.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].pfilesContentType").value(hasItem(DEFAULT_PFILES_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].pfiles").value(hasItem(Base64Utils.encodeToString(DEFAULT_PFILES))));
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Project.class);
-        Project project1 = new Project();
-        project1.setId(1L);
-        Project project2 = new Project();
-        project2.setId(project1.getId());
-        assertThat(project1).isEqualTo(project2);
-        project2.setId(2L);
-        assertThat(project1).isNotEqualTo(project2);
-        project1.setId(null);
-        assertThat(project1).isNotEqualTo(project2);
     }
 }

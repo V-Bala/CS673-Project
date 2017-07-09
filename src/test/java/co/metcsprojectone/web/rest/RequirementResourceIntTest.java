@@ -70,7 +70,7 @@ public class RequirementResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        RequirementResource requirementResource = new RequirementResource(requirementRepository, requirementSearchRepository);
+            RequirementResource requirementResource = new RequirementResource(requirementRepository, requirementSearchRepository);
         this.restRequirementMockMvc = MockMvcBuilders.standaloneSetup(requirementResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -85,8 +85,8 @@ public class RequirementResourceIntTest {
      */
     public static Requirement createEntity(EntityManager em) {
         Requirement requirement = new Requirement()
-            .name(DEFAULT_NAME)
-            .status(DEFAULT_STATUS);
+                .name(DEFAULT_NAME)
+                .status(DEFAULT_STATUS);
         return requirement;
     }
 
@@ -102,6 +102,7 @@ public class RequirementResourceIntTest {
         int databaseSizeBeforeCreate = requirementRepository.findAll().size();
 
         // Create the Requirement
+
         restRequirementMockMvc.perform(post("/api/requirements")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(requirement)))
@@ -125,12 +126,13 @@ public class RequirementResourceIntTest {
         int databaseSizeBeforeCreate = requirementRepository.findAll().size();
 
         // Create the Requirement with an existing ID
-        requirement.setId(1L);
+        Requirement existingRequirement = new Requirement();
+        existingRequirement.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restRequirementMockMvc.perform(post("/api/requirements")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(requirement)))
+            .content(TestUtil.convertObjectToJsonBytes(existingRequirement)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -187,8 +189,8 @@ public class RequirementResourceIntTest {
         // Update the requirement
         Requirement updatedRequirement = requirementRepository.findOne(requirement.getId());
         updatedRequirement
-            .name(UPDATED_NAME)
-            .status(UPDATED_STATUS);
+                .name(UPDATED_NAME)
+                .status(UPDATED_STATUS);
 
         restRequirementMockMvc.perform(put("/api/requirements")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -264,17 +266,7 @@ public class RequirementResourceIntTest {
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Requirement.class);
-        Requirement requirement1 = new Requirement();
-        requirement1.setId(1L);
-        Requirement requirement2 = new Requirement();
-        requirement2.setId(requirement1.getId());
-        assertThat(requirement1).isEqualTo(requirement2);
-        requirement2.setId(2L);
-        assertThat(requirement1).isNotEqualTo(requirement2);
-        requirement1.setId(null);
-        assertThat(requirement1).isNotEqualTo(requirement2);
     }
 }

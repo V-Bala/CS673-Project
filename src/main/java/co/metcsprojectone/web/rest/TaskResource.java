@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class TaskResource {
     private final Logger log = LoggerFactory.getLogger(TaskResource.class);
 
     private static final String ENTITY_NAME = "task";
-
+        
     private final TaskRepository taskRepository;
 
     private final TaskSearchRepository taskSearchRepository;
@@ -95,7 +94,8 @@ public class TaskResource {
     @Timed
     public List<Task> getAllTasks() {
         log.debug("REST request to get all Tasks");
-        return taskRepository.findAll();
+        List<Task> tasks = taskRepository.findAll();
+        return tasks;
     }
 
     /**
@@ -131,7 +131,7 @@ public class TaskResource {
      * SEARCH  /_search/tasks?query=:query : search for the task corresponding
      * to the query.
      *
-     * @param query the query of the task search
+     * @param query the query of the task search 
      * @return the result of the search
      */
     @GetMapping("/_search/tasks")
@@ -142,5 +142,6 @@ public class TaskResource {
             .stream(taskSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
 
 }

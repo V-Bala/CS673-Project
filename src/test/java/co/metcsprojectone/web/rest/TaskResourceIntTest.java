@@ -77,7 +77,7 @@ public class TaskResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        TaskResource taskResource = new TaskResource(taskRepository, taskSearchRepository);
+            TaskResource taskResource = new TaskResource(taskRepository, taskSearchRepository);
         this.restTaskMockMvc = MockMvcBuilders.standaloneSetup(taskResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -92,9 +92,9 @@ public class TaskResourceIntTest {
      */
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
-            .title(DEFAULT_TITLE)
-            .description(DEFAULT_DESCRIPTION)
-            .targetdate(DEFAULT_TARGETDATE);
+                .title(DEFAULT_TITLE)
+                .description(DEFAULT_DESCRIPTION)
+                .targetdate(DEFAULT_TARGETDATE);
         return task;
     }
 
@@ -110,6 +110,7 @@ public class TaskResourceIntTest {
         int databaseSizeBeforeCreate = taskRepository.findAll().size();
 
         // Create the Task
+
         restTaskMockMvc.perform(post("/api/tasks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(task)))
@@ -134,12 +135,13 @@ public class TaskResourceIntTest {
         int databaseSizeBeforeCreate = taskRepository.findAll().size();
 
         // Create the Task with an existing ID
-        task.setId(1L);
+        Task existingTask = new Task();
+        existingTask.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restTaskMockMvc.perform(post("/api/tasks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(task)))
+            .content(TestUtil.convertObjectToJsonBytes(existingTask)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -198,9 +200,9 @@ public class TaskResourceIntTest {
         // Update the task
         Task updatedTask = taskRepository.findOne(task.getId());
         updatedTask
-            .title(UPDATED_TITLE)
-            .description(UPDATED_DESCRIPTION)
-            .targetdate(UPDATED_TARGETDATE);
+                .title(UPDATED_TITLE)
+                .description(UPDATED_DESCRIPTION)
+                .targetdate(UPDATED_TARGETDATE);
 
         restTaskMockMvc.perform(put("/api/tasks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -278,17 +280,7 @@ public class TaskResourceIntTest {
     }
 
     @Test
-    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Task.class);
-        Task task1 = new Task();
-        task1.setId(1L);
-        Task task2 = new Task();
-        task2.setId(task1.getId());
-        assertThat(task1).isEqualTo(task2);
-        task2.setId(2L);
-        assertThat(task1).isNotEqualTo(task2);
-        task1.setId(null);
-        assertThat(task1).isNotEqualTo(task2);
     }
 }

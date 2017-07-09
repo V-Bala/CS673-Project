@@ -8,12 +8,16 @@
             "otherEntityRelationshipName": "userstory"
         },
         {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "userstory",
-            "relationshipName": "tmember",
-            "otherEntityName": "tmember",
-            "otherEntityField": "membername",
-            "ownerSide": true
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "issue",
+            "otherEntityName": "issue",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "userstory"
         }
     ],
     "fields": [
@@ -41,8 +45,8 @@
         }
     ],
     "changelogDate": "20170608203210",
-    "entityTableName": "userstory",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "userstory",
+    "pagination": "no"
 }
