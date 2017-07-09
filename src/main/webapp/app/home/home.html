@@ -65,14 +65,15 @@
 
 <!-- This is the 'section' that will show once the user logs in -->
 <div ng-show="vm.isAuthenticated()">
-    <div class="col-md-2" style="background-color: #00b3ee; height: 1000px">
+    <div class="col-md-2" style="background-color: #589BBE; height: 1000px">
         <div id="projectsidebar">
             <span>
                   <h4>My Projects</h4>
             </span>
             <span>
                 <button class="btn btn-primary" ui-sref="project.new">
-                <span class="glyphicon glyphicon-plus"></span>
+                <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    Add Project
                 </button>
             </span>
             <div ng-repeat="project in vm.myProjects track by project.id">
@@ -84,11 +85,39 @@
             </button>
             </div>
         </div>
-
-
     </div>
-    <div class="col-md-10" style="background-color: #9c27b0; height: 1000px">
-
+    <div class="col-md-10" style="background-color: white; height: 1000px">
+        <div class="dashboard">
+            <div class="current-projects">
+                <h3 style="text-align: center; color: grey">My Dashboard</h3>
+                <div class="projects-container">
+                    <button class="show-projects" data-toggle="collapse" data-target="#project-name-list" type="button">Show Projects</button>
+                    <div id="project-name-list" class="collapse" ng-repeat="project in vm.myProjects track by project.id">
+                        <!-- Create a collapseable bar that when clicked shows project detail list -->
+                        <div class="project-detail">
+                            <div>Name: {{project.name}}</div>
+                            <div>Description: {{project.description}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="current-issues">
+                <!-- Collapseable current high priority issues bar -->
+                <div class="issues-container">
+                    <button class="show-issues" data-toggle="collapse" data-target="#issues-list" type="button">Show Issues</button>
+                    <div id="issues-list" class="collapse" ng-repeat="issue in vm.issues track by issue.id">
+                        <!-- Create a collapseable bar that when clicked shows issues list -->
+                        <div class="issue-detail">
+                            <div>Name: {{issue.name}}</div>
+                            <div>Status: {{issue.status}}</div>
+                            <div>Priority: {{issue.priority}}</div>
+                            <div>Comments: {{issue.comments}}</div>
+                            <div>Project: {{issue.project}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

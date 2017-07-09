@@ -1,0 +1,57 @@
+div.projects-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-color: grey;
+    border-width: 2px;
+    margin: 5px;
+}
+
+div#project-name-list .project-detail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+    border-style: solid;
+    border-color: grey;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+button.show-projects {
+    background-color: white;
+    border-width: 2px;
+    border-color: grey;
+    color: grey;
+    border-style: solid;
+}
+
+div.issues-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-color: grey;
+    border-width: 2px;
+    margin: 5px;
+}
+
+button.show-issues {
+    background-color: white;
+    border-width: 2px;
+    border-color: grey;
+    color: grey;
+    border-style: solid;
+}
+
+div.issue-detail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+    border-style: solid;
+    border-color: grey;
+    border-width: 2px;
+    border-radius: 10px;
+}
