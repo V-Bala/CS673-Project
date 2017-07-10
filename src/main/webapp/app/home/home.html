@@ -70,19 +70,19 @@
             <span>
                   <h4>My Projects</h4>
             </span>
-            <span>
-                <button class="btn btn-primary" ui-sref="project.new">
-                <!--<span class="glyphicon glyphicon-plus"></span>-->
-                    Add Project
-                </button>
-            </span>
-            <div ng-repeat="project in vm.myProjects track by project.id">
-                {{project.name}} <button type="submit"
-                                         ui-sref="project-detail({id:project.id})"
-                                         class="btn btn-sm">
-                <span class="glyphicon glyphicon-eye-open"></span>
-                <span class="hidden-sm-down"></span>
-            </button>
+            <!--<span>-->
+                <!--<button class="btn btn-primary" ui-sref="project.new">-->
+                <!--&lt;!&ndash;<span class="glyphicon glyphicon-plus"></span>&ndash;&gt;-->
+                    <!--Add Project-->
+                <!--</button>-->
+            <!--</span>-->
+            <hr>
+            <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
+                <!--<button type="submit" ui-sref="project-detail({id:project.id})" class="btn btn-sm">-->
+                <!--<span class="glyphicon glyphicon-eye-open"></span>-->
+                <!--<span class="hidden-sm-down"></span>-->
+                <!--</button>-->
+                <a ui-sref="project-detail({id:project.id})">{{project.name}}</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,49 @@
+dt > span, dd > span {
+    margin: 20px;
+}
+
+div.col-md-2 div.project-listing {
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#projectsidebar span > h4 {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+div#projectsidebar hr {
+    color: white;
+    line-height: 2px;
+}
+
+button.add-project-btn {
+    background-color: transparent;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    color: white;
+}
+
+div#projectsidebar div#project-add-btn {
+    display: flex;
+    justify-content: center;
+}
+
+div.project-listing a {
+    display: block;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+    width: 100%;
+}
+
+div.project-listing a::selection {
+    background-color: white;
+    color: #589BBE;
+}

@@ -55,3 +55,25 @@ div.issue-detail {
     border-width: 2px;
     border-radius: 10px;
 }
+
+hr {
+    color: white;
+    line-height: 2px;
+}
+
+div.project-listing a {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h4 {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

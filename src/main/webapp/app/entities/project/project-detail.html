@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="content/css/project-detail.css">
 
 <div>
     <!-- old background color: #00b3ee-->
@@ -8,16 +8,20 @@
                   <h4>My Projects</h4>
             </span>
             <span>
-                <button class="btn btn-primary" ui-sref="project.new">
-                <span class="glyphicon glyphicon-plus"></span>
-                </button>
+                <div id="project-add-btn">
+                    <button class="add-project-btn" ui-sref="project.new">
+                    <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    Add Project
+                    </button>
+                </div>
+                <hr>
             </span>
-            <div ng-repeat="project in vm.myProjects track by project.id">
-                {{project.name}} <button type="submit"
-                                         ui-sref="project-detail({id:project.id})"
-                                         class="btn btn-sm">
-                <span class="glyphicon glyphicon-eye-open"></span>
-                <span class="hidden-sm-down"></span>
+            <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
+                <!--{{project.name}}-->
+                <!--<button type="submit" ui-sref="project-detail({id:project.id})" class="btn btn-sm">-->
+                <!--<span class="glyphicon glyphicon-eye-open"></span>-->
+                <!--<span class="hidden-sm-down"></span>-->
+                <a ui-sref="project-detail({id:project.id})">{{project.name}}</a>
             </button>
             </div>
         </div>
