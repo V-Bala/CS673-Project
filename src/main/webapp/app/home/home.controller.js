@@ -5,15 +5,17 @@
         .module('projectoneApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project', 'User', 'Issue'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project', 'User', 'Issue', 'Requirement'];
 
     function HomeController ($scope, Principal, LoginService, $state, Project, User, Issue) {
         var vm = this;
 
         vm.account = null;
         vm.myProjects = Project.myprojects();
-        vm.user = User.firstName; //trying to get the user's firstname
-        vm.issues = Issue.projissue();
+        vm.user = User.firstName; //TODO: Try to get the user's firstname into home.html to get username displayed in dashboard as 'User's Dashboard', this currently isn't working
+        vm.issues = Issue.projissue(); //TODO: Get issue data pulled into home.html
+
+        //TODO: Get requirements data pulled in here
 
         /* HERE IS A QUERY TO BRING PROJECTS TO HOME, NOTICE THE INJECT OF PROJECT ABOVE*/
         vm.projects = Project.query();

@@ -1,58 +1,37 @@
-div.projects-container {
+div.dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div.projects-container, div.requirements-container, div.issues-container, div.userstory-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border-color: grey;
+    border-color: #c6c3c3;
     border-width: 2px;
     margin: 5px;
 }
 
-div#project-name-list .project-detail {
+div#project-name-list .project-detail, div#requirements-list .requirement-detail, div#userstory-list .userstory-detail, div#issues-list .issue-detail {
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 10px;
     margin: 5px;
     border-style: solid;
-    border-color: grey;
+    border-color: #c6c3c3;
     border-width: 2px;
     border-radius: 10px;
-}
-
-button.show-projects {
-    background-color: white;
-    border-width: 2px;
-    border-color: grey;
     color: grey;
-    border-style: solid;
 }
 
-div.issues-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border-color: grey;
+button.show-projects, button.show-issues, button.show-requirements, button.show-userstories {
+    background-color: #c6c3c3;
     border-width: 2px;
-    margin: 5px;
-}
-
-button.show-issues {
-    background-color: white;
-    border-width: 2px;
-    border-color: grey;
-    color: grey;
+    border-color: white;
+    color: white;
     border-style: solid;
-}
-
-div.issue-detail {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    margin: 5px;
-    border-style: solid;
-    border-color: grey;
-    border-width: 2px;
     border-radius: 10px;
 }
 
