@@ -5,13 +5,15 @@
         .module('projectoneApp')
         .controller('ProjectController', ProjectController);
 
-    ProjectController.$inject = ['Project', 'ProjectSearch'];
+    ProjectController.$inject = ['DataUtils', 'Project', 'ProjectSearch'];
 
-    function ProjectController(Project, ProjectSearch) {
+    function ProjectController(DataUtils, Project, ProjectSearch) {
 
         var vm = this;
 
         vm.projects = [];
+        vm.openFile = DataUtils.openFile;
+        vm.byteSize = DataUtils.byteSize;
         vm.clear = clear;
         vm.search = search;
         vm.loadAll = loadAll;

@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('TaskDetailController', TaskDetailController);
 
-    TaskDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Task', 'Userstory', 'Tmember'];
+    TaskDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Task', 'Userstory'];
 
-    function TaskDetailController($scope, $rootScope, $stateParams, previousState, entity, Task, Userstory, Tmember) {
+    function TaskDetailController($scope, $rootScope, $stateParams, previousState, entity, Task, Userstory) {
         var vm = this;
 
         vm.task = entity;

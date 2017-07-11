@@ -5,15 +5,16 @@
         .module('projectoneApp')
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Principal', 'Auth'];
+    SettingsController.$inject = ['Principal', 'Auth', '$uibModalInstance'];
 
-    function SettingsController (Principal, Auth) {
+    function SettingsController (Principal, Auth, $uibModalInstance) {
         var vm = this;
 
         vm.error = null;
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
+        vm.clear = clear;
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -44,6 +45,12 @@
                 vm.success = null;
                 vm.error = 'ERROR';
             });
+            $state.go('home');
+        }
+
+        function clear () {
+            $uibModalInstance.dismiss('cancel');
+
         }
     }
 })();

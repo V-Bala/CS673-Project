@@ -3,7 +3,7 @@
     <h2><span>Task</span> {{vm.task.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
+    <dl class="row jh-entity-details">
         <dt><span>Title</span></dt>
         <dd>
             <span>{{vm.task.title}}</span>
@@ -19,10 +19,6 @@
         <dt><span>Userstory</span></dt>
         <dd>
             <a ui-sref="userstory-detail({id:vm.task.userstory.id})">{{vm.task.userstory.title}}</a>
-        </dd>
-        <dt><span>Tmember</span></dt>
-        <dd>
-            <a ui-sref="tmember-detail({id:vm.task.tmember.id})">{{vm.task.tmember.membername}}</a>
         </dd>
     </dl>
 

@@ -1,5 +1,6 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.domain.Comment;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Userstory;
 
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,7 +32,7 @@ public class UserstoryResource {
     private final Logger log = LoggerFactory.getLogger(UserstoryResource.class);
 
     private static final String ENTITY_NAME = "userstory";
-
+        
     private final UserstoryRepository userstoryRepository;
 
     private final UserstorySearchRepository userstorySearchRepository;
@@ -95,7 +95,8 @@ public class UserstoryResource {
     @Timed
     public List<Userstory> getAllUserstories() {
         log.debug("REST request to get all Userstories");
-        return userstoryRepository.findAllWithEagerRelationships();
+        List<Userstory> userstories = userstoryRepository.findAll();
+        return userstories;
     }
 
     /**
@@ -108,7 +109,7 @@ public class UserstoryResource {
     @Timed
     public ResponseEntity<Userstory> getUserstory(@PathVariable Long id) {
         log.debug("REST request to get Userstory : {}", id);
-        Userstory userstory = userstoryRepository.findOneWithEagerRelationships(id);
+        Userstory userstory = userstoryRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(userstory));
     }
 
@@ -131,7 +132,7 @@ public class UserstoryResource {
      * SEARCH  /_search/userstories?query=:query : search for the userstory corresponding
      * to the query.
      *
-     * @param query the query of the userstory search
+     * @param query the query of the userstory search 
      * @return the result of the search
      */
     @GetMapping("/_search/userstories")
@@ -141,6 +142,15 @@ public class UserstoryResource {
         return StreamSupport
             .stream(userstorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+
+    @RequestMapping("/projus")
+    @Timed
+    public List<Userstory> getProjectUserstories(@RequestParam Long id) {
+        log.debug("REST request to get Userstories for project: {}", id);
+        List<Userstory> out = userstoryRepository.findByProjectId(id);
+        return out;
     }
 
 }

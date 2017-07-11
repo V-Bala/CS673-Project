@@ -5,12 +5,13 @@
         .module('projectoneApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project', 'User'];
 
-    function HomeController ($scope, Principal, LoginService, $state, Project) {
+    function HomeController ($scope, Principal, LoginService, $state, Project, User) {
         var vm = this;
 
         vm.account = null;
+        vm.myProjects = Project.myprojects();
 
         /* HERE IS A QUERY TO BRING PROJECTS TO HOME, NOTICE THE INJECT OF PROJECT ABOVE*/
         vm.projects = Project.query();

@@ -20,7 +20,10 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'myprojects': { method: 'GET', isArray: true, url: 'api/myprojects'},
+            'addmem': { method:'PUT', url: 'api/addmem' },
+            'projcom': { method: 'GET', isArray: true, url: 'api/projcomments'}
         });
     }
 })();

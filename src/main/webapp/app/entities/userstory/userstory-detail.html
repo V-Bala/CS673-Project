@@ -3,7 +3,7 @@
     <h2><span>Userstory</span> {{vm.userstory.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
+    <dl class="row jh-entity-details">
         <dt><span>Title</span></dt>
         <dd>
             <span>{{vm.userstory.title}}</span>
@@ -24,11 +24,9 @@
         <dd>
             <span>{{vm.userstory.priority}}</span>
         </dd>
-        <dt><span>Tmember</span></dt>
+        <dt><span>Project</span></dt>
         <dd>
-            <span ng-repeat="tmember in vm.userstory.tmembers">
-                <a ui-sref="tmember-detail({id: tmember.id})">{{tmember.membername}}</a>{{$last ? '' : ', '}}
-            </span>
+            <a ui-sref="project-detail({id:vm.userstory.project.id})">{{vm.userstory.project.id}}</a>
         </dd>
     </dl>
 

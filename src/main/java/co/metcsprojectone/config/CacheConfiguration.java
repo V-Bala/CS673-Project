@@ -42,10 +42,6 @@ public class CacheConfiguration {
             cm.createCache(co.metcsprojectone.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Tmember.class.getName(), jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Tmember.class.getName() + ".tasks", jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Tmember.class.getName() + ".userstories", jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Tmember.class.getName() + ".teams", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Userstory.class.getName(), jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Userstory.class.getName() + ".tasks", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Userstory.class.getName() + ".tmembers", jcacheConfiguration);
@@ -53,10 +49,12 @@ public class CacheConfiguration {
             cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".issues", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Issue.class.getName(), jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Requirement.class.getName(), jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Team.class.getName(), jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Team.class.getName() + ".projects", jcacheConfiguration);
-            cm.createCache(co.metcsprojectone.domain.Team.class.getName() + ".tmembers", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Task.class.getName(), jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".pmembers", jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Comment.class.getName(), jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".projectcomments", jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".userstories", jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Userstory.class.getName() + ".issues", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
