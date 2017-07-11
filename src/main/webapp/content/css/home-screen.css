@@ -1,7 +1,10 @@
 div.dashboard {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    /*flex-direction: row;*/
+    /*justify-content: space-around;*/
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 div.projects-container, div.requirements-container, div.issues-container, div.userstory-container {
@@ -11,6 +14,7 @@ div.projects-container, div.requirements-container, div.issues-container, div.us
     border-color: #c6c3c3;
     border-width: 2px;
     margin: 5px;
+    width: 100%;
 }
 
 div#project-name-list .project-detail, div#requirements-list .requirement-detail, div#userstory-list .userstory-detail, div#issues-list .issue-detail {
@@ -24,6 +28,11 @@ div#project-name-list .project-detail, div#requirements-list .requirement-detail
     border-width: 2px;
     border-radius: 10px;
     color: grey;
+    width: 100%;
+}
+
+div.current-projects, div.current-issues, div.requirements, div.userstory {
+    width: 100%;
 }
 
 button.show-projects, button.show-issues, button.show-requirements, button.show-userstories {
@@ -33,6 +42,7 @@ button.show-projects, button.show-issues, button.show-requirements, button.show-
     color: white;
     border-style: solid;
     border-radius: 10px;
+    width: 100%;
 }
 
 hr {

@@ -76,8 +76,8 @@
             </div>
         </div>
     </div>
-        <div class="col-md-10" style="background-color: white; height: 1000px">
-            <h3 style="text-align: center; color: grey;">My Dashboard</h3>
+    <div class="col-md-10" style="background-color: white; height: 1000px">
+        <h3 style="text-align: center; color: grey;">My Dashboard</h3>
         <div class="dashboard">
             <div class="current-projects">
                 <div class="projects-container">
@@ -96,10 +96,10 @@
                 <div class="requirements-container">
                     <!-- Create a collapseable bar that when clicked shows requirements list assigned to user -->
                     <button class="show-requirements" data-toggle="collapse" data-target="#requirements-list" type="button">View Requirements</button>
-                    <div id="requirements-list" class="collapse" ng-repeat="project in vm.myProjects track by project.id">
+                    <div id="requirements-list" class="collapse" ng-repeat="requirement in vm.requirements track by requirement.id">
                         <div class="requirement-detail">
-                            <div>Name: {{project.name}}</div>
-                            <div>Description: {{project.description}}</div>
+                            <div>Name: {{requirement.name}}</div>
+                            <div>Status: {{requirement.status}}</div>
                         </div>
                     </div>
                 </div>
@@ -109,10 +109,14 @@
                 <div class="userstory-container">
                     <!-- Create a collapseable bar that when clicked shows requirements list assigned to user -->
                     <button class="show-userstories" data-toggle="collapse" data-target="#userstory-list" type="button">View User Stories</button>
-                    <div id="userstory-list" class="collapse" ng-repeat="project in vm.myProjects track by project.id">
+                    <div id="userstory-list" class="collapse" ng-repeat="userstory in vm.userstories track by userstory.id">
                         <div class="userstory-detail">
-                            <div>Name: {{project.name}}</div>
-                            <div>Description: {{project.description}}</div>
+                            <div>Title: {{userstory.name}}</div>
+                            <div>Description: {{userstory.description}}</div>
+                            <div>Status: {{userstory.status}}</div>
+                            <div>Priority: {{userstory.priority}}</div>
+                            <div>Project: {{userstory.project.name}}</div>
+                            <div>Comments: {{userstory.comments}}</div>
                         </div>
                     </div>
                 </div>
@@ -133,8 +137,6 @@
                     </div>
                 </div>
             </div>
-
-
 
         </div>
     </div>
