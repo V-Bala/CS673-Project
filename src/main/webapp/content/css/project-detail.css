@@ -35,15 +35,25 @@ div#projectsidebar div#project-add-btn {
     justify-content: center;
 }
 
-div.project-listing a {
-    display: block;
-    color: white;
-    padding: 5px;
-    font-size: 15px;
-    width: 100%;
-}
-
 div.project-listing a::selection {
     background-color: white;
     color: #589BBE;
+}
+
+div.project-listing a#projects {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 100%;
 }

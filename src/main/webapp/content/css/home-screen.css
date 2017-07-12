@@ -50,7 +50,7 @@ hr {
     line-height: 2px;
 }
 
-div.project-listing a {
+div.project-listing a#projects {
     color: white;
     text-align: center;
     padding: 10px;
@@ -59,6 +59,13 @@ div.project-listing a {
     align-content: center;
     align-items: center;
     flex-direction: column;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 100%;
 }
 
 h4 {
