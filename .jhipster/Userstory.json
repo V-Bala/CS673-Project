@@ -18,6 +18,12 @@
             "otherEntityName": "issue",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "userstory"
+        },
+        {
+            "relationshipName": "requirement",
+            "otherEntityName": "requirement",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
         }
     ],
     "fields": [

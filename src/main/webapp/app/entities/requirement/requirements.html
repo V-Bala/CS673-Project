@@ -38,6 +38,7 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>Status</span></th>
+                    <th><span>Project</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,6 +47,9 @@
                     <td><a ui-sref="requirement-detail({id:requirement.id})">{{requirement.id}}</a></td>
                     <td>{{requirement.name}}</td>
                     <td>{{requirement.status}}</td>
+                    <td>
+                        <a ui-sref="project-detail({id:requirement.project.id})">{{requirement.project.id}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

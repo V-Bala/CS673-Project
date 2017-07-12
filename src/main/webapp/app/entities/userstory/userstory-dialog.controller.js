@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('UserstoryDialogController', UserstoryDialogController);
 
-    UserstoryDialogController.$inject = ['$state','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Userstory', 'Task', 'Project', 'Issue'];
+    UserstoryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Userstory', 'Task', 'Project', 'Issue', 'Requirement'];
 
-    function UserstoryDialogController ($state, $timeout, $scope, $stateParams, $uibModalInstance, entity, Userstory, Task, Project, Issue) {
+    function UserstoryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Userstory, Task, Project, Issue, Requirement) {
         var vm = this;
 
         vm.userstory = entity;
@@ -16,6 +16,7 @@
         vm.tasks = Task.query();
         vm.projects = Project.query();
         vm.issues = Issue.query();
+        vm.requirements = Requirement.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -37,8 +38,8 @@
         function onSaveSuccess (result) {
             $scope.$emit('projectoneApp:userstoryUpdate', result);
             $uibModalInstance.close(result);
-            vm.isSaving = false;
             $state.reload();
+            vm.isSaving = false;
         }
 
         function onSaveError () {
