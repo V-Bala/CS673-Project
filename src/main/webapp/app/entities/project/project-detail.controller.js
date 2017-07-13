@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('ProjectDetailController', ProjectDetailController);
 
-    ProjectDetailController.$inject = ['$state', '$stateParams', '$uibModal', '$scope', '$rootScope', 'previousState', 'DataUtils', 'entity', 'Project', 'Issue', 'Comment', 'Principal', 'Userstory',];
+    ProjectDetailController.$inject = ['$state', '$stateParams', '$uibModal', '$scope', '$rootScope', 'previousState', 'DataUtils', 'entity', 'Project', 'Issue', 'Comment', 'Principal', 'Userstory', 'Requirement'];
 
-    function ProjectDetailController($state, $stateParams, $uibModal, $scope, $rootScope, previousState, DataUtils, entity, Project, Issue, Comment, Principal, Userstory) {
+    function ProjectDetailController($state, $stateParams, $uibModal, $scope, $rootScope, previousState, DataUtils, entity, Project, Issue, Comment, Principal, Userstory, Requirement) {
         var vm = this;
 
         vm.project = entity;
@@ -19,6 +19,8 @@
         vm.comments = Project.projcom({id: vm.project.id});
         vm.userstories = Userstory.projus({id: vm.project.id});
         vm.issues = Issue.projissue({id: vm.project.id});
+        vm.requirements = Requirement.projreq({id: vm.project.id});
+
 
 
         vm.comment = null;
@@ -27,6 +29,31 @@
         vm.isSaving = false;
         vm.isMember = false;
         vm.myProjects = Project.myprojects();
+
+
+
+
+        /* Requirement section */
+        vm.addreq = addReq;
+        function addReq() {
+            $uibModal.open({
+                templateUrl: 'app/entities/requirement/requirement-dialog.html',
+                controller: 'RequirementDialogController',
+                controllerAs: 'vm',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    entity:['Project', function (Project) {
+                        return {
+                            name: null,
+                            status: null,
+                            id: null,
+                            project: Project.get({id: vm.project.id})
+                        };
+                    }]
+                }
+            })
+        }
 
 
         /* Issues section */

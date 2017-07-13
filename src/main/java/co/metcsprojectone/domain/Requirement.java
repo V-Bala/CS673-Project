@@ -1,11 +1,14 @@
 package co.metcsprojectone.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import co.metcsprojectone.domain.enumeration.Status;
@@ -32,6 +35,14 @@ public class Requirement implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
+
+    @OneToMany(mappedBy = "requirement")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Userstory> userstories = new HashSet<>();
+
+    @ManyToOne
+    private Project project;
 
     public Long getId() {
         return id;
@@ -65,6 +76,44 @@ public class Requirement implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Set<Userstory> getUserstories() {
+        return userstories;
+    }
+
+    public Requirement userstories(Set<Userstory> userstories) {
+        this.userstories = userstories;
+        return this;
+    }
+
+    public Requirement addUserstory(Userstory userstory) {
+        this.userstories.add(userstory);
+        userstory.setRequirement(this);
+        return this;
+    }
+
+    public Requirement removeUserstory(Userstory userstory) {
+        this.userstories.remove(userstory);
+        userstory.setRequirement(null);
+        return this;
+    }
+
+    public void setUserstories(Set<Userstory> userstories) {
+        this.userstories = userstories;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public Requirement project(Project project) {
+        this.project = project;
+        return this;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     @Override

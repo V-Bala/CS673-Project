@@ -61,6 +61,9 @@ public class Userstory implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Issue> issues = new HashSet<>();
 
+    @ManyToOne
+    private Requirement requirement;
+
     public Long getId() {
         return id;
     }
@@ -195,6 +198,19 @@ public class Userstory implements Serializable {
 
     public void setIssues(Set<Issue> issues) {
         this.issues = issues;
+    }
+
+    public Requirement getRequirement() {
+        return requirement;
+    }
+
+    public Userstory requirement(Requirement requirement) {
+        this.requirement = requirement;
+        return this;
+    }
+
+    public void setRequirement(Requirement requirement) {
+        this.requirement = requirement;
     }
 
     @Override

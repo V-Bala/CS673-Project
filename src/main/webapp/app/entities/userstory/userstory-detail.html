@@ -28,6 +28,10 @@
         <dd>
             <a ui-sref="project-detail({id:vm.userstory.project.id})">{{vm.userstory.project.id}}</a>
         </dd>
+        <dt><span>Requirement</span></dt>
+        <dd>
+            <a ui-sref="requirement-detail({id:vm.userstory.requirement.id})">{{vm.userstory.requirement.name}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

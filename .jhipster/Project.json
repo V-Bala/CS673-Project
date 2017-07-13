@@ -34,6 +34,12 @@
             "otherEntityName": "userstory",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipName": "requirement",
+            "otherEntityName": "requirement",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "project"
         }
     ],
     "fields": [
