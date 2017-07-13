@@ -5,18 +5,17 @@
         .module('projectoneApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project', 'User', 'Issue', 'Userstory', 'Requirement'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Project', 'Issue', 'Userstory', 'Requirement'];
 
-    function HomeController ($scope, Principal, LoginService, $state, Project, User, Issue, Userstory, Requirement) {
+    function HomeController ($scope, Principal, LoginService, $state, Project, Issue, Userstory, Requirement) {
         var vm = this;
 
         vm.account = null;
         vm.myProjects = Project.myprojects();
-        vm.user = User.query(); //TODO: Try to get the user's firstname into home.html to get username displayed in dashboard as 'User's Dashboard', this currently gets array of users
-        vm.issues = Issue.query(); //TODO: Fix data coming from the issues query, Project field is displaying a complete JSON object vs just the project name in the view
-        vm.userstories = Userstory.query();
 
-        //TODO: Get requirements data pulled in here
+        //TODO: Setup api calls to get issues, userstories, and requirements that are specific to the logged in user
+        vm.issues = Issue.query();
+        vm.userstories = Userstory.query();
         vm.requirements = Requirement.query();
 
         /* HERE IS A QUERY TO BRING PROJECTS TO HOME, NOTICE THE INJECT OF PROJECT ABOVE*/
