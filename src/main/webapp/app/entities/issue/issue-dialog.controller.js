@@ -5,16 +5,14 @@
         .module('projectoneApp')
         .controller('IssueDialogController', IssueDialogController);
 
-    IssueDialogController.$inject = ['$state','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Issue', 'Project', 'Userstory'];
+    IssueDialogController.$inject = ['$state','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Issue', 'Userstory'];
 
-    function IssueDialogController ($state, $timeout, $scope, $stateParams, $uibModalInstance, entity, Issue, Project, Userstory) {
+    function IssueDialogController ($state, $timeout, $scope, $stateParams, $uibModalInstance, entity, Issue, Userstory) {
         var vm = this;
 
         vm.issue = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.projects = Project.query();
-
 
         getstories();
 

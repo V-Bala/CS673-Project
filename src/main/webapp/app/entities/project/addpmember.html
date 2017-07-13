@@ -8,13 +8,13 @@
     </div>
     <div class="modal-body">
         <div class="form-group">
-            <label class="control-label" for="field_name">Please enter the email of the member you would like to add</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.email"
-                    />
+            <label class="control-label" for="field_name">
+                Please enter the email of the member you would like to add
+            </label>
+            <input type="text" class="form-control" name="name" id="field_name" ng-model="vm.email"/>
         </div>
 
-        <button type="button" ng-click="vm.getusers()">
+        <button type="button" ng-disabled="vm.email === null" ng-click="vm.getusers()">
             Find Users
         </button>
 

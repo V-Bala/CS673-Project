@@ -46,13 +46,7 @@
                 <option value="CRITICAL">CRITICAL</option>
             </select>
         </div>
-
-        <div class="form-group">
-            <label for="field_project">Project</label>
-            <select class="form-control" id="field_project" name="project" ng-model="vm.issue.project" ng-options="project as project.name for project in vm.projects track by project.id">
-                <option value=""></option>
-            </select>
-        </div>
+        
         <div class="form-group">
             <label for="field_userstory">Userstory</label>
             <select class="form-control" id="field_userstory" name="userstory" ng-model="vm.issue.userstory" ng-options="userstory as userstory.title for userstory in vm.userstories track by userstory.id">

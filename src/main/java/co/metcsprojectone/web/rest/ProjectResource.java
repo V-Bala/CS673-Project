@@ -160,8 +160,6 @@ public class ProjectResource {
         return out;
     }
 
-
-
     /**
      * SEARCH  /_search/projects?query=:query : search for the project corresponding
      * to the query.
