@@ -12,5 +12,22 @@ Non auth
 
 
 <div class="sidebar" ng-if=vm.isAuthenticated()>
-
+    <div class="col-md-2" style="background-color: #589BBE; height: 5000px">
+        <div id="projectsidebar">
+            <span>
+                  <h4>My Projects</h4>
+            </span>
+            <span>
+                <div id="project-add-btn">
+                    <button class="add-project-btn" ui-sref="project.new">
+                    Add Project
+                    </button>
+                </div>
+                <hr>
+            </span>
+            <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
+                <a ui-sref="project-detail({id:project.id})">{{project.name}}</a>
+            </div>
+        </div>
+    </div>
 </div>
