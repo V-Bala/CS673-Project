@@ -1,0 +1,89 @@
+div.dashboard {
+    display: flex;
+    /*flex-direction: row;*/
+    /*justify-content: space-around;*/
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.projects-container, div.requirements-container, div.issues-container, div.userstory-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-color: #c6c3c3;
+    border-width: 2px;
+    margin: 5px;
+    width: 100%;
+}
+
+div#project-name-list .project-detail, div#requirements-list .requirement-detail, div#userstory-list .userstory-detail, div#issues-list .issue-detail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+    border-style: solid;
+    border-color: #c6c3c3;
+    border-width: 2px;
+    border-radius: 10px;
+    color: grey;
+    width: 100%;
+}
+
+div.current-projects, div.current-issues, div.requirements, div.userstory {
+    width: 100%;
+}
+
+button.show-projects, button.show-issues, button.show-requirements, button.show-userstories {
+    background-color: #c6c3c3;
+    border-width: 2px;
+    border-color: white;
+    color: white;
+    border-style: solid;
+    border-radius: 10px;
+    width: 100%;
+}
+
+hr {
+    color: white;
+    line-height: 2px;
+}
+
+div.project-listing a#projects {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 100%;
+}
+
+h4 {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+button.add-project-btn {
+    background-color: transparent;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    color: white;
+}
+
+div#project-add-btn {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
