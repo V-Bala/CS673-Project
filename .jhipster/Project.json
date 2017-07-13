@@ -8,10 +8,32 @@
             "otherEntityRelationshipName": "project"
         },
         {
+            "relationshipName": "powner",
+            "otherEntityName": "user",
             "relationshipType": "many-to-one",
-            "relationshipName": "team",
-            "otherEntityName": "team",
-            "otherEntityField": "teamname"
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipName": "pmember",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipName": "projectcomment",
+            "otherEntityName": "comment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "projectcomment"
+        },
+        {
+            "relationshipName": "userstory",
+            "otherEntityName": "userstory",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "project"
         }
     ],
     "fields": [
@@ -22,11 +44,16 @@
         {
             "fieldName": "description",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "pfiles",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
         }
     ],
     "changelogDate": "20170608203211",
-    "entityTableName": "project",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "project",
+    "pagination": "no"
 }

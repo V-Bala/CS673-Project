@@ -53,12 +53,13 @@ public class Userstory implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Task> tasks = new HashSet<>();
 
-    @ManyToMany
+    @ManyToOne
+    private Project project;
+
+    @OneToMany(mappedBy = "userstory")
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "userstory_tmember",
-               joinColumns = @JoinColumn(name="userstories_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="tmembers_id", referencedColumnName="id"))
-    private Set<Tmember> tmembers = new HashSet<>();
+    private Set<Issue> issues = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -158,29 +159,42 @@ public class Userstory implements Serializable {
         this.tasks = tasks;
     }
 
-    public Set<Tmember> getTmembers() {
-        return tmembers;
+    public Project getProject() {
+        return project;
     }
 
-    public Userstory tmembers(Set<Tmember> tmembers) {
-        this.tmembers = tmembers;
+    public Userstory project(Project project) {
+        this.project = project;
         return this;
     }
 
-    public Userstory addTmember(Tmember tmember) {
-        this.tmembers.add(tmember);
-        tmember.getUserstories().add(this);
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Set<Issue> getIssues() {
+        return issues;
+    }
+
+    public Userstory issues(Set<Issue> issues) {
+        this.issues = issues;
         return this;
     }
 
-    public Userstory removeTmember(Tmember tmember) {
-        this.tmembers.remove(tmember);
-        tmember.getUserstories().remove(this);
+    public Userstory addIssue(Issue issue) {
+        this.issues.add(issue);
+        issue.setUserstory(this);
         return this;
     }
 
-    public void setTmembers(Set<Tmember> tmembers) {
-        this.tmembers = tmembers;
+    public Userstory removeIssue(Issue issue) {
+        this.issues.remove(issue);
+        issue.setUserstory(null);
+        return this;
+    }
+
+    public void setIssues(Set<Issue> issues) {
+        this.issues = issues;
     }
 
     @Override
@@ -192,26 +206,26 @@ public class Userstory implements Serializable {
             return false;
         }
         Userstory userstory = (Userstory) o;
-        if (userstory.getId() == null || getId() == null) {
+        if (userstory.id == null || id == null) {
             return false;
         }
-        return Objects.equals(getId(), userstory.getId());
+        return Objects.equals(id, userstory.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Userstory{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", comments='" + getComments() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", priority='" + getPriority() + "'" +
-            "}";
+            "id=" + id +
+            ", title='" + title + "'" +
+            ", description='" + description + "'" +
+            ", comments='" + comments + "'" +
+            ", status='" + status + "'" +
+            ", priority='" + priority + "'" +
+            '}';
     }
 }

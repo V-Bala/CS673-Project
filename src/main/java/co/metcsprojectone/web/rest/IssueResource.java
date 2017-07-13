@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class IssueResource {
     private final Logger log = LoggerFactory.getLogger(IssueResource.class);
 
     private static final String ENTITY_NAME = "issue";
-
+        
     private final IssueRepository issueRepository;
 
     private final IssueSearchRepository issueSearchRepository;
@@ -95,7 +94,8 @@ public class IssueResource {
     @Timed
     public List<Issue> getAllIssues() {
         log.debug("REST request to get all Issues");
-        return issueRepository.findAll();
+        List<Issue> issues = issueRepository.findAll();
+        return issues;
     }
 
     /**
@@ -131,7 +131,7 @@ public class IssueResource {
      * SEARCH  /_search/issues?query=:query : search for the issue corresponding
      * to the query.
      *
-     * @param query the query of the issue search
+     * @param query the query of the issue search 
      * @return the result of the search
      */
     @GetMapping("/_search/issues")
@@ -142,5 +142,14 @@ public class IssueResource {
             .stream(issueSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
+    @RequestMapping("/projissues")
+    @Timed
+    public List<Issue> getProjectIssues(@RequestParam Long id) {
+        log.debug("REST request to get Issues for project : {}", id);
+        List<Issue> out = issueRepository.findAllByProjectId(id);
+        return out;
+    }
+
 
 }

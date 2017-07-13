@@ -29,12 +29,30 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="team_id" type="bigint">
+            <column name="pfiles" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="pfiles_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="powner_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="project_pmember">
+            <column name="pmembers_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="projects_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="projects_id, pmembers_id" tableName="project_pmember"/>
         
     </changeSet>
 </databaseChangeLog>

@@ -76,23 +76,23 @@ public class Requirement implements Serializable {
             return false;
         }
         Requirement requirement = (Requirement) o;
-        if (requirement.getId() == null || getId() == null) {
+        if (requirement.id == null || id == null) {
             return false;
         }
-        return Objects.equals(getId(), requirement.getId());
+        return Objects.equals(id, requirement.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Requirement{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", status='" + getStatus() + "'" +
-            "}";
+            "id=" + id +
+            ", name='" + name + "'" +
+            ", status='" + status + "'" +
+            '}';
     }
 }

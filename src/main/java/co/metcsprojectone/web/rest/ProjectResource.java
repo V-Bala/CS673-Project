@@ -1,5 +1,10 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.domain.Comment;
+import co.metcsprojectone.domain.User;
+import co.metcsprojectone.repository.CommentRepository;
+import co.metcsprojectone.repository.UserRepository;
+import co.metcsprojectone.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Project;
 
@@ -7,14 +12,15 @@ import co.metcsprojectone.repository.ProjectRepository;
 import co.metcsprojectone.repository.search.ProjectSearchRepository;
 import co.metcsprojectone.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,10 +35,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 @RequestMapping("/api")
 public class ProjectResource {
 
+    @Inject
+    co.metcsprojectone.repository.UserRepository userRepository;
+
+    @Inject
+    CommentRepository commentRepository;
+
     private final Logger log = LoggerFactory.getLogger(ProjectResource.class);
 
     private static final String ENTITY_NAME = "project";
-
+        
     private final ProjectRepository projectRepository;
 
     private final ProjectSearchRepository projectSearchRepository;
@@ -56,6 +68,9 @@ public class ProjectResource {
         if (project.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new project cannot already have an ID")).body(null);
         }
+        User uu = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        project.setPowner(uu);
+        project.addPmember(uu);
         Project result = projectRepository.save(project);
         projectSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/projects/" + result.getId()))
@@ -95,7 +110,17 @@ public class ProjectResource {
     @Timed
     public List<Project> getAllProjects() {
         log.debug("REST request to get all Projects");
-        return projectRepository.findAll();
+        List<Project> projects = projectRepository.findAllWithEagerRelationships();
+        return projects;
+    }
+
+    @GetMapping("/projects")
+    @RequestMapping("/myprojects")
+    @Timed
+    public List<Project> getAllMyProjects() {
+        log.debug("REST request to get all Projects");
+        List<Project> projects = projectRepository.findByPmembers_Login(SecurityUtils.getCurrentUserLogin());
+        return projects;
     }
 
     /**
@@ -108,7 +133,7 @@ public class ProjectResource {
     @Timed
     public ResponseEntity<Project> getProject(@PathVariable Long id) {
         log.debug("REST request to get Project : {}", id);
-        Project project = projectRepository.findOne(id);
+        Project project = projectRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(project));
     }
 
@@ -127,11 +152,21 @@ public class ProjectResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @RequestMapping("/projcomments")
+    @Timed
+    public List<Comment> getProjectComment(@RequestParam Long id) {
+        log.debug("REST request to get Comments for blog : {}", id);
+        List<Comment> out = commentRepository.findAllByProjectcommentIdOrderByDateDesc(id);
+        return out;
+    }
+
+
+
     /**
      * SEARCH  /_search/projects?query=:query : search for the project corresponding
      * to the query.
      *
-     * @param query the query of the project search
+     * @param query the query of the project search 
      * @return the result of the search
      */
     @GetMapping("/_search/projects")
@@ -142,5 +177,6 @@ public class ProjectResource {
             .stream(projectSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
 
 }
