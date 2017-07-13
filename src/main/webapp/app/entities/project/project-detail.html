@@ -291,7 +291,7 @@
 
                                 <h4 class="modal-title" id="myCommentLabel">Leave a comment</h4>
                             </div>
-                            <div>
+                            <div class="comment-field-submit">
                                 <div class="input-group" style="display: inline-block">
                                     <i class="fa fa-comments-o fa-2x hidden-md" aria-hidden="true"></i>&nbsp
                                     <label class="control-label" for="field_comment"></label>
@@ -317,7 +317,7 @@
                         <br>
                         <small><b>{{comment.usercomment.login}}</b> on {{comment.date | date:shortDate}} </small>
                         <br>
-                        <div style="padding-left: 20px; padding-right: 20px">
+                        <div id="comments">
                             {{comment.commenttext | limitTo: 500}}
                         </div>
                     </td>

@@ -57,3 +57,19 @@ div.project-listing a#projects {
     font-size: 15px;
     width: 100%;
 }
+
+div.comment-field-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap row;
+}
+
+h4#myCommentLabel {
+    color: grey;
+}
+
+div#comments {
+    padding-left: 20px;
+    padding-right: 20px;
+}

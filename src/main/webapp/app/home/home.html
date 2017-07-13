@@ -70,7 +70,14 @@
             <span>
                   <h4>My Projects</h4>
             </span>
-            <hr>
+            <span>
+                <div id="project-add-btn">
+                    <button class="add-project-btn" ui-sref="project.new">
+                    Add Project
+                    </button>
+                </div>
+                <hr>
+            </span>
             <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
                 <a id="projects" ui-sref="project-detail({id:project.id})">{{project.name}}</a>
             </div>
