@@ -29,6 +29,7 @@
             collapseNavbar();
             $state.go('home');
             Auth.logout();
+            location.reload();
         }
 
         function toggleNavbar() {

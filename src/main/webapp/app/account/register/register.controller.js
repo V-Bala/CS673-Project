@@ -54,7 +54,7 @@
                         rememberMe: true
                     }).then(function () {
                         vm.authenticationError = false;
-                        $uibModalInstance.close();
+                       // $uibModalInstance.close();
                         location.reload();
                         if ($state.current.name === 'register' || $state.current.name === 'activate' ||
                             $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
