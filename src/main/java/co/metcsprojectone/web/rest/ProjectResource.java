@@ -36,7 +36,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProjectResource {
 
     @Inject
-    co.metcsprojectone.repository.UserRepository userRepository;
+    UserRepository userRepository;
 
     @Inject
     CommentRepository commentRepository;

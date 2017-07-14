@@ -6,7 +6,6 @@ import co.metcsprojectone.domain.Requirement;
 import co.metcsprojectone.repository.RequirementRepository;
 import co.metcsprojectone.repository.search.RequirementSearchRepository;
 import co.metcsprojectone.web.rest.util.HeaderUtil;
-import com.sun.org.apache.regexp.internal.RE;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

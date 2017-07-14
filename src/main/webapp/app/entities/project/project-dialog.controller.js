@@ -32,9 +32,9 @@
         function save () {
             vm.isSaving = true;
             if (vm.project.id !== null) {
-                Project.update(vm.project, onSaveSuccess, onSaveError);
+                Project.update(vm.project, onSaveSuccess, onSaveSuccess);
             } else {
-                Project.save(vm.project, onSaveSuccess, onSaveError);
+                Project.save(vm.project, onSaveSuccess, onSaveSuccess);
             }
         }
 
@@ -43,11 +43,6 @@
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }
-
-        function onSaveError () {
-            vm.isSaving = false;
-        }
-
 
         vm.setPfiles = function ($file, project) {
             if ($file) {

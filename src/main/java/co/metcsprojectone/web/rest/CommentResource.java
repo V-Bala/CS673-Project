@@ -1,5 +1,6 @@
 package co.metcsprojectone.web.rest;
 
+import co.metcsprojectone.repository.UserRepository;
 import co.metcsprojectone.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
 import co.metcsprojectone.domain.Comment;
@@ -33,7 +34,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CommentResource {
 
     @Inject
-    co.metcsprojectone.repository.UserRepository userRepository;
+    UserRepository userRepository;
 
     private final Logger log = LoggerFactory.getLogger(CommentResource.class);
 
