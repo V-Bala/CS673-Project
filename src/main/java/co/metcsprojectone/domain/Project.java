@@ -65,6 +65,11 @@ public class Project implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Userstory> userstories = new HashSet<>();
 
+    @OneToMany(mappedBy = "project")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Requirement> requirements = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -234,6 +239,31 @@ public class Project implements Serializable {
 
     public void setUserstories(Set<Userstory> userstories) {
         this.userstories = userstories;
+    }
+
+    public Set<Requirement> getRequirements() {
+        return requirements;
+    }
+
+    public Project requirements(Set<Requirement> requirements) {
+        this.requirements = requirements;
+        return this;
+    }
+
+    public Project addRequirement(Requirement requirement) {
+        this.requirements.add(requirement);
+        requirement.setProject(this);
+        return this;
+    }
+
+    public Project removeRequirement(Requirement requirement) {
+        this.requirements.remove(requirement);
+        requirement.setProject(null);
+        return this;
+    }
+
+    public void setRequirements(Set<Requirement> requirements) {
+        this.requirements = requirements;
     }
 
     @Override

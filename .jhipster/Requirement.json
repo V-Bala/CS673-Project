@@ -1,6 +1,19 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "userstory",
+            "otherEntityName": "userstory",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "requirement"
+        },
+        {
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
@@ -13,8 +26,8 @@
         }
     ],
     "changelogDate": "20170608203213",
-    "entityTableName": "requirement",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "requirement",
+    "pagination": "no"
 }

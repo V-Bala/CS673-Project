@@ -55,6 +55,8 @@ public class CacheConfiguration {
             cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".projectcomments", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".userstories", jcacheConfiguration);
             cm.createCache(co.metcsprojectone.domain.Userstory.class.getName() + ".issues", jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Requirement.class.getName() + ".userstories", jcacheConfiguration);
+            cm.createCache(co.metcsprojectone.domain.Project.class.getName() + ".requirements", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

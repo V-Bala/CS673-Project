@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="project"/>
 
+        <addForeignKeyConstraint baseColumnNames="requirement_id"
+                                 baseTableName="userstory"
+                                 constraintName="fk_userstory_requirement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="requirement"/>
+
     </changeSet>
 </databaseChangeLog>
