@@ -1,9 +1,12 @@
 
 <div>
-    <h2><span>Requirement</span> {{vm.requirement.id}}</h2>
+    <div class="entity-detail-header">
+    <h2><span>{{vm.requirement.name}}</span></h2>
+    </div>
+    <h3><span>Requirement</span> {{vm.requirement.id}}</h3>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
+    <dl class="row jh-entity-details dl-horizontal">
         <dt><span>Name</span></dt>
         <dd>
             <span>{{vm.requirement.name}}</span>

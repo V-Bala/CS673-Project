@@ -309,6 +309,7 @@
                 <tr>
                 </tr>
                 <tr ng-repeat="comment in vm.comments track by comment.id">
+                    <div class="comment-box">
                     <td class="col-xs-12 well">
                         <br>
                         <small><b>{{comment.usercomment.login}}</b> on {{comment.date | date:shortDate}} </small>
@@ -318,6 +319,7 @@
                         </div>
                     </td>
                     <br>
+                    </div>
                 </tr>
                 </tbody>
             </table>

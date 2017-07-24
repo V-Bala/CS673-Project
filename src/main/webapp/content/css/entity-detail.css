@@ -1,0 +1,13 @@
+.entity-detail-header {
+    color: #ffffff;
+}
+.dl-horizontal {
+    background-color: #f2dede;
+    border-top:5px solid #000000;
+    border-bottom: 5px solid #000000;
+}
+.dl-horizontal > dt{
+    margin-left: 5%;
+    color: #1e88e5;
+    text-align: center;
+}
