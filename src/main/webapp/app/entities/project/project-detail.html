@@ -93,50 +93,31 @@
                         </button>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="jh-table table table-striped">
-                        <thead>
-                        <tr>
-                            <th><span>ID</span></th>
-                            <th><span>Name</span></th>
-                            <th><span>Status</span></th>
-                            <th><span>Project</span></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="requirement in vm.requirements track by requirement.id">
-                            <td><a ui-sref="requirement-detail({id:requirement.id})">{{requirement.id}}</a></td>
-                            <td>{{requirement.name}}</td>
-                            <td>{{requirement.status}}</td>
-                            <td>
-                                <a ui-sref="project-detail({id:requirement.project.id})">{{requirement.project.id}}</a>
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group flex-btn-group-container">
-                                    <button type="submit"
-                                            ui-sref="requirement-detail({id:requirement.id})"
-                                            class="btn btn-info btn-sm">
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="requirement.edit({id:requirement.id})"
-                                            class="btn btn-primary btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="requirement.delete({id:requirement.id})"
-                                            class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="d-inline-block col-xs-4 float-left well" ng-repeat="requirement in vm.requirements track by requirement.id">
+                    <h3> <a ui-sref="requirement-detail({id:requirement.id})">{{requirement.id}}: </a>
+                    {{requirement.name}} </h3>
+                    Status: {{requirement.status}}
+                    <a ui-sref="project-detail({id:requirement.project.id})">{{requirement.project.name}}</a>
+                    <div class="btn-group ">
+                        <button type="submit"
+                                ui-sref="requirement-detail({id:requirement.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-sm-down"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="requirement.edit({id:requirement.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-sm-down"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="requirement.delete({id:requirement.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-sm-down"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,56 +138,34 @@
                         </button>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="jh-table table table-striped">
-                        <thead>
-                        <tr>
-                            <th><span>ID</span></th>
-                            <th><span>Title</span></th>
-                            <th><span>Description</span></th>
-                            <th><span>Comments</span></th>
-                            <th><span>Status</span></th>
-                            <th><span>Priority</span></th>
-                            <th><span>Project</span></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="userstory in vm.userstories track by userstory.id">
-                            <td><a ui-sref="userstory-detail({id:userstory.id})">{{userstory.id}}</a></td>
-                            <td>{{userstory.title}}</td>
-                            <td>{{userstory.description}}</td>
-                            <td>{{userstory.comments}}</td>
-                            <td>{{userstory.status}}</td>
-                            <td>{{userstory.priority}}</td>
-                            <td>
-                                <a ui-sref="project-detail({id:userstory.project.id})">{{userstory.project.id}}</a>
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group flex-btn-group-container">
-                                    <button type="submit"
-                                            ui-sref="userstory-detail({id:userstory.id})"
-                                            class="btn btn-info btn-sm">
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="userstory.edit({id:userstory.id})"
-                                            class="btn btn-primary btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="userstory.delete({id:userstory.id})"
-                                            class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                        <span class="hidden-sm-down"></span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="d-inline-block col-xs-4 float-left well" ng-repeat="userstory in vm.userstories track by userstory.id">
+                    <h3><a ui-sref="userstory-detail({id:userstory.id})">{{userstory.id}}: </a>
+                    {{userstory.title}} </h3>
+                    <h6>{{userstory.description}}</h6>
+                    <h6>{{userstory.comments}}</h6>
+                    Status: {{userstory.status}}
+                    Priority: {{userstory.priority}}
+                    <a ui-sref="project-detail({id:userstory.project.id})">{{userstory.project.name}}</a>
+                    <div class="btn-group ">
+                        <button type="submit"
+                                ui-sref="userstory-detail({id:userstory.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-sm-down"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="userstory.edit({id:userstory.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-sm-down"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="userstory.delete({id:userstory.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-sm-down"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -231,54 +190,33 @@
                         </div>
                     </div>
                     <br/>
-                    <div class="table-responsive">
-                        <table class="jh-table table table-striped">
-                            <thead>
-                            <tr>
-                                <th><span>ID</span></th>
-                                <th><span>Name</span></th>
-                                <th><span>Comments</span></th>
-                                <th><span>Status</span></th>
-                                <th><span>Priority</span></th>
-                                <th><span>UserStory</span></th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="issue in vm.issues track by issue.id">
-                                <td><a ui-sref="issue-detail({id:issue.id})">{{issue.id}}</a></td>
-                                <td>{{issue.name}}</td>
-                                <td>{{issue.comments}}</td>
-                                <td>{{issue.status}}</td>
-                                <td>{{issue.priority}}</td>
-                                <td>
-                                    <a ui-sref="project-detail({id:issue.project.id})">{{issue.userstory.title}}</a>
-                                </td>
-                                <td class="text-right">
-                                    <div class="btn-group flex-btn-group-container">
-                                        <button type="submit"
-                                                ui-sref="issue-detail({id:issue.id})"
-                                                class="btn btn-info btn-sm">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                            <span class="hidden-sm-down"></span>
-                                        </button>
-                                        <button type="submit"
-                                                ui-sref="issue.edit({id:issue.id})"
-                                                class="btn btn-primary btn-sm">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                            <span class="hidden-sm-down"></span>
-                                        </button>
-                                        <button type="submit"
-                                                ui-sref="issue.delete({id:issue.id})"
-                                                class="btn btn-danger btn-sm">
-                                            <span class="glyphicon glyphicon-remove-circle"></span>
-                                            <span class="hidden-sm-down"></span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="d-inline-block col-xs-4 float-left well" ng-repeat="issue in vm.issues track by issue.id">
+                        <h3><a ui-sref="issue-detail({id:issue.id})">{{issue.id}}:</a>
+                        {{issue.name}}</h3>
+                        <h6>{{issue.comments}} </h6>
+                        Status: {{issue.status}}
+                        Priority: {{issue.priority}}
+                        <a ui-sref="project-detail({id:issue.project.id})">{{issue.userstory.title}}</a>
+                        <div class="btn-group ">
+                            <button type="submit"
+                                    ui-sref="issue-detail({id:issue.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="issue.edit({id:issue.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="issue.delete({id:issue.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
