@@ -57,9 +57,22 @@
                     </dd>
                     <dt><span>Project Member</span></dt>
                     <dd>
-            <span ng-repeat="pmember in vm.project.pmembers">
-                {{pmember.login}}{{$last ? '' : ', '}}
-            </span>
+                        <div class="panel-group" id="accordionpmember">
+                            <div class="panel panel-default" ng-repeat="pmember in vm.project.pmembers">
+                                <div class="panel-heading">
+                                    <p class="panel-title btn btn-primary" data-toggle="collapse" data-parent="#accordionpmember" data-target="#pmemberid{{pmember.id}}">
+                                        <a data-toggle="collapse" data-parent="#accordionpmember" data-target="#pmemberid{{pmember.id}}">
+                                        {{pmember.login}}
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="pmemberid{{pmember.id}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        {{pmember.login}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </dd>
                 </dl>
                 <button type="button" ui-sref="project-detail.edit({id:vm.project.id})" class="btn btn-primary">
