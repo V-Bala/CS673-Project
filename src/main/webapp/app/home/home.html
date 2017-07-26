@@ -1,75 +1,62 @@
 <div class="wrapper">
-<div ng-show="!vm.isAuthenticated()">
-    <div class="container-fluid bg-1 text-center margin-1" >
-        <div class="col-xs-4">
-        <!--<img src="/content/images/EZTrack-logo1.jpg" alt="Image">-->
-        </div>
-        <h1 class="margin-h1">
-            EZTrack
-        </h1>
-        <h2 class="bg-1-h2 ">
-            The tool YOU need to manage all phases of your project and deliver a successful product.</h2>
-        <h2 class="bg-1-h2"> Stay organized with EZTrack!</h2>
-        <button class="btn-primary btn-lg btn-color" ng-click="vm.login($event)">
-            <span>Log In</span>
-        </button>
+    <div ng-show="!vm.isAuthenticated()">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">EZTrack</h1>
+            <p class="lead text-primary"> The tool YOU need to manage all phases of your project
+                and deliver a successful product.
+            </p>
+                <a class="home-btn btn btn-primary " ng-click="vm.login($event)" >
+                    Log In
+                </a>
+                <a class="home-btn btn btn-primary " ui-sref="register" ng-click="vm.collapseNavbar()">
+                    Sign Up
+                </a>
+            </div>
+    </section>
 
-        <button class="btn-primary btn-lg btn-color" ui-sref="register" ng-click="vm.collapseNavbar()">
-            <span>Sign Up</span>
-        </button>
-    </div>
-    <div class="container-fluid bg-2 text-center">
-        <div  class="margin-h2">
-        <h2 class="margin-h2">
-            What is EZTrack?
-        </h2>
-        <h4>
-            An efficient Project Management suite with intuitive interfaces for managing the lifecycle of your project from requirements capture to issue tracking
-        </h4>
-        </div>
-    </div>
-    <div class="container-fluid bg-3 text-center">
-        <h2 class="margin-h2">
-            Key Features
-        </h2>
-        <div class = "row">
-            <div class="col-md-4">
-                <h4 class="margin-h4">
-                    Requirements Management
-                </h4>
-                <p>An easy to use interface for managing requirements through-out the project.
-                Prioritize the tasks you need to get done with User Stories and a Product Backlog.
-                </p>
-                <img src="/content/images/home/stick-figure-prsntn.png" alt="Image">
-            </div>
-            <div class="col-md-4">
-                <h4 class = "margin-h4">
-                    Collaboration
-                </h4>
-                <p>Collaborate with the team by sending direct messages or utilizing the comment forum.
-                </p>
-                <img src="/content/images/home/conference.jpg" alt="Image">
-            </div>
-            <div class="col-md-4">
-                <h4 class="margin-h4">
-                    Issue Tracking
-                </h4>
-                <p>Organize issues and assign bug fixes to team members.
-                </p>
-                <img src="/content/images/home/stick_figure_asleep.png" alt="Image">
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="album text-primary">
+        <div class="container">
 
-<!-- This is the 'section' that will show once the user logs in -->
-<div ng-show="vm.isAuthenticated()">
-    <div class="col-md-2" style="background-color: #589BBE; height: 100%">
-        <div id="projectsidebar">
+            <div class="row">
+                <div class="card">
+                    <h4 class="card-header">Requirements Management</h4>
+                    <img src="/content/images/home/meeting-356x280.jpg" alt="req picture">
+                    <p class="card-text">
+                        Prioritize the tasks you need to get done with User Stories.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4 class="card-header">Collaboration</h4>
+                    <img src="/content/images/home/collab-356x280.jpg" alt="Card image cap">
+                    <p class="card-text">Collaborate with the team by utilizing the comment forum.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4 class="card-header">Issue Tracking</h4>
+                    <img src="/content/images/home/issue-356x280.jpg" alt="issue picture">
+                    <p class="card-text">Organize issues and assign bug fixes to team members.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p>EZTrack</p>
+            <p>Version 0.2</p>
+        </div>
+    </footer>
+    </div>
+    <div ng-show="vm.isAuthenticated()">
+        <div class="col-md-2" style="background-color: #589BBE; height: 100%">
+            <div id="projectsidebar">
             <span>
                   <h4>My Projects</h4>
             </span>
-            <span>
+                <span>
                 <div id="project-add-btn">
                     <button class="add-project-btn" ui-sref="project.new">
                     Add Project
@@ -77,77 +64,76 @@
                 </div>
                 <hr>
             </span>
-            <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
-                <a id="projects" ui-sref="project-detail({id:project.id})">{{project.name}}</a>
+                <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
+                    <a id="projects" ui-sref="project-detail({id:project.id})">{{project.name}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10" style="background-color: white; height: 100%">
+            <h3 style="text-align: center; color: grey;">{{vm.account.firstName}}'s Dashboard</h3>
+            <div class="dashboard">
+                <div class="current-projects">
+                    <div class="projects-container">
+                        <button class="show-projects" data-toggle="collapse" data-target="#project-name-list" type="button">View Projects</button>
+                        <div id="project-name-list" class="collapse">
+                            <!-- Create a collapseable bar that when clicked shows project detail list -->
+                            <div class="project-detail" ng-repeat="project in vm.myProjects track by project.id">
+                                <div>Name: {{project.name}}</div>
+                                <div>Description: {{project.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="requirements">
+                    <div class="requirements-container">
+                        <!-- Create a collapseable bar that when clicked shows requirements list assigned to user -->
+                        <button class="show-requirements" data-toggle="collapse" data-target="#requirements-list" type="button">View Requirements</button>
+                        <div id="requirements-list" class="collapse">
+                            <div class="requirement-detail" ng-repeat="requirement in vm.requirements track by requirement.id">
+                                <div>Name: {{requirement.name}}</div>
+                                <div>Status: {{requirement.status}}</div>
+                                <div>Project: {{requirement.project.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="userstory">
+                    <div class="userstory-container">
+                        <!-- Create a collapseable bar that when clicked shows user story list assigned to user -->
+                        <button class="show-userstories" data-toggle="collapse" data-target="#userstory-list" type="button">View User Stories</button>
+                        <div id="userstory-list" class="collapse">
+                            <div class="userstory-detail" ng-repeat="userstory in vm.userstories track by userstory.id">
+                                <div>Title: {{userstory.title}}</div>
+                                <div>Description: {{userstory.description}}</div>
+                                <div>Status: {{userstory.status}}</div>
+                                <div>Priority: {{userstory.priority}}</div>
+                                <div>Project: {{userstory.project.name}}</div>
+                                <div>Comments: {{userstory.comments}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="current-issues">
+                    <div class="issues-container">
+                        <!-- Create a collapseable bar that when clicked shows user issues list -->
+                        <button class="show-issues" data-toggle="collapse" data-target="#issues-list" type="button">View Issues</button>
+                        <div id="issues-list" class="collapse">
+                            <div class="issue-detail" ng-repeat="issue in vm.issues track by issue.id">
+                                <div>Name: {{issue.name}}</div>
+                                <div>Status: {{issue.status}}</div>
+                                <div>Priority: {{issue.priority}}</div>
+                                <div>Comments: {{issue.comments}}</div>
+                                <div>Project: {{issue.project.name}}</div>
+                                <div>Userstory: {{issue.userstory.title}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="col-md-10" style="background-color: white; height: 100%">
-        <h3 style="text-align: center; color: grey;">{{vm.account.firstName}}'s Dashboard</h3>
-        <div class="dashboard">
-            <div class="current-projects">
-                <div class="projects-container">
-                    <button class="show-projects" data-toggle="collapse" data-target="#project-name-list" type="button">View Projects</button>
-                    <div id="project-name-list" class="collapse">
-                        <!-- Create a collapseable bar that when clicked shows project detail list -->
-                        <div class="project-detail" ng-repeat="project in vm.myProjects track by project.id">
-                            <div>Name: {{project.name}}</div>
-                            <div>Description: {{project.description}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="requirements">
-                <div class="requirements-container">
-                    <!-- Create a collapseable bar that when clicked shows requirements list assigned to user -->
-                    <button class="show-requirements" data-toggle="collapse" data-target="#requirements-list" type="button">View Requirements</button>
-                    <div id="requirements-list" class="collapse">
-                        <div class="requirement-detail" ng-repeat="requirement in vm.requirements track by requirement.id">
-                            <div>Name: {{requirement.name}}</div>
-                            <div>Status: {{requirement.status}}</div>
-                            <div>Project: {{requirement.project.name}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="userstory">
-                <div class="userstory-container">
-                    <!-- Create a collapseable bar that when clicked shows user story list assigned to user -->
-                    <button class="show-userstories" data-toggle="collapse" data-target="#userstory-list" type="button">View User Stories</button>
-                    <div id="userstory-list" class="collapse">
-                        <div class="userstory-detail" ng-repeat="userstory in vm.userstories track by userstory.id">
-                            <div>Title: {{userstory.title}}</div>
-                            <div>Description: {{userstory.description}}</div>
-                            <div>Status: {{userstory.status}}</div>
-                            <div>Priority: {{userstory.priority}}</div>
-                            <div>Project: {{userstory.project.name}}</div>
-                            <div>Comments: {{userstory.comments}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="current-issues">
-                <div class="issues-container">
-                    <!-- Create a collapseable bar that when clicked shows user issues list -->
-                    <button class="show-issues" data-toggle="collapse" data-target="#issues-list" type="button">View Issues</button>
-                    <div id="issues-list" class="collapse">
-                        <div class="issue-detail" ng-repeat="issue in vm.issues track by issue.id">
-                            <div>Name: {{issue.name}}</div>
-                            <div>Status: {{issue.status}}</div>
-                            <div>Priority: {{issue.priority}}</div>
-                            <div>Comments: {{issue.comments}}</div>
-                            <div>Project: {{issue.project.name}}</div>
-                            <div>Userstory: {{issue.userstory.title}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
 </div>
