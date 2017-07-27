@@ -67,8 +67,6 @@ public class UserResource {
 
     private final UserRepository userRepository;
 
-    private final MailService mailService;
-
     private final UserService userService;
 
     private final UserSearchRepository userSearchRepository;
@@ -77,7 +75,6 @@ public class UserResource {
             UserService userService, UserSearchRepository userSearchRepository) {
 
         this.userRepository = userRepository;
-        this.mailService = mailService;
         this.userService = userService;
         this.userSearchRepository = userSearchRepository;
     }
@@ -111,7 +108,6 @@ public class UserResource {
                 .body(null);
         } else {
             User newUser = userService.createUser(managedUserVM);
-            mailService.sendCreationEmail(newUser);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
                 .headers(HeaderUtil.createAlert( "A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
                 .body(newUser);

@@ -1,9 +1,12 @@
 
 <div>
-    <h2><span>Issue</span> {{vm.issue.id}}</h2>
+    <div class="entity-detail-header">
+    <h2><span>{{vm.issue.title}}</span></h2>
+    </div>
+    <h3><span>Issue</span> {{vm.issue.id}}</h3>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
+    <dl class="row jh-entity-details dl-horizontal">
         <dt><span>Name</span></dt>
         <dd>
             <span>{{vm.issue.name}}</span>
@@ -32,11 +35,11 @@
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
+            class="btn btn-info detail-button">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="issue-detail.edit({id:vm.issue.id})" class="btn btn-primary">
+    <button type="button" ui-sref="issue-detail.edit({id:vm.issue.id})" class="btn btn-primary detail-button">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>

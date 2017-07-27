@@ -105,7 +105,6 @@
             })
         }
 
-
         getAccount();
 
         $scope.$on('projectoneApp:userstoryUpdate', function() {
@@ -135,20 +134,13 @@
                 vm.comment.projectcomment = vm.project;
                 vm.comment.id = null;
                 vm.isSaving = true;
-                Comment.save(vm.comment, onSaveSuccess, onSaveError);
+                Comment.save(vm.comment, onSaveSuccess, onSaveSuccess);
             }
         }
         function onSaveSuccess () {
             vm.isSaving = false;
-            $state.reload();
+            location.reload();
         }
-        function onSaveError () {
-            vm.isSaving = false;
-        }
-
-
-
-
 
         var unsubscribe = $rootScope.$on('projectoneApp:projectUpdate', function(event, result) {
             vm.project = result;
