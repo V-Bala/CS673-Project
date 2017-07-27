@@ -268,9 +268,8 @@
             </div>
         </div>
 
-
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 ">
         <div>
             <table class="table table-fixed well">
                 <thead>
@@ -308,7 +307,7 @@
                 <tbody>
                 <tr>
                 </tr>
-                <tr ng-repeat="comment in vm.comments track by comment.id">
+                <tr ng-repeat="comment in vm.comments track by comment.id" ng-class-odd="'odd'" ng-class-even="'even'">
                     <div class="comment-box">
                     <td class="col-xs-12 well">
                         <br>
