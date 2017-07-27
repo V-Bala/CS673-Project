@@ -75,14 +75,12 @@
                         </div>
                     </dd>
                 </dl>
-                <button type="button" ui-sref="project-detail.edit({id:vm.project.id})" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    <span class="hidden-sm-down"> Edit</span>
+                <button type="button" ui-sref="project-detail.edit({id:vm.project.id})" class="edit-project-btn">
+                    Edit
                 </button>
 
-                <button type="button" ui-sref="project-detail.addmember({id:vm.project.id})" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    <span class="hidden-sm-down"> Add Member</span>
+                <button type="button" ui-sref="project-detail.addmember({id:vm.project.id})" class="add-member-btn">
+                    Add Member
                 </button>
             </div>
         </row>
@@ -237,7 +235,7 @@
 
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" style="background-color: #589BBE; height: 5000px">
         <div>
             <table class="table table-fixed well">
                 <thead>
