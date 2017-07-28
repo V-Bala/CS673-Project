@@ -77,7 +77,7 @@
                         <button class="show-projects" data-toggle="collapse" data-target="#project-name-list" type="button">View Projects</button>
                         <div id="project-name-list" class="collapse">
                             <!-- Create a collapseable bar that when clicked shows project detail list -->
-                            <div class="project-detail" ng-repeat="project in vm.myProjects track by project.id">
+                            <div class="project-detail" ng-repeat="project in vm.myProjects track by project.id" ui-sref="project-detail({id:project.id})" style="cursor: pointer;">
                                 <div>Name: {{project.name}}</div>
                                 <div>Description: {{project.description}}</div>
                             </div>
@@ -90,7 +90,7 @@
                         <!-- Create a collapseable bar that when clicked shows requirements list assigned to user -->
                         <button class="show-requirements" data-toggle="collapse" data-target="#requirements-list" type="button">View Requirements</button>
                         <div id="requirements-list" class="collapse">
-                            <div class="requirement-detail" ng-repeat="requirement in vm.requirements track by requirement.id">
+                            <div class="requirement-detail" ng-repeat="requirement in vm.requirements track by requirement.id" ui-sref="requirement-detail({id:requirement.id})" style="cursor: pointer;">
                                 <div>Name: {{requirement.name}}</div>
                                 <div>Status: {{requirement.status}}</div>
                                 <div>Project: {{requirement.project.name}}</div>
@@ -104,7 +104,7 @@
                         <!-- Create a collapseable bar that when clicked shows user story list assigned to user -->
                         <button class="show-userstories" data-toggle="collapse" data-target="#userstory-list" type="button">View User Stories</button>
                         <div id="userstory-list" class="collapse">
-                            <div class="userstory-detail" ng-repeat="userstory in vm.userstories track by userstory.id">
+                            <div class="userstory-detail" ng-repeat="userstory in vm.userstories track by userstory.id" ui-sref="userstory-detail({id:userstory.id})" style="cursor: pointer;">
                                 <div>Title: {{userstory.title}}</div>
                                 <div>Description: {{userstory.description}}</div>
                                 <div>Status: {{userstory.status}}</div>
@@ -121,7 +121,7 @@
                         <!-- Create a collapseable bar that when clicked shows user issues list -->
                         <button class="show-issues" data-toggle="collapse" data-target="#issues-list" type="button">View Issues</button>
                         <div id="issues-list" class="collapse">
-                            <div class="issue-detail" ng-repeat="issue in vm.issues track by issue.id">
+                            <div class="issue-detail" ng-repeat="issue in vm.issues track by issue.id" ui-sref="issue-detail({id:issue.id})" style="cursor: pointer;">
                                 <div>Name: {{issue.name}}</div>
                                 <div>Status: {{issue.status}}</div>
                                 <div>Priority: {{issue.priority}}</div>
