@@ -1,34 +1,45 @@
-
+<link rel="stylesheet" href="content/css/requirement-detail.css">
 <div>
-    <div class="entity-detail-header">
-    <h2><span>{{vm.requirement.name}}</span></h2>
+    <div class="header-content">
+        <div class="title-section">
+            <h2><span>Requirement</span> {{vm.requirement.id}}</h2>
+        </div>
     </div>
-    <h3><span>Requirement</span> {{vm.requirement.id}}</h3>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details dl-horizontal">
-        <dt><span>Name</span></dt>
-        <dd>
-            <span>{{vm.requirement.name}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{vm.requirement.status}}</span>
-        </dd>
-        <dt><span>Project</span></dt>
-        <dd>
-            <a ui-sref="project-detail({id:vm.requirement.project.id})">{{vm.requirement.project.id}}</a>
-        </dd>
-    </dl>
+    <div class="requirement-detail-container">
+        <div class="name-container">
+            <div class="name-label">
+                Name:
+            </div>
+            <div class="name-data">
+                {{vm.requirement.name}}
+            </div>
+        </div>
+        <div class="status-container">
+            <div class="status-label">
+                Status:
+            </div>
+            <div class="status-data">
+                {{vm.requirement.status}}
+            </div>
+        </div>
+        <div class="project-container">
+            <div class="project-label">
+                Project:
+            </div>
+            <div class="project-data">
+                <a ui-sref="project-detail({id:vm.requirement.project.id})">{{vm.requirement.project.name}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="group-buttons">
+        <button type="submit" ui-sref="{{ vm.previousState }}" class="back-btn">
+            Back
+        </button>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info detail-button">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
-
-    <button type="button" ui-sref="requirement-detail.edit({id:vm.requirement.id})" class="btn btn-primary detail-button">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Edit</span>
-    </button>
+        <button type="button" ui-sref="requirement-detail.edit({id:vm.requirement.id})" class="edit-requirements-btn">
+            Edit
+        </button>
+    </div>
 </div>
