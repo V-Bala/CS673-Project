@@ -66,7 +66,7 @@ public class CommentResource {
         comment.setUsercomment(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
         comment.setDate(ZonedDateTime.now(ZoneOffset.UTC));
         Comment result = commentRepository.save(comment);
-        commentSearchRepository.save(result);
+        //commentSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/comments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -89,7 +89,7 @@ public class CommentResource {
             return createComment(comment);
         }
         Comment result = commentRepository.save(comment);
-        commentSearchRepository.save(result);
+        //commentSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, comment.getId().toString()))
             .body(result);
@@ -133,7 +133,7 @@ public class CommentResource {
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
         log.debug("REST request to delete Comment : {}", id);
         commentRepository.delete(id);
-        commentSearchRepository.delete(id);
+        //commentSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 

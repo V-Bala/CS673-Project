@@ -56,7 +56,7 @@ public class IssueResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new issue cannot already have an ID")).body(null);
         }
         Issue result = issueRepository.save(issue);
-        issueSearchRepository.save(result);
+        //issueSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/issues/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -79,7 +79,7 @@ public class IssueResource {
             return createIssue(issue);
         }
         Issue result = issueRepository.save(issue);
-        issueSearchRepository.save(result);
+        //issueSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, issue.getId().toString()))
             .body(result);
