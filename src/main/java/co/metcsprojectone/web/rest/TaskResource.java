@@ -56,7 +56,7 @@ public class TaskResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new task cannot already have an ID")).body(null);
         }
         Task result = taskRepository.save(task);
-        taskSearchRepository.save(result);
+        //taskSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/tasks/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -79,7 +79,7 @@ public class TaskResource {
             return createTask(task);
         }
         Task result = taskRepository.save(task);
-        taskSearchRepository.save(result);
+        //taskSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, task.getId().toString()))
             .body(result);
@@ -123,7 +123,7 @@ public class TaskResource {
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         log.debug("REST request to delete Task : {}", id);
         taskRepository.delete(id);
-        taskSearchRepository.delete(id);
+        //taskSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 

@@ -1,18 +1,7 @@
 
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
-
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myProjectLabel">Create or edit a Project</h4>
-    </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.project.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.project.id" readonly />
-        </div>
         <div class="form-group">
             <label class="control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
@@ -26,7 +15,7 @@
                     />
         </div>
         <div class="form-group" ngf-drop ngf-change="vm.setPfiles($file, vm.project)">
-            <label class="control-label" for="field_pfiles">Pfiles</label>
+            <label class="control-label" for="field_pfiles">Project Files</label>
             <div>
                 <div ng-if="vm.project.pfiles" class="help-block clearfix">
                     <a class="pull-left" ng-click="vm.openFile(vm.project.pfilesContentType, vm.project.pfiles)">open</a><br>
@@ -38,7 +27,7 @@
                 </div>
                 <button type="button" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setPfiles($file, vm.project)">
-                    Add blob
+                    Add project files
                 </button>
             </div>
             <input type="hidden" class="form-control" name="pfiles" id="field_pfiles"
@@ -46,17 +35,6 @@
                     />
             <input type="hidden" class="form-control" name="pfilesContentType" id="field_pfilesContentType"
                     ng-model="vm.project.pfilesContentType" />
-        </div>
-
-        <div class="form-group">
-            <label for="field_powner">Powner</label>
-            <select class="form-control" id="field_powner" name="powner" ng-model="vm.project.powner" ng-options="user as user.login for user in vm.users track by user.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="field_pmember">Pmember</label>
-            <select class="form-control" id="field_pmember" multiple name="pmember" ng-model="vm.project.pmembers" ng-options="user as user.login for user in vm.users track by user.id"></select>
         </div>
     </div>
     <div class="modal-footer">

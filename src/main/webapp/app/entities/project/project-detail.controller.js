@@ -40,8 +40,7 @@
                 templateUrl: 'app/entities/requirement/requirement-dialog.html',
                 controller: 'RequirementDialogController',
                 controllerAs: 'vm',
-                backdrop: 'static',
-                size: 'lg',
+                size: 'md',
                 resolve: {
                     entity:['Project', function (Project) {
                         return {
@@ -50,6 +49,21 @@
                             id: null,
                             project: Project.get({id: vm.project.id})
                         };
+                    }]
+                }
+            })
+        }
+
+        vm.deletereq = deleteReq;
+        function deleteReq(id) {
+            $uibModal.open({
+                templateUrl: 'app/entities/requirement/requirement-delete-dialog.html',
+                controller: 'RequirementDeleteController',
+                controllerAs: 'vm',
+                size: 'md',
+                resolve: {
+                    entity: ['Requirement', function(Requirement) {
+                        return Requirement.get({id: id}).$promise;
                     }]
                 }
             })
@@ -63,8 +77,7 @@
                 templateUrl: 'app/entities/issue/issue-dialog.html',
                 controller: 'IssueDialogController',
                 controllerAs: 'vm',
-                backdrop: 'static',
-                size: 'lg',
+                size: 'md',
                 resolve: {
                     entity:['Project', function (Project) {
                         return {
@@ -80,6 +93,21 @@
             })
         }
 
+        vm.deleteiss = deleteiss;
+        function deleteiss(id) {
+            $uibModal.open({
+                templateUrl: 'app/entities/issue/issue-delete-dialog.html',
+                controller: 'IssueDeleteController',
+                controllerAs: 'vm',
+                size: 'md',
+                resolve: {
+                    entity: ['Issue', function(Issue) {
+                        return Issue.get({id : id}).$promise;
+                    }]
+                }
+            })
+        }
+
         /* Userstories section */
         vm.addus = addus;
         function addus(){
@@ -87,8 +115,7 @@
                 templateUrl: 'app/entities/userstory/userstory-dialog.html',
                 controller: 'UserstoryDialogController',
                 controllerAs: 'vm',
-                backdrop: 'static',
-                size: 'lg',
+                size: 'md',
                 resolve: {
                     entity:['Project', function (Project) {
                         return {
@@ -100,6 +127,21 @@
                             id: null,
                             project: Project.get({id: vm.project.id})
                         };
+                    }]
+                }
+            })
+        }
+
+        vm.deleteus = deleteus;
+        function deleteus(id) {
+            $uibModal.open({
+                templateUrl: 'app/entities/userstory/userstory-delete-dialog.html',
+                controller: 'UserstoryDeleteController',
+                controllerAs: 'vm',
+                size: 'md',
+                resolve: {
+                    entity: ['Userstory', function(Userstory) {
+                        return Userstory.get({id : id}).$promise;
                     }]
                 }
             })

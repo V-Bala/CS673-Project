@@ -72,7 +72,7 @@ public class ProjectResource {
         project.setPowner(uu);
         project.addPmember(uu);
         Project result = projectRepository.save(project);
-        projectSearchRepository.save(result);
+        //projectSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/projects/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -95,7 +95,7 @@ public class ProjectResource {
             return createProject(project);
         }
         Project result = projectRepository.save(project);
-        projectSearchRepository.save(result);
+        //projectSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, project.getId().toString()))
             .body(result);
@@ -148,7 +148,7 @@ public class ProjectResource {
     public ResponseEntity<Void> deleteProject(@PathVariable Long id) {
         log.debug("REST request to delete Project : {}", id);
         projectRepository.delete(id);
-        projectSearchRepository.delete(id);
+        //projectSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 

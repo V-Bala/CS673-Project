@@ -23,10 +23,6 @@
         <dd>
             <span>{{vm.issue.priority}}</span>
         </dd>
-        <dt><span>Project</span></dt>
-        <dd>
-            <a ui-sref="project-detail({id:vm.issue.project.id})">{{vm.issue.project.name}}</a>
-        </dd>
         <dt><span>Userstory</span></dt>
         <dd>
             <a ui-sref="userstory-detail({id:vm.issue.userstory.id})">{{vm.issue.userstory.title}}</a>
@@ -34,7 +30,7 @@
     </dl>
 
     <button type="submit"
-            ui-sref="{{ vm.previousState }}"
+            ui-sref="project-detail({id: vm.issue.project.id})"
             class="btn btn-info detail-button">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>

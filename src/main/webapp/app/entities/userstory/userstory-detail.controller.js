@@ -13,10 +13,15 @@
         vm.userstory = entity;
         vm.previousState = previousState.name;
         vm.myProjects = Project.myprojects();
+        vm.back = back;
 
         var unsubscribe = $rootScope.$on('projectoneApp:userstoryUpdate', function(event, result) {
             vm.userstory = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        function back() {
+            window.history.back();
+        }
     }
 })();
