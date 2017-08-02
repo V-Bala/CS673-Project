@@ -1,50 +1,84 @@
-
+<link rel="stylesheet" href="content/css/userstory-detail.css">
 <div>
-    <div class=" entity-detail-header">
-    <h2><span>{{vm.userstory.title}}</span></h2>
+    <div class="header-content">
+        <div class="title-section">
+            <h2><span>Userstory</span> {{vm.userstory.id}}</h2>
+        </div>
     </div>
-    <h3><span>Userstory</span> {{vm.userstory.id}}</h3>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details dl-horizontal">
-        <dt><span>Title</span></dt>
-        <dd>
-            <span>{{vm.userstory.title}}</span>
-        </dd>
-        <dt><span>Description</span></dt>
-        <dd>
-            <span>{{vm.userstory.description}}</span>
-        </dd>
-        <dt><span>Comments</span></dt>
-        <dd>
-            <span>{{vm.userstory.comments}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{vm.userstory.status}}</span>
-        </dd>
-        <dt><span>Priority</span></dt>
-        <dd>
-            <span>{{vm.userstory.priority}}</span>
-        </dd>
-        <dt><span>Project</span></dt>
-        <dd>
-            <a ui-sref="project-detail({id:vm.userstory.project.id})">{{vm.userstory.project.id}}</a>
-        </dd>
-        <dt><span>Requirement</span></dt>
-        <dd>
-            <a ui-sref="requirement-detail({id:vm.userstory.requirement.id})">{{vm.userstory.requirement.name}}</a>
-        </dd>
-    </dl>
+    <div class="detail-container">
+        <div class="name-container">
+            <div class="name-label">
+                Title:
+            </div>
+            <div class="name-data">
+                {{vm.userstory.title}}
+            </div>
+        </div>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info detail-button">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
+        <div class="description-container">
+            <div class="description-label">
+                Description:
+            </div>
+            <div class="description-data">
+                {{vm.userstory.description}}
+            </div>
+        </div>
 
-    <button type="button" ui-sref="userstory-detail.edit({id:vm.userstory.id})" class="btn btn-primary detail-button">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Edit</span>
-    </button>
+        <div class="comments-container">
+            <div class="comments-label">
+                Comments:
+            </div>
+            <div class="comments-data">
+                {{vm.userstory.comments}}
+            </div>
+        </div>
+
+        <div class="status-container">
+            <div class="status-label">
+                Status:
+            </div>
+            <div class="status-data">
+                {{vm.requirement.status}}
+            </div>
+        </div>
+
+        <div class="priority-container">
+            <div class="priority-label">
+                Priority:
+            </div>
+            <div class="priority-data">
+                {{vm.userstory.priority}}
+            </div>
+        </div>
+
+        <div class="project-container">
+            <div class="project-label">
+                Project:
+            </div>
+            <div class="project-data">
+                <a ui-sref="project-detail({id:vm.userstory.project.id})">{{vm.userstory.project.id}}</a>
+            </div>
+        </div>
+
+        <div class="requirement-container">
+            <div class="requirement-label">
+                Requirement:
+            </div>
+            <div class="requirement-data">
+                <a ui-sref="requirement-detail({id:vm.userstory.requirement.id})">{{vm.userstory.requirement.name}}</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="group-buttons">
+        <button type="submit" ui-sref="{{ vm.previousState }}" class="back-btn">
+            Back
+        </button>
+
+        <button type="button" ui-sref="userstory-detail.edit({id:vm.userstory.id})" class="edit-btn">
+            Edit
+        </button>
+    </div>
 </div>

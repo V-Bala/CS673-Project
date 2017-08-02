@@ -1,46 +1,75 @@
-
+<link rel="stylesheet" href="content/css/issue-detail.css">
 <div>
-    <div class="entity-detail-header">
-    <h2><span>{{vm.issue.title}}</span></h2>
+    <div class="header-content">
+        <div class="title-section">
+            <h2><span>Issue</span> {{vm.issue.id}}</h2>
+        </div>
     </div>
-    <h3><span>Issue</span> {{vm.issue.id}}</h3>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details dl-horizontal">
-        <dt><span>Name</span></dt>
-        <dd>
-            <span>{{vm.issue.name}}</span>
-        </dd>
-        <dt><span>Comments</span></dt>
-        <dd>
-            <span>{{vm.issue.comments}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{vm.issue.status}}</span>
-        </dd>
-        <dt><span>Priority</span></dt>
-        <dd>
-            <span>{{vm.issue.priority}}</span>
-        </dd>
-        <dt><span>Project</span></dt>
-        <dd>
-            <a ui-sref="project-detail({id:vm.issue.project.id})">{{vm.issue.project.name}}</a>
-        </dd>
-        <dt><span>Userstory</span></dt>
-        <dd>
-            <a ui-sref="userstory-detail({id:vm.issue.userstory.id})">{{vm.issue.userstory.title}}</a>
-        </dd>
-    </dl>
+    <div class="detail-container">
+        <div class="name-container">
+            <div class="name-label">
+                Name:
+            </div>
+            <div class="name-data">
+                {{vm.issue.name}}
+            </div>
+        </div>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info detail-button">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
+        <div class="comments-container">
+            <div class="comments-label">
+                Comments:
+            </div>
+            <div class="comments-data">
+                {{vm.issue.comments}}
+            </div>
+        </div>
 
-    <button type="button" ui-sref="issue-detail.edit({id:vm.issue.id})" class="btn btn-primary detail-button">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Edit</span>
-    </button>
+        <div class="status-container">
+            <div class="status-label">
+                Status:
+            </div>
+            <div class="status-data">
+                {{vm.issue.status}}
+            </div>
+        </div>
+
+        <div class="priority-container">
+            <div class="priority-label">
+                Priority:
+            </div>
+            <div class="priority-data">
+                {{vm.issue.priority}}
+            </div>
+        </div>
+
+        <div class="project-container">
+            <div class="project-label">
+                Project:
+            </div>
+            <div class="project-data">
+                <a ui-sref="project-detail({id:vm.issue.project.id})">{{vm.issue.project.name}}</a>
+            </div>
+        </div>
+
+        <div class="us-container">
+            <div class="us-label">
+                Userstory:
+            </div>
+            <div class="us-data">
+                <a ui-sref="userstory-detail({id:vm.issue.userstory.id})">{{vm.issue.userstory.title}}</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="group-buttons">
+        <button type="submit" ui-sref="{{ vm.previousState }}" class="back-btn">
+            Back
+        </button>
+
+        <button type="button" ui-sref="issue-detail.edit({id:vm.issue.id})" class="edit-btn">
+            Edit
+        </button>
+    </div>
 </div>

@@ -1,0 +1,19 @@
+@import "userstory-detail.css";
+@import "requirement-detail.css";
+
+.us-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-color: white;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 1px;
+    margin: 2px;
+    width: 50%;
+}
+
+.us-label, .us-data {
+    padding: 10px;
+}

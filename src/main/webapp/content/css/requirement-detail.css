@@ -1,4 +1,4 @@
-button.edit-requirements-btn {
+button.edit-btn {
     background-color: transparent;
     border-style: solid;
     border-color: mediumseagreen;
@@ -26,7 +26,7 @@ hr {
     width: 50%;
 }
 
-.requirement-detail-container {
+.detail-container {
     display: flex;
     flex-direction: column;
     align-items: center;
