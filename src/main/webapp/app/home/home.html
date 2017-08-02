@@ -1,55 +1,54 @@
 <div class="wrapper">
     <div ng-show="!vm.isAuthenticated()">
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">EZTrack</h1>
-            <p class="lead text-primary"> The tool YOU need to manage all phases of your project
-                and deliver a successful product.
-            </p>
-                <a class="home-btn btn btn-primary " ng-click="vm.login($event)" >
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">EZTrack</h1>
+                <p class="lead text-primary"> The tool YOU need to manage all phases of your project
+                    and deliver a successful product.
+                </p>
+                <a class="home-btn btn btn-primary" ng-click="vm.login($event)">
                     Log In
                 </a>
-                <a class="home-btn btn btn-primary " ui-sref="register" ng-click="vm.collapseNavbar()">
+                <a class="home-btn btn btn-primary" ui-sref="register" ng-click="vm.collapseNavbar()">
                     Sign Up
                 </a>
             </div>
-    </section>
+        </section>
 
-    <div class="album text-primary">
-        <div class="container">
-
-            <div class="row">
-                <div class="card">
-                    <h4 class="card-header">Requirements Management</h4>
-                    <img src="/content/images/home/meeting-356x280.jpg" alt="req picture">
-                    <p class="card-text">
-                        Prioritize the tasks you need to get done with User Stories.
-                    </p>
+        <div class="album text-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="card">
+                        <h4 class="card-header">Requirements Management</h4>
+                        <img src="/content/images/home/meeting-356x280.jpg" alt="req picture">
+                        <p class="card-text">
+                            Prioritize the tasks you need to get done with User Stories.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h4 class="card-header">Collaboration</h4>
+                        <img src="/content/images/home/collab-356x280.jpg" alt="Card image cap">
+                        <p class="card-text">Collaborate with the team by utilizing the comment forum.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h4 class="card-header">Issue Tracking</h4>
+                        <img src="/content/images/home/issue-356x280.jpg" alt="issue picture">
+                        <p class="card-text">Organize issues and assign bug fixes to team members.
+                        </p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h4 class="card-header">Collaboration</h4>
-                    <img src="/content/images/home/collab-356x280.jpg" alt="Card image cap">
-                    <p class="card-text">Collaborate with the team by utilizing the comment forum.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4 class="card-header">Issue Tracking</h4>
-                    <img src="/content/images/home/issue-356x280.jpg" alt="issue picture">
-                    <p class="card-text">Organize issues and assign bug fixes to team members.
-                    </p>
-                </div>
-
             </div>
         </div>
+
+        <footer class="text-muted">
+            <div class="container">
+                <p>EZTrack</p>
+                <p>Version 0.2</p>
+            </div>
+        </footer>
     </div>
 
-    <footer class="text-muted">
-        <div class="container">
-            <p>EZTrack</p>
-            <p>Version 0.2</p>
-        </div>
-    </footer>
-    </div>
     <div ng-show="vm.isAuthenticated()">
         <div class="col-md-2" style="background-color: #589BBE; height: 100%">
             <div id="projectsidebar">
@@ -57,13 +56,13 @@
                   <h4>My Projects</h4>
             </span>
                 <span>
-                <div id="project-add-btn">
-                    <button class="add-project-btn" ui-sref="project.new">
-                    Add Project
-                    </button>
-                </div>
-                <hr>
-            </span>
+                    <div id="project-add-btn">
+                        <button class="add-project-btn" ui-sref="project.new">
+                            Add Project
+                        </button>
+                    </div>
+                    <hr>
+                </span>
                 <div class="project-listing" ng-repeat="project in vm.myProjects track by project.id">
                     <a id="projects" ui-sref="project-detail({id:project.id})">{{project.name}}</a>
                 </div>
@@ -77,7 +76,7 @@
                         <button class="show-projects" data-toggle="collapse" data-target="#project-name-list" type="button">View Projects</button>
                         <div id="project-name-list" class="collapse">
                             <!-- Create a collapseable bar that when clicked shows project detail list -->
-                            <div class="project-detail" ng-repeat="project in vm.myProjects track by project.id" ui-sref="project-detail({id:project.id})" style="cursor: pointer;">
+                            <div class="project-detail" ng-repeat="project in vm.myProjects track by project.id" ui-sref="project-detail({id:project.id})" style="cursor: pointer">
                                 <div>Name: {{project.name}}</div>
                                 <div>Description: {{project.description}}</div>
                             </div>

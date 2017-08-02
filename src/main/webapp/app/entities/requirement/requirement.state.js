@@ -65,7 +65,6 @@
                     templateUrl: 'app/entities/requirement/requirement-dialog.html',
                     controller: 'RequirementDialogController',
                     controllerAs: 'vm',
-                    backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: ['Requirement', function(Requirement) {
@@ -90,7 +89,6 @@
                     templateUrl: 'app/entities/requirement/requirement-dialog.html',
                     controller: 'RequirementDialogController',
                     controllerAs: 'vm',
-                    backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
@@ -119,7 +117,6 @@
                     templateUrl: 'app/entities/requirement/requirement-dialog.html',
                     controller: 'RequirementDialogController',
                     controllerAs: 'vm',
-                    backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: ['Requirement', function(Requirement) {

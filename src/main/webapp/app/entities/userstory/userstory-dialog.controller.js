@@ -38,8 +38,8 @@
         function onSaveSuccess (result) {
             $scope.$emit('projectoneApp:userstoryUpdate', result);
             $uibModalInstance.close(result);
-            $state.reload();
             vm.isSaving = false;
+            $state.reload();
         }
 
         function onSaveError () {

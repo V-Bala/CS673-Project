@@ -12,10 +12,15 @@
 
         vm.requirement = entity;
         vm.previousState = previousState.name;
+        vm.back = back;
 
         var unsubscribe = $rootScope.$on('projectoneApp:requirementUpdate', function(event, result) {
             vm.requirement = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        function back() {
+            window.history.back();
+        }
     }
 })();

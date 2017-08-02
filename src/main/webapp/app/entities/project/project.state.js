@@ -91,7 +91,7 @@
                     controller: 'AddPmemberController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Project', function(Project) {
                             return Project.get({id : $stateParams.id}).$promise;

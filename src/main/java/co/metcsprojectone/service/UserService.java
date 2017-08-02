@@ -108,12 +108,11 @@ public class UserService {
         newUser.setLangKey(langKey);
         // new user is active
         newUser.setActivated(true);
-        // new user gets registration key
-        newUser.setActivationKey(RandomUtil.generateActivationKey());
+
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
-        userSearchRepository.save(newUser);
+        //userSearchRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
@@ -143,7 +142,7 @@ public class UserService {
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
         userRepository.save(user);
-        userSearchRepository.save(user);
+        //userSearchRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;
     }
