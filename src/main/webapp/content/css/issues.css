@@ -1,0 +1,32 @@
+.headers {
+    color: white;
+    font-weight: 100;
+}
+
+.container-fluid .row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+div.input-group.pull-right {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    max-width: 80%;
+}
+
+
+div.row {
+    max-width: 100%;
+}
+
+button.btn.btn-info {
+    padding: 5px;
+}
+
+h2 {
+    color: white;
+    padding: 10px;
+}
