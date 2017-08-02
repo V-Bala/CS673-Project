@@ -123,7 +123,7 @@ public class IssueResource {
     public ResponseEntity<Void> deleteIssue(@PathVariable Long id) {
         log.debug("REST request to delete Issue : {}", id);
         issueRepository.delete(id);
-        issueSearchRepository.delete(id);
+        //issueSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 

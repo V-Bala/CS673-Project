@@ -56,7 +56,7 @@ public class RequirementResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new requirement cannot already have an ID")).body(null);
         }
         Requirement result = requirementRepository.save(requirement);
-        requirementSearchRepository.save(result);
+        //requirementSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/requirements/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -79,7 +79,7 @@ public class RequirementResource {
             return createRequirement(requirement);
         }
         Requirement result = requirementRepository.save(requirement);
-        requirementSearchRepository.save(result);
+        //requirementSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, requirement.getId().toString()))
             .body(result);
@@ -123,7 +123,7 @@ public class RequirementResource {
     public ResponseEntity<Void> deleteRequirement(@PathVariable Long id) {
         log.debug("REST request to delete Requirement : {}", id);
         requirementRepository.delete(id);
-        requirementSearchRepository.delete(id);
+        //requirementSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 

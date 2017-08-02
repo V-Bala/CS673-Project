@@ -15,6 +15,7 @@
         vm.clear = clear;
         vm.search = search;
         vm.loadAll = loadAll;
+        vm.back = back;
 
         loadAll();
 
@@ -39,4 +40,5 @@
             vm.searchQuery = null;
             loadAll();
         }    }
+
 })();

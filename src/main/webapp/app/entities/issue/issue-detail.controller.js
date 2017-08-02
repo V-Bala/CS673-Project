@@ -17,5 +17,6 @@
             vm.issue = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
     }
 })();

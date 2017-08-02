@@ -1,0 +1,65 @@
+button.edit-requirements-btn {
+    background-color: transparent;
+    border-style: solid;
+    border-color: mediumseagreen;
+    border-radius: 10px;
+    color: mediumseagreen;
+    margin: 10px;
+    padding: 10px;
+}
+
+button.back-btn {
+    background-color: transparent;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+h2, hr, a, a:hover {
+    color: white;
+}
+
+hr {
+    width: 50%;
+}
+
+.requirement-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.name-container, .status-container, .project-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-color: white;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 1px;
+    margin: 2px;
+    width: 50%;
+}
+
+.name-label, .name-data, .status-label, .status-data, .project-label, .project-data {
+    padding: 10px;
+}
+
+.header-content, .group-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.title-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+}

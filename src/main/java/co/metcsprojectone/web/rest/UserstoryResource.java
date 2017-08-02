@@ -57,7 +57,7 @@ public class UserstoryResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new userstory cannot already have an ID")).body(null);
         }
         Userstory result = userstoryRepository.save(userstory);
-        userstorySearchRepository.save(result);
+        //userstorySearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/userstories/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -80,7 +80,7 @@ public class UserstoryResource {
             return createUserstory(userstory);
         }
         Userstory result = userstoryRepository.save(userstory);
-        userstorySearchRepository.save(result);
+        //userstorySearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, userstory.getId().toString()))
             .body(result);
@@ -124,7 +124,7 @@ public class UserstoryResource {
     public ResponseEntity<Void> deleteUserstory(@PathVariable Long id) {
         log.debug("REST request to delete Userstory : {}", id);
         userstoryRepository.delete(id);
-        userstorySearchRepository.delete(id);
+        //userstorySearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 

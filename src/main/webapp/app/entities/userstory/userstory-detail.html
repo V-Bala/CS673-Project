@@ -1,9 +1,12 @@
 
 <div>
-    <h2><span>Userstory</span> {{vm.userstory.id}}</h2>
+    <div class=" entity-detail-header">
+    <h2><span>{{vm.userstory.title}}</span></h2>
+    </div>
+    <h3><span>Userstory</span> {{vm.userstory.id}}</h3>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
+    <dl class="row jh-entity-details dl-horizontal">
         <dt><span>Title</span></dt>
         <dd>
             <span>{{vm.userstory.title}}</span>
@@ -35,12 +38,12 @@
     </dl>
 
     <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
+            ui-sref="project-detail({id: vm.userstory.project.id})"
+            class="btn btn-info detail-button">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="userstory-detail.edit({id:vm.userstory.id})" class="btn btn-primary">
+    <button type="button" ui-sref="userstory-detail.edit({id:vm.userstory.id})" class="btn btn-primary detail-button">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>
