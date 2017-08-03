@@ -1,14 +1,12 @@
-<div style="background-color: #FFFFFF">
+<link rel="stylesheet" href="content/css/userstories.css">
+<div style="background-color: transparent">
     <h2>Userstories</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="userstory.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span class="hidden-xs-down" >
+                <button class="add-userstory-btn" style="border-color: white; color: white" ui-sref="userstory.new" >
                         Create new Userstory
-                    </span>
                 </button>
             </div>
             <div class="col-xs-8 no-padding-right">
@@ -35,15 +33,15 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr>
-                    <th><span>ID</span></th>
-                    <th><span>Title</span></th>
-                    <th><span>Description</span></th>
-                    <th><span>Comments</span></th>
-                    <th><span>Status</span></th>
-                    <th><span>Priority</span></th>
-                    <th><span>Project</span></th>
-                    <th><span>Requirement</span></th>
-                    <th></th>
+                    <th class="headers"><span>ID</span></th>
+                    <th class="headers"><span>Title</span></th>
+                    <th class="headers"><span>Description</span></th>
+                    <th class="headers"><span>Comments</span></th>
+                    <th class="headers"><span>Status</span></th>
+                    <th class="headers"><span>Priority</span></th>
+                    <th class="headers"><span>Project</span></th>
+                    <th class="headers"><span>Requirement</span></th>
+                    <th class="headers"></th>
                 </tr>
             </thead>
             <tbody>
