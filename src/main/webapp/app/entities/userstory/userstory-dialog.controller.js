@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('UserstoryDialogController', UserstoryDialogController);
 
-    UserstoryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Userstory', 'Task', 'Project', 'Issue', 'Requirement'];
+    UserstoryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Userstory', 'Task', 'Project', 'Issue', 'Requirement', '$state'];
 
-    function UserstoryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Userstory, Task, Project, Issue, Requirement) {
+    function UserstoryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Userstory, Task, Project, Issue, Requirement, $state) {
         var vm = this;
 
         vm.userstory = entity;

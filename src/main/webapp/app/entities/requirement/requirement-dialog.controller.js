@@ -5,9 +5,9 @@
         .module('projectoneApp')
         .controller('RequirementDialogController', RequirementDialogController);
 
-    RequirementDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Requirement', 'Userstory', 'Project'];
+    RequirementDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Requirement', 'Userstory', 'Project', '$state'];
 
-    function RequirementDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Requirement, Userstory, Project) {
+    function RequirementDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Requirement, Userstory, Project, $state) {
         var vm = this;
 
         vm.requirement = entity;

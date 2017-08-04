@@ -11,9 +11,9 @@
 
     <groupId>co.metcsprojectone</groupId>
     <artifactId>projectone</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>war</packaging>
-    <name>Projectone</name>
+    <name>EZTrack</name>
 
     <prerequisites>
         <maven>${maven.version}</maven>

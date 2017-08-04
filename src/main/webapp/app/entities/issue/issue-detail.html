@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="content/css/issue-detail.css">
 <div>
     <div class="header-content">
         <div class="title-section">
@@ -64,7 +63,7 @@
 
     </div>
     <div class="group-buttons">
-        <button type="submit" ui-sref="{{ vm.previousState }}" class="back-btn">
+        <button type="submit" ui-sref="project-detail({id:vm.issue.project.id})" class="back-btn">
             Back
         </button>
 
